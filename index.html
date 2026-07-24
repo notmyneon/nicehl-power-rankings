@@ -814,6 +814,13 @@
 
           <section class="analysis-card">
             <div class="analysis-card-header">
+              <h2>Tankathon Rankings</h2>
+            </div>
+            <div class="analysis-list" id="tankathonRankings"></div>
+          </section>
+
+          <section class="analysis-card">
+            <div class="analysis-card-header">
               <h2>Expected Record</h2>
             </div>
             <div class="analysis-list" id="expectedRecord"></div>
@@ -1569,6 +1576,8 @@
             wins: 0,
             losses: 0,
             ties: 0,
+            pointsFor: 0,
+            pointsAgainst: 0,
             allPlayFor: 0,
             allPlayAgainst: 0,
             scheduleFor: 0,
@@ -1626,6 +1635,13 @@
           } else if (Number.isFinite(awayScore) && Number.isFinite(homeScore)) {
             awayStats.ties++;
             homeStats.ties++;
+          }
+
+          if (Number.isFinite(awayScore) && Number.isFinite(homeScore)) {
+            awayStats.pointsFor += awayScore;
+            awayStats.pointsAgainst += homeScore;
+            homeStats.pointsFor += homeScore;
+            homeStats.pointsAgainst += awayScore;
           }
 
           const awayOpponentRank = Number(weeklyRankPoints.get(homeName) || 0);
@@ -1697,6 +1713,99 @@
           homeStats.opponentEloTotal += awayElo;
         });
       });
+
+      /*
+       * Tankathon Rankings
+       *
+       * 1. Select the bottom eight teams from the full standings:
+       *    fewest wins, then fewest total points scored.
+       * 2. Recalculate a mini table using only completed games in which
+       *    both teams belong to that bottom-eight group.
+       * 3. Rank the mini table by fewest mini-table wins, then fewest
+       *    mini-table points scored.
+       */
+      const tankathonPool = Array.from(stats.values())
+        .slice()
+        .sort(
+          (a, b) =>
+            a.wins - b.wins ||
+            a.pointsFor - b.pointsFor ||
+            a.name.localeCompare(b.name)
+        )
+        .slice(0, 8);
+
+      const tankathonNames = new Set(
+        tankathonPool.map(team => team.name)
+      );
+
+      const tankathonStats = new Map(
+        tankathonPool.map(team => [
+          team.name,
+          {
+            name: team.name,
+            overallWins: team.wins,
+            overallLosses: team.losses,
+            overallTies: team.ties,
+            overallPointsFor: team.pointsFor,
+            wins: 0,
+            losses: 0,
+            ties: 0,
+            pointsFor: 0,
+            pointsAgainst: 0,
+            games: 0
+          }
+        ])
+      );
+
+      completedWeeks.forEach(week => {
+        week.matchups.forEach(matchup => {
+          const awayName = String(matchup?.away?.name || "");
+          const homeName = String(matchup?.home?.name || "");
+
+          if (
+            !tankathonNames.has(awayName) ||
+            !tankathonNames.has(homeName)
+          ) {
+            return;
+          }
+
+          const awayScore = Number(matchup?.away?.score);
+          const homeScore = Number(matchup?.home?.score);
+          if (!Number.isFinite(awayScore) || !Number.isFinite(homeScore)) {
+            return;
+          }
+
+          const awayTeam = tankathonStats.get(awayName);
+          const homeTeam = tankathonStats.get(homeName);
+          if (!awayTeam || !homeTeam) return;
+
+          awayTeam.games++;
+          homeTeam.games++;
+          awayTeam.pointsFor += awayScore;
+          awayTeam.pointsAgainst += homeScore;
+          homeTeam.pointsFor += homeScore;
+          homeTeam.pointsAgainst += awayScore;
+
+          if (awayScore > homeScore) {
+            awayTeam.wins++;
+            homeTeam.losses++;
+          } else if (homeScore > awayScore) {
+            homeTeam.wins++;
+            awayTeam.losses++;
+          } else {
+            awayTeam.ties++;
+            homeTeam.ties++;
+          }
+        });
+      });
+
+      const tankathonRankings = Array.from(tankathonStats.values())
+        .sort(
+          (a, b) =>
+            a.wins - b.wins ||
+            a.pointsFor - b.pointsFor ||
+            a.name.localeCompare(b.name)
+        );
 
       const projections = Array.from(stats.values())
         .map(team => {
@@ -1799,6 +1908,7 @@
         nextWeekMatchups,
         projections,
         playoffProbabilities,
+        tankathonRankings,
         expectedRecords,
         scheduleStrength,
         remainingSos
@@ -1816,6 +1926,7 @@
       const nextWeekMatchups = document.getElementById("nextWeekMatchups");
       const projected = document.getElementById("projectedStandings");
       const playoff = document.getElementById("playoffProbability");
+      const tankathon = document.getElementById("tankathonRankings");
       const expected = document.getElementById("expectedRecord");
       const schedule = document.getElementById("scheduleStrength");
       const remaining = document.getElementById("remainingSchedule");
@@ -1826,6 +1937,7 @@
         !nextWeekMatchups ||
         !projected ||
         !playoff ||
+        !tankathon ||
         !expected ||
         !schedule ||
         !remaining
@@ -1837,6 +1949,7 @@
         nextWeekMatchups.innerHTML = loading;
         projected.innerHTML = loading;
         playoff.innerHTML = loading;
+        tankathon.innerHTML = loading;
         expected.innerHTML = loading;
         schedule.innerHTML = loading;
         remaining.innerHTML = loading;
@@ -1907,6 +2020,26 @@
           <div class="analysis-value">
             <span>Playoffs</span>
             <strong>${formatPercent(team.playoffProbability)}</strong>
+          </div>
+        </div>
+      `);
+
+      const tankathonRanked = analysis.tankathonRankings.map(
+        (team, index) => ({
+          ...team,
+          rank: index + 1
+        })
+      );
+
+      tankathon.innerHTML = renderAnalysisRows(tankathonRanked, team => `
+        <div class="analysis-row">
+          <div class="analysis-position">${team.rank}</div>
+          <div class="analysis-team">
+            <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+          </div>
+          <div class="analysis-value">
+            <span>${formatRating(team.pointsFor)} PTS</span>
+            <strong>${recordText(team)}</strong>
           </div>
         </div>
       `);
