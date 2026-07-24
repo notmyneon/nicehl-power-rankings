@@ -205,13 +205,19 @@
 
     .board-top {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 14px;
-      align-items: end;
+      align-items: center;
       padding: 4px 6px 10px;
       border-bottom: 2px solid var(--silver);
     }
 
+    .board-top-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+    }
 
     .title-lockup {
       display: flex;
@@ -221,8 +227,8 @@
     }
 
     .league-logo {
-      width: 116px;
-      height: 116px;
+      width: 104px;
+      height: 104px;
       object-fit: contain;
       border: none;
       background: transparent;
@@ -326,6 +332,163 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 7px 9px;
       padding: 0 6px 6px;
+    }
+
+    .analysis-stack {
+      display: grid;
+      gap: 12px;
+      margin: 14px 6px 4px;
+    }
+
+    .analysis-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(5, 5, 5, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .analysis-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+      padding: 0 2px;
+    }
+
+    .analysis-card-header h2 {
+      margin: 1px 0 2px;
+      font-size: 23px;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+
+    .analysis-card-header p {
+      margin: 0;
+      color: var(--silver-light);
+      font-size: 11px;
+    }
+
+    .analysis-eyebrow {
+      display: block;
+      color: var(--silver);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .analysis-chip {
+      flex: 0 0 auto;
+      border: 1px solid var(--silver);
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: var(--black);
+      background: var(--silver-light);
+      font-size: 9px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .analysis-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 8px;
+    }
+
+    .analysis-row {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) auto;
+      gap: 7px;
+      align-items: center;
+      min-height: 48px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(192, 192, 192, 0.48);
+      background: linear-gradient(135deg, var(--white), var(--silver-light));
+      color: var(--black);
+      overflow: hidden;
+      box-shadow: inset 4px 0 0 var(--burgundy);
+    }
+
+    .analysis-row.playoff-position {
+      box-shadow: inset 4px 0 0 var(--burgundy), 0 0 0 1px rgba(122, 24, 39, 0.28);
+    }
+
+    .analysis-position {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--burgundy), var(--black));
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .analysis-team {
+      min-width: 0;
+    }
+
+    .analysis-team strong {
+      display: block;
+      overflow: hidden;
+      color: var(--black);
+      font-size: 13px;
+      line-height: 1.05;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .analysis-team small {
+      display: block;
+      margin-top: 3px;
+      overflow: hidden;
+      color: #333;
+      font-size: 9px;
+      font-weight: 750;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .analysis-value {
+      min-width: 86px;
+      padding-left: 7px;
+      border-left: 1px solid var(--silver);
+      text-align: right;
+    }
+
+    .analysis-value span {
+      display: block;
+      color: var(--burgundy);
+      font-size: 8px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .analysis-value strong {
+      display: block;
+      margin-top: 1px;
+      color: var(--black);
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .analysis-empty {
+      grid-column: 1 / -1;
+      padding: 18px;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      color: var(--silver-light);
+      background: rgba(21, 21, 21, 0.8);
+      text-align: center;
+      font-size: 12px;
     }
 
     .rank-card {
@@ -468,10 +631,13 @@
     .screenshot-mode .rank-card { min-height: 58px; }
 
     @media (max-width: 860px) {
-      .editor-header, .board-top, .summary-strip, .rankings-grid, .awards-grid { grid-template-columns: 1fr; }
+      .editor-header, .board-top, .summary-strip, .rankings-grid, .awards-grid, .analysis-list { grid-template-columns: 1fr; }
       .controls { justify-content: flex-start; }
       .title-lockup { align-items: flex-start; }
-      .league-logo { width: 92px; height: 92px; }
+      .board-top-right { justify-content: space-between; }
+      .league-logo { width: 82px; height: 82px; }
+      .analysis-card-header { flex-direction: column; }
+      .analysis-chip { align-self: flex-start; }
       .rank-card { grid-template-columns: 44px 1fr 74px; }
       .movement { grid-column: 1 / -1; }
       h1 { font-size: 44px; }
@@ -493,6 +659,9 @@
       .rank-card { min-height: 56px; padding: 7px; }
       .team-block h3 { font-size: 15px; }
       .metric strong { font-size: 20px; }
+      .analysis-stack { gap: 8px; margin-top: 9px; }
+      .analysis-card { padding: 9px; }
+      .analysis-row { min-height: 43px; }
     }
   </style>
 </head>
@@ -536,19 +705,59 @@
       <div class="board">
         <div class="board-top">
           <div class="title-lockup">
-            <img id="leagueLogo" class="league-logo" alt="NiceHL logo" />
             <div class="title-text">
               <h1 id="leagueTitle" contenteditable="true">NiceHL Power Rankings</h1>
             </div>
           </div>
-          <div class="week-badge">
-            <span>Current Week</span>
-            <strong id="heroWeek">Week 0</strong>
+          <div class="board-top-right">
+            <div class="week-badge">
+              <span>Current Week</span>
+              <strong id="heroWeek">Week 0</strong>
+            </div>
+            <img id="leagueLogo" class="league-logo" alt="NiceHL logo" />
           </div>
         </div>
 
         <div class="summary-strip" id="summaryStrip"></div>
         <div class="rankings-grid" id="rankings"></div>
+
+        <div class="analysis-stack" id="analysisStack">
+          <section class="analysis-card">
+            <div class="analysis-card-header">
+              <div>
+                <span class="analysis-eyebrow">Forecast</span>
+                <h2>Projected Standings</h2>
+                <p>Current record plus ELO win probabilities for every remaining matchup.</p>
+              </div>
+              <div class="analysis-chip">Top 8 qualify</div>
+            </div>
+            <div class="analysis-list" id="projectedStandings"></div>
+          </section>
+
+          <section class="analysis-card">
+            <div class="analysis-card-header">
+              <div>
+                <span class="analysis-eyebrow">Score-based</span>
+                <h2>Schedule Strength So Far</h2>
+                <p>Opponents ranked by how their weekly scores compared with all 16 teams.</p>
+              </div>
+              <div class="analysis-chip">No ELO used</div>
+            </div>
+            <div class="analysis-list" id="scheduleStrength"></div>
+          </section>
+
+          <section class="analysis-card">
+            <div class="analysis-card-header">
+              <div>
+                <span class="analysis-eyebrow">Looking ahead</span>
+                <h2>Remaining Strength of Schedule</h2>
+                <p>Average ELO win probability across each team's remaining games. Lower is harder.</p>
+              </div>
+              <div class="analysis-chip" id="remainingGamesChip">Remaining games</div>
+            </div>
+            <div class="analysis-list" id="remainingSchedule"></div>
+          </section>
+        </div>
 
         <div class="footer-line">
           <span id="rankSubhead"></span>
@@ -1049,6 +1258,332 @@
       return ordered;
     }
 
+    function getCurrentScoringPeriod() {
+      const label = String(state.weeks[state.currentWeek] || "Week 0");
+      const match = label.match(/(\d+)/);
+      return match ? Number(match[1]) : 0;
+    }
+
+    function getSortedSeasonWeeks() {
+      if (!fantraxSeasonData?.weeks) return [];
+      return fantraxSeasonData.weeks
+        .slice()
+        .sort((a, b) => Number(a.scoringPeriod) - Number(b.scoringPeriod));
+    }
+
+    function eloWinProbability(teamElo, opponentElo) {
+      const own = Number(teamElo);
+      const opponent = Number(opponentElo);
+      if (!Number.isFinite(own) || !Number.isFinite(opponent)) return 0.5;
+      return 1 / (1 + Math.pow(10, (opponent - own) / 400));
+    }
+
+    function formatPercent(value) {
+      if (!Number.isFinite(Number(value))) return "—";
+      return `${(Number(value) * 100).toFixed(1)}%`;
+    }
+
+    function formatProjectedNumber(value) {
+      const rounded = Math.round(Number(value) * 10) / 10;
+      return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
+    }
+
+    function formatProjectedRecord(wins, losses, ties = 0) {
+      const base = `${formatProjectedNumber(wins)}–${formatProjectedNumber(losses)}`;
+      return ties ? `${base}–${ties}` : base;
+    }
+
+    function formatAllPlayRecord(wins, losses) {
+      return `${formatProjectedNumber(wins)}–${formatProjectedNumber(losses)}`;
+    }
+
+    function buildSeasonAnalysis() {
+      if (!fantraxSeasonData) return null;
+
+      const currentPeriod = getCurrentScoringPeriod();
+      const seasonWeeks = getSortedSeasonWeeks();
+      const completedWeeks = seasonWeeks.filter(
+        week => Number(week.scoringPeriod) <= currentPeriod
+      );
+      const remainingWeeks = seasonWeeks.filter(
+        week => Number(week.scoringPeriod) > currentPeriod
+      );
+
+      const teamNames = fantraxSeasonData.teams.map(team => String(team.name));
+      const stateTeamMap = new Map(state.teams.map(team => [team.name, team]));
+      const ratings = new Map(
+        teamNames.map(name => [
+          name,
+          getValueForWeek(stateTeamMap.get(name) || { elo: [1000] }, state.currentWeek)
+        ])
+      );
+
+      const stats = new Map(
+        teamNames.map(name => [
+          name,
+          {
+            name,
+            wins: 0,
+            losses: 0,
+            ties: 0,
+            allPlayFor: 0,
+            allPlayAgainst: 0,
+            scheduleFor: 0,
+            scheduleAgainst: 0,
+            expectedRemainingWins: 0,
+            remainingGames: 0,
+            opponentEloTotal: 0
+          }
+        ])
+      );
+
+      completedWeeks.forEach(week => {
+        const entries = getWeeklyScoreEntries(week);
+        const scoreMap = new Map(entries.map(entry => [entry.name, entry.score]));
+        const teamCount = entries.length;
+        const maxRankPoints = Math.max(0, teamCount - 1);
+        const weeklyRankPoints = new Map();
+
+        entries.forEach(entry => {
+          // Match the workbook's rank-points method: highest score earns 15,
+          // lowest earns 0, and equal scores share the same RANK.EQ position.
+          const rankPoints = entries.reduce(
+            (total, other) => total + (other.score <= entry.score ? 1 : 0),
+            -1
+          );
+          weeklyRankPoints.set(entry.name, rankPoints);
+
+          const team = stats.get(entry.name);
+          if (team) {
+            team.allPlayFor += rankPoints;
+            team.allPlayAgainst += maxRankPoints - rankPoints;
+          }
+        });
+
+        week.matchups.forEach(matchup => {
+          const awayName = String(matchup?.away?.name || "");
+          const homeName = String(matchup?.home?.name || "");
+          const awayScore = Number(scoreMap.get(awayName));
+          const homeScore = Number(scoreMap.get(homeName));
+          const awayStats = stats.get(awayName);
+          const homeStats = stats.get(homeName);
+
+          if (!awayStats || !homeStats) return;
+
+          if (awayScore > homeScore) {
+            awayStats.wins++;
+            homeStats.losses++;
+          } else if (homeScore > awayScore) {
+            homeStats.wins++;
+            awayStats.losses++;
+          } else if (Number.isFinite(awayScore) && Number.isFinite(homeScore)) {
+            awayStats.ties++;
+            homeStats.ties++;
+          }
+
+          const awayOpponentRank = Number(weeklyRankPoints.get(homeName) || 0);
+          const homeOpponentRank = Number(weeklyRankPoints.get(awayName) || 0);
+
+          awayStats.scheduleFor += awayOpponentRank;
+          awayStats.scheduleAgainst += maxRankPoints - awayOpponentRank;
+          homeStats.scheduleFor += homeOpponentRank;
+          homeStats.scheduleAgainst += maxRankPoints - homeOpponentRank;
+        });
+      });
+
+      remainingWeeks.forEach(week => {
+        week.matchups.forEach(matchup => {
+          const awayName = String(matchup?.away?.name || "");
+          const homeName = String(matchup?.home?.name || "");
+          const awayStats = stats.get(awayName);
+          const homeStats = stats.get(homeName);
+          if (!awayStats || !homeStats) return;
+
+          const awayElo = Number(ratings.get(awayName) || 1000);
+          const homeElo = Number(ratings.get(homeName) || 1000);
+          const awayProbability = eloWinProbability(awayElo, homeElo);
+          const homeProbability = eloWinProbability(homeElo, awayElo);
+
+          awayStats.expectedRemainingWins += awayProbability;
+          awayStats.remainingGames++;
+          awayStats.opponentEloTotal += homeElo;
+
+          homeStats.expectedRemainingWins += homeProbability;
+          homeStats.remainingGames++;
+          homeStats.opponentEloTotal += awayElo;
+        });
+      });
+
+      const projections = Array.from(stats.values())
+        .map(team => {
+          const expectedLosses = team.remainingGames - team.expectedRemainingWins;
+          const projectedWins = team.wins + team.expectedRemainingWins;
+          const projectedLosses = team.losses + expectedLosses;
+          const avgWinProbability = team.remainingGames
+            ? team.expectedRemainingWins / team.remainingGames
+            : null;
+
+          return {
+            ...team,
+            elo: Number(ratings.get(team.name) || 1000),
+            projectedWins,
+            projectedLosses,
+            avgWinProbability,
+            projectionScore: projectedWins + 0.5 * team.ties
+          };
+        })
+        .sort(
+          (a, b) =>
+            b.projectionScore - a.projectionScore ||
+            b.elo - a.elo ||
+            a.name.localeCompare(b.name)
+        );
+
+      const scheduleStrength = Array.from(stats.values())
+        .map(team => {
+          const scheduleGames = team.scheduleFor + team.scheduleAgainst;
+          return {
+            ...team,
+            difficulty: scheduleGames ? team.scheduleFor / scheduleGames : null
+          };
+        })
+        .sort(
+          (a, b) =>
+            Number(b.difficulty ?? -1) - Number(a.difficulty ?? -1) ||
+            b.scheduleFor - a.scheduleFor ||
+            a.name.localeCompare(b.name)
+        );
+
+      const remainingSos = Array.from(stats.values())
+        .map(team => ({
+          ...team,
+          elo: Number(ratings.get(team.name) || 1000),
+          avgWinProbability: team.remainingGames
+            ? team.expectedRemainingWins / team.remainingGames
+            : null,
+          avgOpponentElo: team.remainingGames
+            ? team.opponentEloTotal / team.remainingGames
+            : null
+        }))
+        .sort((a, b) => {
+          if (a.avgWinProbability === null && b.avgWinProbability !== null) return 1;
+          if (a.avgWinProbability !== null && b.avgWinProbability === null) return -1;
+          return (
+            Number(a.avgWinProbability ?? 1) - Number(b.avgWinProbability ?? 1) ||
+            Number(b.avgOpponentElo ?? 0) - Number(a.avgOpponentElo ?? 0) ||
+            a.name.localeCompare(b.name)
+          );
+        });
+
+      return {
+        currentPeriod,
+        completedWeekCount: completedWeeks.length,
+        remainingWeekCount: remainingWeeks.length,
+        projections,
+        scheduleStrength,
+        remainingSos
+      };
+    }
+
+    function renderAnalysisRows(items, rowBuilder) {
+      return orderForTwoColumnDisplay(items)
+        .map((item, displayIndex) => rowBuilder(item, displayIndex))
+        .join("");
+    }
+
+    function renderAnalysisCards() {
+      const projected = document.getElementById("projectedStandings");
+      const schedule = document.getElementById("scheduleStrength");
+      const remaining = document.getElementById("remainingSchedule");
+      const remainingChip = document.getElementById("remainingGamesChip");
+
+      if (!projected || !schedule || !remaining) return;
+
+      const analysis = buildSeasonAnalysis();
+      if (!analysis) {
+        const loading = '<div class="analysis-empty">Loading Fantrax season data…</div>';
+        projected.innerHTML = loading;
+        schedule.innerHTML = loading;
+        remaining.innerHTML = loading;
+        return;
+      }
+
+      const projectedRanked = analysis.projections.map((team, index) => ({
+        ...team,
+        rank: index + 1
+      }));
+
+      projected.innerHTML = renderAnalysisRows(projectedRanked, team => `
+        <div class="analysis-row ${team.rank <= 8 ? "playoff-position" : ""}">
+          <div class="analysis-position">${team.rank}</div>
+          <div class="analysis-team">
+            <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+            <small>Current ${recordText(team)} · ${team.remainingGames} game${team.remainingGames === 1 ? "" : "s"} left${team.rank <= 8 ? " · Playoff position" : ""}</small>
+          </div>
+          <div class="analysis-value">
+            <span>Projected</span>
+            <strong>${formatProjectedRecord(team.projectedWins, team.projectedLosses, team.ties)}</strong>
+          </div>
+        </div>
+      `);
+
+      if (analysis.completedWeekCount === 0) {
+        schedule.innerHTML = '<div class="analysis-empty">Import at least one completed week to calculate score-based schedule strength.</div>';
+      } else {
+        const scheduleRanked = analysis.scheduleStrength.map((team, index) => ({
+          ...team,
+          rank: index + 1
+        }));
+
+        schedule.innerHTML = renderAnalysisRows(scheduleRanked, team => `
+          <div class="analysis-row">
+            <div class="analysis-position">${team.rank}</div>
+            <div class="analysis-team">
+              <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+              <small>Opponents ${formatAllPlayRecord(team.scheduleFor, team.scheduleAgainst)} all-play · Team ${formatAllPlayRecord(team.allPlayFor, team.allPlayAgainst)}</small>
+            </div>
+            <div class="analysis-value">
+              <span>Difficulty</span>
+              <strong>${formatPercent(team.difficulty)}</strong>
+            </div>
+          </div>
+        `);
+      }
+
+      const maxRemainingGames = Math.max(
+        0,
+        ...analysis.remainingSos.map(team => team.remainingGames)
+      );
+      if (remainingChip) {
+        remainingChip.textContent = maxRemainingGames
+          ? `${maxRemainingGames} max games left`
+          : "Season complete";
+      }
+
+      if (!maxRemainingGames) {
+        remaining.innerHTML = '<div class="analysis-empty">No remaining regular-season games after this selected week.</div>';
+      } else {
+        const remainingRanked = analysis.remainingSos.map((team, index) => ({
+          ...team,
+          rank: index + 1
+        }));
+
+        remaining.innerHTML = renderAnalysisRows(remainingRanked, team => `
+          <div class="analysis-row">
+            <div class="analysis-position">${team.rank}</div>
+            <div class="analysis-team">
+              <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+              <small>${team.remainingGames} game${team.remainingGames === 1 ? "" : "s"} · Avg opponent ELO ${formatRating(team.avgOpponentElo)}</small>
+            </div>
+            <div class="analysis-value">
+              <span>Avg win odds</span>
+              <strong>${formatPercent(team.avgWinProbability)}</strong>
+            </div>
+          </div>
+        `);
+      }
+    }
+
     function renderRankings() {
       const data = buildRankData(state.currentWeek).slice(0, 16);
       const displayData = orderForTwoColumnDisplay(data);
@@ -1080,6 +1615,8 @@
           </article>
         `)
         .join("");
+
+      renderAnalysisCards();
     }
 
     function renderSummary() {
@@ -1177,6 +1714,7 @@
             : `${season} ready.`,
           "success"
         );
+        renderAnalysisCards();
       } catch (error) {
         console.error("Could not load Fantrax data.", error);
         if (select) {
@@ -1187,6 +1725,11 @@
           "Could not load the Fantrax JSON file.",
           "error"
         );
+        const errorMarkup = '<div class="analysis-empty">Fantrax season data could not be loaded.</div>';
+        ["projectedStandings", "scheduleStrength", "remainingSchedule"].forEach(id => {
+          const element = document.getElementById(id);
+          if (element) element.innerHTML = errorMarkup;
+        });
       }
     }
 
