@@ -1800,12 +1800,21 @@
       });
 
       const tankathonRankings = Array.from(tankathonStats.values())
-        .sort(
-          (a, b) =>
-            a.wins - b.wins ||
-            a.pointsFor - b.pointsFor ||
+        .sort((a, b) => {
+          const aWinRate = a.games
+            ? (a.wins + 0.5 * a.ties) / a.games
+            : 0;
+          const bWinRate = b.games
+            ? (b.wins + 0.5 * b.ties) / b.games
+            : 0;
+
+          return (
+            bWinRate - aWinRate ||
+            b.wins - a.wins ||
+            b.pointsFor - a.pointsFor ||
             a.name.localeCompare(b.name)
-        );
+          );
+        });
 
       const projections = Array.from(stats.values())
         .map(team => {
