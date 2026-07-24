@@ -739,6 +739,11 @@
     <section class="editor">
       <div class="editor-header">
         <div class="controls no-print">
+          <label for="seasonSelect" class="hint">Season:</label>
+          <select id="seasonSelect" disabled>
+            <option>Loading seasons…</option>
+          </select>
+
           <label for="weekSelect" class="hint">Rank by:</label>
           <select id="weekSelect"></select>
 
@@ -781,7 +786,7 @@
           </div>
           <div class="board-top-right">
             <div class="week-badge">
-              <span>Current Week</span>
+              <span>Selected Week</span>
               <strong id="heroWeek">Week 0</strong>
             </div>
           </div>
@@ -849,8 +854,24 @@
   </main>
 
   <script>
-    const STORAGE_KEY = "niceHLEloPowerRankings_v7_fantrax_import";
-    const FANTRAX_DATA_URL = "./data/nicehl-2025-26-regular-season.json";
+    const LEGACY_STORAGE_KEY = "niceHLEloPowerRankings_v7_fantrax_import";
+    const SEASON_STORAGE_PREFIX = "niceHLEloPowerRankings_v8_season_";
+    const SELECTED_SEASON_STORAGE_KEY = "niceHLEloPowerRankings_v8_selected_season";
+    const LEAGUE_LOGO_STORAGE_KEY = "niceHLEloPowerRankings_v8_league_logo";
+    const SEASON_MANIFEST_URL = "./data/seasons.json";
+
+    const FALLBACK_SEASON_MANIFEST = {
+      defaultSeason: "2025-26",
+      seasons: [
+        { id: "2025-26", label: "2025–26", file: "nicehl-2025-26-regular-season.json", complete: false },
+        { id: "2024-25", label: "2024–25", file: "nicehl-2024-25-regular-season.json", complete: true },
+        { id: "2023-24", label: "2023–24", file: "nicehl-2023-24-regular-season.json", complete: true },
+        { id: "2022-23", label: "2022–23", file: "nicehl-2022-23-regular-season.json", complete: true },
+        { id: "2021-22", label: "2021–22", file: "nicehl-2021-22-regular-season.json", complete: true },
+        { id: "2020-21", label: "2020–21", file: "nicehl-2020-21-regular-season.json", complete: true },
+        { id: "2019-20", label: "2019–20", file: "nicehl-2019-20-regular-season.json", complete: true }
+      ]
+    };
 
     const DEFAULT_AWARDS = [
       { title: "Most Points in a Loss", winner: "", detail: "" },
@@ -896,9 +917,36 @@
 
     let state = structuredCloneSafe(defaultState);
     let fantraxSeasonData = null;
+    let seasonManifest = structuredCloneSafe(FALLBACK_SEASON_MANIFEST);
+    let selectedSeasonId = FALLBACK_SEASON_MANIFEST.defaultSeason;
+    let stateLoadedFromStorage = false;
 
     function structuredCloneSafe(value) {
       return JSON.parse(JSON.stringify(value));
+    }
+
+    function getSeasonConfig(seasonId = selectedSeasonId) {
+      return seasonManifest.seasons.find(season => season.id === seasonId) || null;
+    }
+
+    function getSeasonStorageKey(seasonId = selectedSeasonId) {
+      return `${SEASON_STORAGE_PREFIX}${seasonId}`;
+    }
+
+    function getSeasonDataUrl(season = getSeasonConfig()) {
+      if (!season?.file) return "";
+      if (/^(?:https?:)?\/\//i.test(season.file) || season.file.startsWith("./")) {
+        return season.file;
+      }
+      return `./data/${season.file}`;
+    }
+
+    function getGlobalLeagueLogo() {
+      try {
+        return localStorage.getItem(LEAGUE_LOGO_STORAGE_KEY);
+      } catch (error) {
+        return null;
+      }
     }
 
     function fullWeekLabel(label) {
@@ -990,22 +1038,49 @@
     }
 
     function loadState() {
+      stateLoadedFromStorage = false;
+      let loadedState = null;
+
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = localStorage.getItem(getSeasonStorageKey());
         if (saved) {
-          state = cleanState(JSON.parse(saved));
-          return;
+          loadedState = JSON.parse(saved);
+          stateLoadedFromStorage = true;
+        } else if (selectedSeasonId === FALLBACK_SEASON_MANIFEST.defaultSeason) {
+          const legacySaved = localStorage.getItem(LEGACY_STORAGE_KEY);
+          if (legacySaved) {
+            loadedState = JSON.parse(legacySaved);
+            stateLoadedFromStorage = true;
+            localStorage.setItem(getSeasonStorageKey(), legacySaved);
+          }
         }
       } catch (error) {
         console.warn("Could not load saved rankings.", error);
       }
-      state = cleanState(defaultState);
+
+      state = cleanState(loadedState || defaultState);
+
+      try {
+        const globalLogo = getGlobalLeagueLogo();
+        if (globalLogo !== null) {
+          state.logoDataUrl = globalLogo;
+        } else if (state.logoDataUrl) {
+          localStorage.setItem(LEAGUE_LOGO_STORAGE_KEY, state.logoDataUrl);
+        }
+      } catch (error) {
+        console.warn("Could not load the saved league logo.", error);
+      }
+
+      return stateLoadedFromStorage;
     }
 
     function saveState() {
       try {
         state.awards = normalizeAwards(state.awardsByWeek[state.currentWeek]);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(cleanState(state)));
+        const cleaned = cleanState(state);
+        localStorage.setItem(getSeasonStorageKey(), JSON.stringify(cleaned));
+        localStorage.setItem(LEAGUE_LOGO_STORAGE_KEY, cleaned.logoDataUrl || "");
+        stateLoadedFromStorage = true;
       } catch (error) {
         console.warn("Could not save rankings.", error);
       }
@@ -2139,6 +2214,13 @@
       );
 
       document.getElementById("heroWeek").textContent = weekLabel;
+      const seasonConfig = getSeasonConfig();
+      const rankSubhead = document.getElementById("rankSubhead");
+      if (rankSubhead) {
+        rankSubhead.textContent = seasonConfig
+          ? `${seasonConfig.label} regular season`
+          : "";
+      }
       renderSummary();
 
       const rankings = document.getElementById("rankings");
@@ -2180,6 +2262,101 @@
           </div>
         `)
         .join("");
+    }
+
+    function validateSeasonManifest(manifest) {
+      if (!manifest || !Array.isArray(manifest.seasons) || !manifest.seasons.length) {
+        throw new Error("No seasons were found in the manifest.");
+      }
+
+      const seasons = manifest.seasons
+        .map(season => ({
+          id: String(season?.id || "").trim(),
+          label: String(season?.label || season?.id || "").trim(),
+          file: String(season?.file || "").trim(),
+          complete: Boolean(season?.complete)
+        }))
+        .filter(season => season.id && season.file);
+
+      if (!seasons.length) {
+        throw new Error("The season manifest contains no valid entries.");
+      }
+
+      const requestedDefault = String(manifest.defaultSeason || "").trim();
+      return {
+        defaultSeason: seasons.some(season => season.id === requestedDefault)
+          ? requestedDefault
+          : seasons[0].id,
+        seasons
+      };
+    }
+
+    function populateSeasonSelect() {
+      const select = document.getElementById("seasonSelect");
+      if (!select) return;
+
+      select.innerHTML = "";
+      seasonManifest.seasons.forEach(season => {
+        const option = document.createElement("option");
+        option.value = season.id;
+        option.textContent = season.label;
+        option.selected = season.id === selectedSeasonId;
+        select.appendChild(option);
+      });
+
+      select.disabled = false;
+      select.onchange = () => switchSeason(select.value);
+    }
+
+    async function loadSeasonManifest() {
+      try {
+        const response = await fetch(SEASON_MANIFEST_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        seasonManifest = validateSeasonManifest(await response.json());
+      } catch (error) {
+        console.warn("Could not load seasons.json; using the built-in season list.", error);
+        seasonManifest = validateSeasonManifest(FALLBACK_SEASON_MANIFEST);
+      }
+
+      let savedSeason = "";
+      try {
+        savedSeason = String(localStorage.getItem(SELECTED_SEASON_STORAGE_KEY) || "");
+      } catch (error) {
+        console.warn("Could not load the selected season.", error);
+      }
+
+      selectedSeasonId = seasonManifest.seasons.some(season => season.id === savedSeason)
+        ? savedSeason
+        : seasonManifest.defaultSeason;
+
+      populateSeasonSelect();
+      await switchSeason(selectedSeasonId, { initial: true });
+    }
+
+    async function switchSeason(seasonId, options = {}) {
+      const nextSeason = getSeasonConfig(seasonId);
+      if (!nextSeason) return;
+
+      if (!options.initial) {
+        updateFromTableSilently();
+        saveState();
+      }
+
+      selectedSeasonId = nextSeason.id;
+      fantraxSeasonData = null;
+
+      try {
+        localStorage.setItem(SELECTED_SEASON_STORAGE_KEY, selectedSeasonId);
+      } catch (error) {
+        console.warn("Could not save the selected season.", error);
+      }
+
+      const select = document.getElementById("seasonSelect");
+      if (select) select.value = selectedSeasonId;
+
+      loadState();
+      renderAll();
+      await loadFantraxSeason(false, { autoImportIfMissing: true });
     }
 
     function setFantraxStatus(message, type = "") {
@@ -2231,19 +2408,20 @@
       importButton.disabled = false;
     }
 
-    async function loadFantraxSeason(showSuccess = true) {
+    async function loadFantraxSeason(showSuccess = true, options = {}) {
       const select = document.getElementById("fantraxPeriodSelect");
       const importButton = document.getElementById("fantraxImportButton");
+      const seasonConfig = getSeasonConfig();
+      const dataUrl = getSeasonDataUrl(seasonConfig);
 
       if (select) select.disabled = true;
       if (importButton) importButton.disabled = true;
-      setFantraxStatus("Loading Fantrax season…");
+      setFantraxStatus(`Loading ${seasonConfig?.label || "season"}…`);
 
       try {
-        const response = await fetch(FANTRAX_DATA_URL, {
-          cache: "no-store"
-        });
+        if (!dataUrl) throw new Error("No data file is configured for this season.");
 
+        const response = await fetch(dataUrl, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
@@ -2253,8 +2431,17 @@
         fantraxSeasonData = data;
         populateFantraxPeriodSelect();
 
+        if (options.autoImportIfMissing && !stateLoadedFromStorage) {
+          const latestPeriod = Math.max(
+            ...data.weeks.map(week => Number(week.scoringPeriod)).filter(Number.isFinite)
+          );
+          if (Number.isFinite(latestPeriod)) {
+            importFantraxThroughWeek(latestPeriod, { silent: true });
+          }
+        }
+
         const leagueName = data.league?.name || "NiceHL";
-        const season = data.league?.season || "";
+        const season = data.league?.season || seasonConfig?.label || "";
         setFantraxStatus(
           showSuccess
             ? `${leagueName} ${season} loaded.`
@@ -2264,16 +2451,25 @@
         renderAnalysisCards();
       } catch (error) {
         console.error("Could not load Fantrax data.", error);
+        fantraxSeasonData = null;
         if (select) {
           select.innerHTML = "<option>Season unavailable</option>";
           select.disabled = true;
         }
         setFantraxStatus(
-          "Could not load the Fantrax JSON file.",
+          `Could not load ${seasonConfig?.file || "the season JSON file"}.`,
           "error"
         );
         const errorMarkup = '<div class="analysis-empty">Fantrax season data could not be loaded.</div>';
-        ["projectedStandings", "scheduleStrength", "remainingSchedule"].forEach(id => {
+        [
+          "nextWeekMatchups",
+          "projectedStandings",
+          "playoffProbability",
+          "tankathonRankings",
+          "expectedRecord",
+          "scheduleStrength",
+          "remainingSchedule"
+        ].forEach(id => {
           const element = document.getElementById(id);
           if (element) element.innerHTML = errorMarkup;
         });
@@ -2462,7 +2658,7 @@
       ];
     }
 
-    function importFantraxThroughWeek() {
+    function importFantraxThroughWeek(periodOverride = null, options = {}) {
       if (!fantraxSeasonData) {
         setFantraxStatus("Load the season first.", "error");
         return;
@@ -2471,7 +2667,7 @@
       updateFromTableSilently();
 
       const selectedPeriod = Number(
-        document.getElementById("fantraxPeriodSelect").value
+        periodOverride ?? document.getElementById("fantraxPeriodSelect").value
       );
 
       const weeksToImport = fantraxSeasonData.weeks
@@ -2648,10 +2844,12 @@
       renderAll();
       populateFantraxPeriodSelect();
 
-      setFantraxStatus(
-        `Imported Weeks 1–${selectedPeriod}.`,
-        "success"
-      );
+      if (!options.silent) {
+        setFantraxStatus(
+          `Imported Weeks 1–${selectedPeriod}.`,
+          "success"
+        );
+      }
     }
 
     function toggleScreenshotMode() {
@@ -2713,13 +2911,32 @@
     }
 
     function resetSample() {
-      localStorage.removeItem(STORAGE_KEY);
-      state = structuredCloneSafe(defaultState);
-      saveState();
-      renderAll();
+      try {
+        localStorage.removeItem(getSeasonStorageKey());
+      } catch (error) {
+        console.warn("Could not clear the selected season.", error);
+      }
 
-      if (fantraxSeasonData) {
-        populateFantraxPeriodSelect();
+      stateLoadedFromStorage = false;
+      state = cleanState({
+        ...defaultState,
+        logoDataUrl: getGlobalLeagueLogo() || ""
+      });
+
+      if (fantraxSeasonData?.weeks?.length) {
+        const latestPeriod = Math.max(
+          ...fantraxSeasonData.weeks
+            .map(week => Number(week.scoringPeriod))
+            .filter(Number.isFinite)
+        );
+        importFantraxThroughWeek(latestPeriod, { silent: true });
+        setFantraxStatus(
+          `${getSeasonConfig()?.label || "Season"} restored from Fantrax data.`,
+          "success"
+        );
+      } else {
+        saveState();
+        renderAll();
       }
     }
 
@@ -2745,9 +2962,8 @@
       renderRankings();
     }
 
-    loadState();
     renderAll();
-    loadFantraxSeason(false);
+    loadSeasonManifest();
   </script>
 </body>
 </html>
