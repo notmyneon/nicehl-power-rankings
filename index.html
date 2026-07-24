@@ -807,6 +807,13 @@
 
           <section class="analysis-card">
             <div class="analysis-card-header">
+              <h2>Playoff Probability</h2>
+            </div>
+            <div class="analysis-list" id="playoffProbability"></div>
+          </section>
+
+          <section class="analysis-card">
+            <div class="analysis-card-header">
               <h2>Expected Record</h2>
             </div>
             <div class="analysis-list" id="expectedRecord"></div>
@@ -1376,6 +1383,139 @@
       return `${sign}${number.toFixed(2)}`;
     }
 
+    const PLAYOFF_SPOTS = 8;
+    const PLAYOFF_SIMULATIONS = 20000;
+
+    function hashString(value) {
+      let hash = 2166136261;
+      const text = String(value);
+
+      for (let index = 0; index < text.length; index++) {
+        hash ^= text.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+      }
+
+      return hash >>> 0;
+    }
+
+    function createSeededRandom(seed) {
+      let value = seed >>> 0;
+
+      return function random() {
+        value += 0x6D2B79F5;
+        let result = value;
+        result = Math.imul(result ^ (result >>> 15), result | 1);
+        result ^= result + Math.imul(result ^ (result >>> 7), result | 61);
+        return ((result ^ (result >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function calculatePlayoffProbabilities(
+      stats,
+      remainingWeeks,
+      ratings,
+      currentPeriod
+    ) {
+      const teams = Array.from(stats.values())
+        .map(team => ({
+          name: team.name,
+          wins: team.wins,
+          losses: team.losses,
+          ties: team.ties,
+          elo: Number(ratings.get(team.name) || 1000)
+        }))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      const teamIndexes = new Map(
+        teams.map((team, index) => [team.name, index])
+      );
+
+      const futureGames = [];
+
+      remainingWeeks.forEach(week => {
+        week.matchups.forEach(matchup => {
+          const awayName = String(matchup?.away?.name || "");
+          const homeName = String(matchup?.home?.name || "");
+          const awayIndex = teamIndexes.get(awayName);
+          const homeIndex = teamIndexes.get(homeName);
+
+          if (awayIndex === undefined || homeIndex === undefined) return;
+
+          futureGames.push({
+            awayIndex,
+            homeIndex,
+            awayProbability: eloWinProbability(
+              teams[awayIndex].elo,
+              teams[homeIndex].elo
+            )
+          });
+        });
+      });
+
+      const seedText = [
+        currentPeriod,
+        ...teams.map(team =>
+          `${team.name}:${team.wins}:${team.losses}:${team.ties}:${team.elo}`
+        ),
+        ...futureGames.map(game =>
+          `${game.awayIndex}:${game.homeIndex}:${game.awayProbability.toFixed(6)}`
+        )
+      ].join("|");
+
+      const random = createSeededRandom(hashString(seedText));
+      const playoffCounts = teams.map(() => 0);
+      const finishTotals = teams.map(() => 0);
+      const simulatedWinTotals = teams.map(() => 0);
+
+      for (let simulation = 0; simulation < PLAYOFF_SIMULATIONS; simulation++) {
+        const winValues = teams.map(team => team.wins + 0.5 * team.ties);
+
+        futureGames.forEach(game => {
+          if (random() < game.awayProbability) {
+            winValues[game.awayIndex] += 1;
+          } else {
+            winValues[game.homeIndex] += 1;
+          }
+        });
+
+        const order = teams
+          .map((team, index) => index)
+          .sort(
+            (first, second) =>
+              winValues[second] - winValues[first] ||
+              teams[second].elo - teams[first].elo ||
+              teams[first].name.localeCompare(teams[second].name)
+          );
+
+        order.forEach((teamIndex, finishIndex) => {
+          finishTotals[teamIndex] += finishIndex + 1;
+          simulatedWinTotals[teamIndex] += winValues[teamIndex];
+
+          if (finishIndex < PLAYOFF_SPOTS) {
+            playoffCounts[teamIndex]++;
+          }
+        });
+      }
+
+      return teams
+        .map((team, index) => ({
+          ...team,
+          playoffProbability:
+            playoffCounts[index] / PLAYOFF_SIMULATIONS,
+          averageFinish:
+            finishTotals[index] / PLAYOFF_SIMULATIONS,
+          averageFinalWins:
+            simulatedWinTotals[index] / PLAYOFF_SIMULATIONS
+        }))
+        .sort(
+          (a, b) =>
+            b.playoffProbability - a.playoffProbability ||
+            a.averageFinish - b.averageFinish ||
+            b.elo - a.elo ||
+            a.name.localeCompare(b.name)
+        );
+    }
+
     function buildSeasonAnalysis() {
       if (!fantraxSeasonData) return null;
 
@@ -1622,6 +1762,13 @@
             a.name.localeCompare(b.name)
         );
 
+      const playoffProbabilities = calculatePlayoffProbabilities(
+        stats,
+        remainingWeeks,
+        ratings,
+        currentPeriod
+      );
+
       const remainingSos = Array.from(stats.values())
         .map(team => ({
           ...team,
@@ -1651,6 +1798,7 @@
         nextWeekDateRange: nextWeek ? String(nextWeek.dateRange || "") : "",
         nextWeekMatchups,
         projections,
+        playoffProbabilities,
         expectedRecords,
         scheduleStrength,
         remainingSos
@@ -1667,6 +1815,7 @@
       const nextWeekTitle = document.getElementById("nextWeekTitle");
       const nextWeekMatchups = document.getElementById("nextWeekMatchups");
       const projected = document.getElementById("projectedStandings");
+      const playoff = document.getElementById("playoffProbability");
       const expected = document.getElementById("expectedRecord");
       const schedule = document.getElementById("scheduleStrength");
       const remaining = document.getElementById("remainingSchedule");
@@ -1676,6 +1825,7 @@
         !nextWeekTitle ||
         !nextWeekMatchups ||
         !projected ||
+        !playoff ||
         !expected ||
         !schedule ||
         !remaining
@@ -1686,6 +1836,7 @@
         const loading = '<div class="analysis-empty">Loading Fantrax season data…</div>';
         nextWeekMatchups.innerHTML = loading;
         projected.innerHTML = loading;
+        playoff.innerHTML = loading;
         expected.innerHTML = loading;
         schedule.innerHTML = loading;
         remaining.innerHTML = loading;
@@ -1737,6 +1888,27 @@
           <div class="analysis-value">
             <span>Projected</span>
             <strong>${formatProjectedRecord(team.projectedWins, team.projectedLosses, team.ties)}</strong>
+          </div>
+        </div>
+      `);
+
+      const playoffRanked = analysis.playoffProbabilities.map(
+        (team, index) => ({
+          ...team,
+          rank: index + 1
+        })
+      );
+
+      playoff.innerHTML = renderAnalysisRows(playoffRanked, team => `
+        <div class="analysis-row ${team.playoffProbability >= 0.5 ? "playoff-position" : ""}">
+          <div class="analysis-position">${team.rank}</div>
+          <div class="analysis-team">
+            <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+            <small>Average finish ${team.averageFinish.toFixed(1)} · Average final wins ${team.averageFinalWins.toFixed(1)} · ${PLAYOFF_SIMULATIONS.toLocaleString()} simulations</small>
+          </div>
+          <div class="analysis-value">
+            <span>Playoffs</span>
+            <strong>${formatPercent(team.playoffProbability)}</strong>
           </div>
         </div>
       `);
