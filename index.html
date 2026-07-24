@@ -1883,7 +1883,6 @@
           <div class="analysis-position">${team.rank}</div>
           <div class="analysis-team">
             <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
-            <small>Current ${recordText(team)} · ${team.remainingGames} game${team.remainingGames === 1 ? "" : "s"} left${team.rank <= 8 ? " · Playoff position" : ""}</small>
           </div>
           <div class="analysis-value">
             <span>Projected</span>
@@ -1904,7 +1903,6 @@
           <div class="analysis-position">${team.rank}</div>
           <div class="analysis-team">
             <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
-            <small>Average finish ${team.averageFinish.toFixed(1)} · Average final wins ${team.averageFinalWins.toFixed(1)} · ${PLAYOFF_SIMULATIONS.toLocaleString()} simulations</small>
           </div>
           <div class="analysis-value">
             <span>Playoffs</span>
@@ -1927,7 +1925,6 @@
             <div class="analysis-position">${team.rank}</div>
             <div class="analysis-team">
               <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
-              <small>Actual ${recordText(team)} · Own-score EW ${team.offensiveExpectedWins.toFixed(2)} · Points-against EW ${team.defensiveExpectedWins.toFixed(2)} · ${formatExpectedDifference(team.difference)} vs expected</small>
             </div>
             <div class="analysis-value">
               <span>Expected</span>
@@ -1950,7 +1947,6 @@
             <div class="analysis-position">${team.rank}</div>
             <div class="analysis-team">
               <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
-              <small>Opponents ${formatAllPlayRecord(team.scheduleFor, team.scheduleAgainst)} all-play · Team ${formatAllPlayRecord(team.allPlayFor, team.allPlayAgainst)}</small>
             </div>
             <div class="analysis-value">
               <span>Difficulty</span>
@@ -1983,7 +1979,6 @@
             <div class="analysis-position">${team.rank}</div>
             <div class="analysis-team">
               <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
-              <small>${team.remainingGames} game${team.remainingGames === 1 ? "" : "s"} · Avg opponent ELO ${formatRating(team.avgOpponentElo)}</small>
             </div>
             <div class="analysis-value">
               <span>Avg win odds</span>
