@@ -350,9 +350,7 @@
 
     .analysis-card-header {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
+      align-items: center;
       margin-bottom: 9px;
       padding: 0 2px;
     }
@@ -636,7 +634,6 @@
       .title-lockup { align-items: flex-start; }
       .board-top-right { justify-content: space-between; }
       .league-logo { width: 82px; height: 82px; }
-      .analysis-card-header { flex-direction: column; }
       .analysis-chip { align-self: flex-start; }
       .rank-card { grid-template-columns: 44px 1fr 74px; }
       .movement { grid-column: 1 / -1; }
@@ -705,6 +702,7 @@
       <div class="board">
         <div class="board-top">
           <div class="title-lockup">
+            <img id="leagueLogo" class="league-logo" alt="NiceHL logo" />
             <div class="title-text">
               <h1 id="leagueTitle" contenteditable="true">NiceHL Power Rankings</h1>
             </div>
@@ -714,7 +712,6 @@
               <span>Current Week</span>
               <strong id="heroWeek">Week 0</strong>
             </div>
-            <img id="leagueLogo" class="league-logo" alt="NiceHL logo" />
           </div>
         </div>
 
@@ -724,48 +721,28 @@
         <div class="analysis-stack" id="analysisStack">
           <section class="analysis-card">
             <div class="analysis-card-header">
-              <div>
-                <span class="analysis-eyebrow">Forecast</span>
-                <h2>Projected Standings</h2>
-                <p>Current record plus ELO win probabilities for every remaining matchup.</p>
-              </div>
-              <div class="analysis-chip">Top 8 qualify</div>
+              <h2>Projected Standings</h2>
             </div>
             <div class="analysis-list" id="projectedStandings"></div>
           </section>
 
           <section class="analysis-card">
             <div class="analysis-card-header">
-              <div>
-                <span class="analysis-eyebrow">Score and opponent based</span>
-                <h2>Expected Record</h2>
-                <p>Average of each team's weekly all-play win rate and the inverse all-play rate of its opponent's score.</p>
-              </div>
-              <div class="analysis-chip">No ELO used</div>
+              <h2>Expected Record</h2>
             </div>
             <div class="analysis-list" id="expectedRecord"></div>
           </section>
 
           <section class="analysis-card">
             <div class="analysis-card-header">
-              <div>
-                <span class="analysis-eyebrow">Score-based</span>
-                <h2>Schedule Strength So Far</h2>
-                <p>Opponents ranked by how their weekly scores compared with all 16 teams.</p>
-              </div>
-              <div class="analysis-chip">No ELO used</div>
+              <h2>Schedule Strength So Far</h2>
             </div>
             <div class="analysis-list" id="scheduleStrength"></div>
           </section>
 
           <section class="analysis-card">
             <div class="analysis-card-header">
-              <div>
-                <span class="analysis-eyebrow">Looking ahead</span>
-                <h2>Remaining Strength of Schedule</h2>
-                <p>Average ELO win probability across each team's remaining games. Lower is harder.</p>
-              </div>
-              <div class="analysis-chip" id="remainingGamesChip">Remaining games</div>
+              <h2>Remaining Strength of Schedule</h2>
             </div>
             <div class="analysis-list" id="remainingSchedule"></div>
           </section>
@@ -2050,8 +2027,14 @@
         ])
       );
 
+      const existingAwardsByWeek = Array.isArray(state.awardsByWeek)
+        ? structuredCloneSafe(state.awardsByWeek)
+        : [];
+
       const weeks = ["Week 0"];
-      const awardsByWeek = [structuredCloneSafe(DEFAULT_AWARDS)];
+      const awardsByWeek = [
+        normalizeAwards(existingAwardsByWeek[0] || DEFAULT_AWARDS)
+      ];
 
       weeksToImport.forEach(week => {
         const period = Number(week.scoringPeriod);
@@ -2154,7 +2137,9 @@
         });
 
         awardsByWeek.push(
-          buildWeekAwards(week, previousRatings)
+          normalizeAwards(
+            existingAwardsByWeek[period] || DEFAULT_AWARDS
+          )
         );
       });
 
@@ -2174,7 +2159,8 @@
           importedThrough: selectedPeriod,
           importedAt: new Date().toISOString(),
           formula:
-            "weekly score rank points plus opponent score-rank result points"
+            "weekly score rank points plus opponent score-rank result points",
+          awardsMode: "manual"
         }
       });
 
