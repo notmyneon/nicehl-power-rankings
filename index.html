@@ -2056,9 +2056,10 @@
         const winner = awayScore > homeScore ? away : home;
         const loser = awayScore > homeScore ? home : away;
         const margin = Math.abs(awayScore - homeScore);
-        const underdogGap =
-          Number(previousRatings.get(loser.name) || 1000) -
-          Number(previousRatings.get(winner.name) || 1000);
+
+        const winnerElo = Number(previousRatings.get(winner.name) || 1000);
+        const loserElo = Number(previousRatings.get(loser.name) || 1000);
+        const winnerProbability = eloWinProbability(winnerElo, loserElo);
 
         winners.push(winner);
         losers.push(loser);
@@ -2066,16 +2067,30 @@
           winner,
           loser,
           margin,
-          underdogGap
+          winnerElo,
+          loserElo,
+          winnerProbability
         });
       });
 
       const mostPointsInLoss = losers.length
-        ? losers.slice().sort((a, b) => b.score - a.score)[0]
+        ? losers
+            .slice()
+            .sort(
+              (a, b) =>
+                b.score - a.score ||
+                a.name.localeCompare(b.name)
+            )[0]
         : null;
 
       const leastPointsInWin = winners.length
-        ? winners.slice().sort((a, b) => a.score - b.score)[0]
+        ? winners
+            .slice()
+            .sort(
+              (a, b) =>
+                a.score - b.score ||
+                a.name.localeCompare(b.name)
+            )[0]
         : null;
 
       const narrowestWin = decidedMatchups.length
@@ -2084,30 +2099,42 @@
             .sort(
               (a, b) =>
                 a.margin - b.margin ||
-                b.winner.score - a.winner.score
+                b.winner.score - a.winner.score ||
+                a.winner.name.localeCompare(b.winner.name)
             )[0]
         : null;
 
-      const underdogWins = decidedMatchups
-        .filter(matchup => matchup.underdogGap > 0)
-        .sort(
-          (a, b) =>
-            b.underdogGap - a.underdogGap ||
-            b.margin - a.margin
-        );
-
-      const biggestUnderdogWin = underdogWins[0] || null;
+      /*
+       * Biggest Underdog Win:
+       * the winner that entered the week with the lowest ELO win probability.
+       * This always selects one winner, even when every winner was technically
+       * favoured above 50%.
+       */
+      const biggestUnderdogWin = decidedMatchups.length
+        ? decidedMatchups
+            .slice()
+            .sort(
+              (a, b) =>
+                a.winnerProbability - b.winnerProbability ||
+                b.margin - a.margin ||
+                a.winner.name.localeCompare(b.winner.name)
+            )[0]
+        : null;
 
       return [
         {
           title: "Most Points in a Loss",
           winner: mostPointsInLoss?.name || "—",
-          detail: mostPointsInLoss ? scoreDetail(mostPointsInLoss) : "No losses"
+          detail: mostPointsInLoss
+            ? scoreDetail(mostPointsInLoss)
+            : "No losses"
         },
         {
           title: "Least Points in a Win",
           winner: leastPointsInWin?.name || "—",
-          detail: leastPointsInWin ? scoreDetail(leastPointsInWin) : "No wins"
+          detail: leastPointsInWin
+            ? scoreDetail(leastPointsInWin)
+            : "No wins"
         },
         {
           title: "Narrowest Win",
@@ -2120,8 +2147,8 @@
           title: "Biggest Underdog Win",
           winner: biggestUnderdogWin?.winner?.name || "—",
           detail: biggestUnderdogWin
-            ? `Beat ${biggestUnderdogWin.loser.name} as a ${formatRating(biggestUnderdogWin.underdogGap)}-point ELO underdog`
-            : "No ELO underdog won"
+            ? `${formatPercent(biggestUnderdogWin.winnerProbability)} win probability vs ${biggestUnderdogWin.loser.name}`
+            : "No decided matchups"
         }
       ];
     }
@@ -2283,9 +2310,7 @@
         });
 
         awardsByWeek.push(
-          normalizeAwards(
-            existingAwardsByWeek[period] || DEFAULT_AWARDS
-          )
+          buildWeekAwards(week, previousRatings)
         );
       });
 
@@ -2306,7 +2331,7 @@
           importedAt: new Date().toISOString(),
           formula:
             "weekly score rank points plus opponent score-rank result points",
-          awardsMode: "manual"
+          awardsMode: "automatic"
         }
       });
 
