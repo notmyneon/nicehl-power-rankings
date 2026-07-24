@@ -860,9 +860,10 @@
     const SEASON_MANIFEST_URL = "./data/seasons.json";
 
     const FALLBACK_SEASON_MANIFEST = {
-      defaultSeason: "2025-26",
+      defaultSeason: "2026-27",
       seasons: [
-        { id: "2025-26", label: "2025–26", file: "nicehl-2025-26-regular-season.json", complete: false },
+        { id: "2026-27", label: "2026–27", file: "nicehl-2026-27-regular-season.json", complete: false },
+        { id: "2025-26", label: "2025–26", file: "nicehl-2025-26-regular-season.json", complete: true },
         { id: "2024-25", label: "2024–25", file: "nicehl-2024-25-regular-season.json", complete: true },
         { id: "2023-24", label: "2023–24", file: "nicehl-2023-24-regular-season.json", complete: true },
         { id: "2022-23", label: "2022–23", file: "nicehl-2022-23-regular-season.json", complete: true },
@@ -2371,6 +2372,35 @@
       }
     }
 
+    function fantraxWeekHasCompleteScores(week) {
+      if (!Array.isArray(week?.matchups) || !week.matchups.length) return false;
+
+      return week.matchups.every(matchup =>
+        Number.isFinite(Number(matchup?.away?.score)) &&
+        Number.isFinite(Number(matchup?.home?.score))
+      );
+    }
+
+    function getImportableFantraxWeeks() {
+      if (!fantraxSeasonData?.weeks) return [];
+
+      return fantraxSeasonData.weeks
+        .filter(fantraxWeekHasCompleteScores)
+        .slice()
+        .sort(
+          (a, b) =>
+            Number(a.scoringPeriod) - Number(b.scoringPeriod)
+        );
+    }
+
+    function getLatestImportableFantraxPeriod() {
+      const weeks = getImportableFantraxWeeks();
+      if (!weeks.length) return null;
+
+      const latest = Number(weeks[weeks.length - 1].scoringPeriod);
+      return Number.isFinite(latest) ? latest : null;
+    }
+
     function populateFantraxPeriodSelect() {
       const select = document.getElementById("fantraxPeriodSelect");
       const importButton = document.getElementById("fantraxImportButton");
@@ -2378,24 +2408,31 @@
 
       select.innerHTML = "";
 
-      fantraxSeasonData.weeks
-        .slice()
-        .sort((a, b) => Number(a.scoringPeriod) - Number(b.scoringPeriod))
-        .forEach(week => {
-          const option = document.createElement("option");
-          option.value = String(week.scoringPeriod);
-          option.textContent = `Week ${week.scoringPeriod} ${week.dateRange || ""}`.trim();
-          select.appendChild(option);
-        });
+      const importableWeeks = getImportableFantraxWeeks();
+
+      if (!importableWeeks.length) {
+        select.innerHTML = "<option>No completed weeks</option>";
+        select.disabled = true;
+        importButton.disabled = true;
+        return;
+      }
+
+      importableWeeks.forEach(week => {
+        const option = document.createElement("option");
+        option.value = String(week.scoringPeriod);
+        option.textContent = `Week ${week.scoringPeriod} ${week.dateRange || ""}`.trim();
+        select.appendChild(option);
+      });
 
       const savedPeriod = Number(state.fantraxMeta?.importedThrough);
-      const availablePeriods = fantraxSeasonData.weeks.map(week =>
+      const availablePeriods = importableWeeks.map(week =>
         Number(week.scoringPeriod)
       );
+      const latestPeriod = availablePeriods[availablePeriods.length - 1];
 
       select.value = availablePeriods.includes(savedPeriod)
         ? String(savedPeriod)
-        : String(availablePeriods[0]);
+        : String(latestPeriod);
 
       select.disabled = false;
       importButton.disabled = false;
@@ -2424,11 +2461,18 @@
         fantraxSeasonData = data;
         populateFantraxPeriodSelect();
 
-        if (options.autoImportIfMissing && !stateLoadedFromStorage) {
-          const latestPeriod = Math.max(
-            ...data.weeks.map(week => Number(week.scoringPeriod)).filter(Number.isFinite)
-          );
-          if (Number.isFinite(latestPeriod)) {
+        if (options.autoImportIfMissing) {
+          const latestPeriod = getLatestImportableFantraxPeriod();
+          const importedThrough = Number(state.fantraxMeta?.importedThrough);
+          const needsInitialImport = !stateLoadedFromStorage;
+          const hasNewCompletedWeek =
+            Number.isFinite(latestPeriod) &&
+            (!Number.isFinite(importedThrough) || latestPeriod > importedThrough);
+
+          if (
+            Number.isFinite(latestPeriod) &&
+            (needsInitialImport || hasNewCompletedWeek)
+          ) {
             importFantraxThroughWeek(latestPeriod, { silent: true });
           }
         }
@@ -2663,13 +2707,8 @@
         periodOverride ?? document.getElementById("fantraxPeriodSelect").value
       );
 
-      const weeksToImport = fantraxSeasonData.weeks
-        .filter(week => Number(week.scoringPeriod) <= selectedPeriod)
-        .slice()
-        .sort(
-          (a, b) =>
-            Number(a.scoringPeriod) - Number(b.scoringPeriod)
-        );
+      const weeksToImport = getImportableFantraxWeeks()
+        .filter(week => Number(week.scoringPeriod) <= selectedPeriod);
 
       if (!weeksToImport.length) {
         setFantraxStatus("No scoring periods were selected.", "error");
