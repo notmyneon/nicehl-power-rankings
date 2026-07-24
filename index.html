@@ -112,6 +112,14 @@
     input.manager { min-width: 132px; }
     input.record { width: 76px; }
 
+    .fantrax-status {
+      max-width: 250px;
+      min-height: 1em;
+    }
+
+    .fantrax-status.success { color: #79e49b; }
+    .fantrax-status.error { color: #ff8b8b; }
+
     .data-wrap {
       padding: 12px;
       overflow-x: auto;
@@ -495,6 +503,15 @@
         <div class="controls no-print">
           <label for="weekSelect" class="hint">Rank by:</label>
           <select id="weekSelect"></select>
+
+          <span class="hint">Fantrax:</span>
+          <select id="fantraxPeriodSelect" disabled>
+            <option>Loading season…</option>
+          </select>
+          <button id="fantraxLoadButton" type="button" class="secondary" onclick="loadFantraxSeason(false)">Reload Season</button>
+          <button id="fantraxImportButton" type="button" onclick="importFantraxThroughWeek()" disabled>Import Through Week</button>
+          <span id="fantraxStatus" class="hint fantrax-status"></span>
+
           <button type="button" onclick="addTeam()">Add Team</button>
           <button type="button" onclick="addWeek()">Add Week</button>
           <button type="button" onclick="updateFromTable()">Update</button>
@@ -541,39 +558,53 @@
   </main>
 
   <script>
-    const STORAGE_KEY = "niceHLEloPowerRankings_v6_week0_1000elo_custom_awards_logo_upload_column_layout";
+    const STORAGE_KEY = "niceHLEloPowerRankings_v7_fantrax_import";
+    const FANTRAX_DATA_URL = "./data/nicehl-2025-26-regular-season.json";
+
+    const DEFAULT_AWARDS = [
+      { title: "Most Points in a Loss", winner: "", detail: "" },
+      { title: "Least Points in a Win", winner: "", detail: "" },
+      { title: "Narrowest Win", winner: "", detail: "" },
+      { title: "Biggest Underdog Win", winner: "", detail: "" }
+    ];
+
+    const NICEHL_TEAMS = [
+      "Alberta Cobra Chickens",
+      "Bowness Ice Beavers",
+      "Cantuar Slough Sharks",
+      "Driftless Hockey Club",
+      "Les Rois de Lyon",
+      "Maplewood HC",
+      "Mt. Pearl Vikings",
+      "Pennant Pumpjacks",
+      "Potomac Poutine",
+      "Rockaway Brattwursts",
+      "Rotterdam Red Foxes",
+      "Scotty",
+      "Southside Hellbats",
+      "Steel Valley Fishercats",
+      "Synth City Sphynx",
+      "Woodland Whistle Pigs"
+    ];
 
     const defaultState = {
       currentWeek: 0,
       weeks: ["Week 0"],
-      teams: [
-        { name: "Touchdown Philosophers", manager: "Manager 1", record: "0-0", elo: [1000] },
-        { name: "Waiver Wizards", manager: "Manager 2", record: "0-0", elo: [1000] },
-        { name: "Fourth and Forever", manager: "Manager 3", record: "0-0", elo: [1000] },
-        { name: "Gridiron Gremlins", manager: "Manager 4", record: "0-0", elo: [1000] },
-        { name: "Burgundy Zone Royalty", manager: "Manager 5", record: "0-0", elo: [1000] },
-        { name: "Bench Mob", manager: "Manager 6", record: "0-0", elo: [1000] },
-        { name: "Bye Week Bandits", manager: "Manager 7", record: "0-0", elo: [1000] },
-        { name: "The Injury Report", manager: "Manager 8", record: "0-0", elo: [1000] },
-        { name: "End Zone Accountants", manager: "Manager 9", record: "0-0", elo: [1000] },
-        { name: "Pylon Pirates", manager: "Manager 10", record: "0-0", elo: [1000] },
-        { name: "Snap Count Sickos", manager: "Manager 11", record: "0-0", elo: [1000] },
-        { name: "Goal Line Goblins", manager: "Manager 12", record: "0-0", elo: [1000] },
-        { name: "Flex Appeal", manager: "Manager 13", record: "0-0", elo: [1000] },
-        { name: "Sunday Scaries", manager: "Manager 14", record: "0-0", elo: [1000] },
-        { name: "Turf Monsters", manager: "Manager 15", record: "0-0", elo: [1000] },
-        { name: "Last Place Energy", manager: "Manager 16", record: "0-0", elo: [1000] }
-      ],
-      awards: [
-        { title: "Most Points in a Loss", winner: "", detail: "" },
-        { title: "Least Points in a Win", winner: "", detail: "" },
-        { title: "Narrowest Win", winner: "", detail: "" },
-        { title: "Biggest Underdog Win", winner: "", detail: "" }
-      ],
-      logoDataUrl: ""
+      teams: NICEHL_TEAMS.map(name => ({
+        name,
+        manager: "",
+        record: "0-0",
+        recordHistory: ["0-0"],
+        elo: [1000]
+      })),
+      awards: structuredCloneSafe(DEFAULT_AWARDS),
+      awardsByWeek: [structuredCloneSafe(DEFAULT_AWARDS)],
+      logoDataUrl: "",
+      fantraxMeta: null
     };
 
     let state = structuredCloneSafe(defaultState);
+    let fantraxSeasonData = null;
 
     function structuredCloneSafe(value) {
       return JSON.parse(JSON.stringify(value));
@@ -585,36 +616,85 @@
       return label || "Week 0";
     }
 
-    function cleanState(input) {
-      const weeksRaw = Array.isArray(input?.weeks) && input.weeks.length ? input.weeks.map(String) : structuredCloneSafe(defaultState.weeks);
-      const weeks = weeksRaw.map(fullWeekLabel);
-      const teams = Array.isArray(input?.teams) ? input.teams.map((team, index) => ({
-        name: String(team?.name || `Team ${index + 1}`),
-        manager: String(team?.manager || ""),
-        record: String(team?.record || ""),
-        elo: weeks.map((_, weekIndex) => {
-          const value = Number(team?.elo?.[weekIndex]);
-          return Number.isFinite(value) ? value : null;
-        })
-      })) : structuredCloneSafe(defaultState.teams);
-
-      const defaultAwards = structuredCloneSafe(defaultState.awards);
-      const sourceAwards = Array.isArray(input?.awards) && input.awards.length ? input.awards : defaultAwards;
-      const awards = defaultAwards.map((defaultAward, index) => {
-        const award = sourceAwards[index] || defaultAward;
+    function normalizeAwards(source) {
+      const input = Array.isArray(source) ? source : [];
+      return DEFAULT_AWARDS.map((defaultAward, index) => {
+        const award = input[index] || defaultAward;
         return {
           title: String(award?.title || defaultAward.title),
           winner: String(award?.winner || ""),
           detail: String(award?.detail || "")
         };
       });
+    }
+
+    function cleanState(input) {
+      const weeksRaw =
+        Array.isArray(input?.weeks) && input.weeks.length
+          ? input.weeks.map(String)
+          : structuredCloneSafe(defaultState.weeks);
+
+      const weeks = weeksRaw.map(fullWeekLabel);
+      const currentWeek = Math.max(
+        0,
+        Math.min(Number(input?.currentWeek || 0), weeks.length - 1)
+      );
+
+      const sourceTeams =
+        Array.isArray(input?.teams) && input.teams.length
+          ? input.teams
+          : structuredCloneSafe(defaultState.teams);
+
+      const teams = sourceTeams.map((team, index) => {
+        const legacyRecord = String(team?.record || "0-0");
+        const recordHistory = weeks.map((_, weekIndex) => {
+          const savedRecord = team?.recordHistory?.[weekIndex];
+          if (savedRecord !== undefined && savedRecord !== null) {
+            return String(savedRecord);
+          }
+          if (weekIndex === 0) return "0-0";
+          return legacyRecord;
+        });
+
+        return {
+          name: String(team?.name || `Team ${index + 1}`),
+          manager: String(team?.manager || ""),
+          record: String(recordHistory[currentWeek] || legacyRecord),
+          recordHistory,
+          elo: weeks.map((_, weekIndex) => {
+            const value = Number(team?.elo?.[weekIndex]);
+            return Number.isFinite(value) ? value : null;
+          }),
+          fantraxTeamId: String(team?.fantraxTeamId || ""),
+          teamLogoUrl: String(team?.teamLogoUrl || "")
+        };
+      });
+
+      let awardsByWeek;
+      if (Array.isArray(input?.awardsByWeek) && input.awardsByWeek.length) {
+        awardsByWeek = weeks.map((_, weekIndex) =>
+          normalizeAwards(input.awardsByWeek[weekIndex])
+        );
+      } else {
+        const legacyAwards = normalizeAwards(input?.awards);
+        awardsByWeek = weeks.map((_, weekIndex) =>
+          weekIndex === currentWeek
+            ? structuredCloneSafe(legacyAwards)
+            : structuredCloneSafe(DEFAULT_AWARDS)
+        );
+      }
 
       return {
-        currentWeek: Math.max(0, Math.min(Number(input?.currentWeek || 0), weeks.length - 1)),
+        currentWeek,
         weeks,
         teams,
-        awards,
-        logoDataUrl: String(input?.logoDataUrl || "")
+        awards: normalizeAwards(awardsByWeek[currentWeek]),
+        awardsByWeek,
+        logoDataUrl: String(input?.logoDataUrl || ""),
+        fantraxMeta:
+          input?.fantraxMeta && typeof input.fantraxMeta === "object"
+            ? structuredCloneSafe(input.fantraxMeta)
+            : null
       };
     }
 
@@ -627,21 +707,47 @@
         }
       } catch (error) {
         console.warn("Could not load saved rankings.", error);
-        state = cleanState(defaultState);
       }
+      state = cleanState(defaultState);
     }
 
     function saveState() {
       try {
+        state.awards = normalizeAwards(state.awardsByWeek[state.currentWeek]);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(cleanState(state)));
       } catch (error) {
         console.warn("Could not save rankings.", error);
       }
     }
 
+    function getRecordForWeek(team, weekIndex) {
+      const exact = team?.recordHistory?.[weekIndex];
+      if (exact !== undefined && exact !== null && String(exact).trim()) {
+        return String(exact);
+      }
+
+      for (let i = weekIndex - 1; i >= 0; i--) {
+        const previous = team?.recordHistory?.[i];
+        if (previous !== undefined && previous !== null && String(previous).trim()) {
+          return String(previous);
+        }
+      }
+
+      return String(team?.record || "0-0");
+    }
+
+    function getAwardsForWeek(weekIndex = state.currentWeek) {
+      if (!Array.isArray(state.awardsByWeek)) state.awardsByWeek = [];
+      if (!state.awardsByWeek[weekIndex]) {
+        state.awardsByWeek[weekIndex] = structuredCloneSafe(DEFAULT_AWARDS);
+      }
+      return state.awardsByWeek[weekIndex];
+    }
+
     function renderWeekSelect() {
       const select = document.getElementById("weekSelect");
       select.innerHTML = "";
+
       state.weeks.forEach((week, index) => {
         const option = document.createElement("option");
         option.value = index;
@@ -649,9 +755,14 @@
         if (index === state.currentWeek) option.selected = true;
         select.appendChild(option);
       });
+
       select.onchange = () => {
+        updateFromTableSilently();
         state.currentWeek = Number(select.value);
+        state.awards = normalizeAwards(getAwardsForWeek(state.currentWeek));
         saveState();
+        renderInputTable();
+        renderAwardsEditor();
         renderRankings();
       };
     }
@@ -692,7 +803,8 @@
     function renderAwardsEditor() {
       const editor = document.getElementById("awardsEditor");
       if (!editor) return;
-      const awards = Array.isArray(state.awards) ? state.awards : structuredCloneSafe(defaultState.awards);
+
+      const awards = getAwardsForWeek(state.currentWeek);
       editor.innerHTML = `
         <div class="awards-grid">
           ${awards.map((award, index) => `
@@ -709,13 +821,16 @@
 
     function renderInputTable() {
       const table = document.getElementById("inputTable");
-      const weekHeaders = state.weeks.map(week => `<th>${escapeHtml(fullWeekLabel(week))}</th>`).join("");
+      const weekHeaders = state.weeks
+        .map(week => `<th>${escapeHtml(fullWeekLabel(week))}</th>`)
+        .join("");
+
       table.innerHTML = `
         <thead>
           <tr>
             <th>Team</th>
             <th>Manager</th>
-            <th>Record</th>
+            <th>${escapeHtml(fullWeekLabel(state.weeks[state.currentWeek]))} Record</th>
             ${weekHeaders}
             <th class="no-print">Remove</th>
           </tr>
@@ -725,8 +840,18 @@
             <tr>
               <td><input class="team-name" type="text" value="${escapeAttribute(team.name)}" data-row="${rowIndex}" data-field="name" /></td>
               <td><input class="manager" type="text" value="${escapeAttribute(team.manager || "")}" data-row="${rowIndex}" data-field="manager" /></td>
-              <td><input class="record" type="text" value="${escapeAttribute(team.record || "")}" data-row="${rowIndex}" data-field="record" /></td>
-              ${state.weeks.map((_, weekIndex) => `<td><input type="number" value="${Number.isFinite(Number(team.elo?.[weekIndex])) ? team.elo[weekIndex] : ""}" data-row="${rowIndex}" data-week="${weekIndex}" /></td>`).join("")}
+              <td><input class="record" type="text" value="${escapeAttribute(getRecordForWeek(team, state.currentWeek))}" data-row="${rowIndex}" data-field="record-current" /></td>
+              ${state.weeks.map((_, weekIndex) => `
+                <td>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value="${Number.isFinite(Number(team.elo?.[weekIndex])) ? team.elo[weekIndex] : ""}"
+                    data-row="${rowIndex}"
+                    data-week="${weekIndex}"
+                  />
+                </td>
+              `).join("")}
               <td class="no-print"><button type="button" class="secondary" onclick="removeTeam(${rowIndex})">Remove</button></td>
             </tr>
           `).join("")}
@@ -737,6 +862,7 @@
     function updateFromTable() {
       updateFromTableSilently();
       state.currentWeek = Number(document.getElementById("weekSelect").value);
+      state.awards = normalizeAwards(getAwardsForWeek(state.currentWeek));
       saveState();
       renderAll();
     }
@@ -744,13 +870,26 @@
     function updateFromTableSilently() {
       const table = document.getElementById("inputTable");
       if (!table || !table.querySelector("input")) return;
+
       const inputs = document.querySelectorAll("#inputTable input");
       inputs.forEach(input => {
         const row = Number(input.dataset.row);
         if (!state.teams[row]) return;
-        if (input.dataset.field) {
+
+        if (input.dataset.field === "name" || input.dataset.field === "manager") {
           state.teams[row][input.dataset.field] = input.value.trim();
         }
+
+        if (input.dataset.field === "record-current") {
+          if (!Array.isArray(state.teams[row].recordHistory)) {
+            state.teams[row].recordHistory = state.weeks.map(() => "0-0");
+          }
+          state.teams[row].recordHistory[state.currentWeek] =
+            input.value.trim() || "0-0";
+          state.teams[row].record =
+            state.teams[row].recordHistory[state.currentWeek];
+        }
+
         if (input.dataset.week !== undefined) {
           const week = Number(input.dataset.week);
           const value = input.value === "" ? null : Number(input.value);
@@ -758,13 +897,15 @@
         }
       });
 
+      const awards = getAwardsForWeek(state.currentWeek);
       const awardInputs = document.querySelectorAll("#awardsEditor input");
       awardInputs.forEach(input => {
         const index = Number(input.dataset.award);
         const field = input.dataset.awardField;
-        if (!state.awards[index] || !field) return;
-        state.awards[index][field] = input.value.trim();
+        if (!awards[index] || !field) return;
+        awards[index][field] = input.value.trim();
       });
+      state.awards = normalizeAwards(awards);
     }
 
     function addTeam() {
@@ -773,7 +914,10 @@
         name: "New Team",
         manager: "",
         record: "0-0",
-        elo: state.weeks.map((_, index) => index === 0 ? 1000 : null)
+        recordHistory: state.weeks.map(() => "0-0"),
+        elo: state.weeks.map((_, index) => (index === 0 ? 1000 : null)),
+        fantraxTeamId: "",
+        teamLogoUrl: ""
       });
       saveState();
       renderAll();
@@ -790,7 +934,16 @@
       updateFromTableSilently();
       const nextNumber = state.weeks.length;
       state.weeks.push(`Week ${nextNumber}`);
-      state.teams.forEach(team => team.elo.push(null));
+
+      state.teams.forEach(team => {
+        team.elo.push(null);
+        if (!Array.isArray(team.recordHistory)) team.recordHistory = ["0-0"];
+        const previousRecord =
+          team.recordHistory[team.recordHistory.length - 1] || team.record || "0-0";
+        team.recordHistory.push(previousRecord);
+      });
+
+      state.awardsByWeek.push(structuredCloneSafe(DEFAULT_AWARDS));
       state.currentWeek = state.weeks.length - 1;
       saveState();
       renderAll();
@@ -799,35 +952,62 @@
     function getValueForWeek(team, weekIndex) {
       const exact = Number(team.elo?.[weekIndex]);
       if (Number.isFinite(exact)) return exact;
+
       for (let i = weekIndex - 1; i >= 0; i--) {
         const previous = Number(team.elo?.[i]);
         if (Number.isFinite(previous)) return previous;
       }
+
       return 0;
     }
 
     function buildRankData(weekIndex) {
-      const current = state.teams.map((team, index) => ({
-        ...team,
-        originalIndex: index,
-        currentElo: getValueForWeek(team, weekIndex),
-        previousElo: weekIndex > 0 ? getValueForWeek(team, weekIndex - 1) : getValueForWeek(team, weekIndex)
-      })).sort((a, b) => b.currentElo - a.currentElo || a.name.localeCompare(b.name));
+      const current = state.teams
+        .map((team, index) => ({
+          ...team,
+          originalIndex: index,
+          displayRecord: getRecordForWeek(team, weekIndex),
+          currentElo: getValueForWeek(team, weekIndex),
+          previousElo:
+            weekIndex > 0
+              ? getValueForWeek(team, weekIndex - 1)
+              : getValueForWeek(team, weekIndex)
+        }))
+        .sort(
+          (a, b) =>
+            b.currentElo - a.currentElo || a.name.localeCompare(b.name)
+        );
 
-      const previous = state.teams.map((team, index) => ({
-        originalIndex: index,
-        value: weekIndex > 0 ? getValueForWeek(team, weekIndex - 1) : getValueForWeek(team, weekIndex)
-      })).sort((a, b) => b.value - a.value || a.originalIndex - b.originalIndex);
+      const previous = state.teams
+        .map((team, index) => ({
+          originalIndex: index,
+          value:
+            weekIndex > 0
+              ? getValueForWeek(team, weekIndex - 1)
+              : getValueForWeek(team, weekIndex)
+        }))
+        .sort(
+          (a, b) =>
+            b.value - a.value || a.originalIndex - b.originalIndex
+        );
 
       const prevRanks = new Map();
-      previous.forEach((team, index) => prevRanks.set(team.originalIndex, index + 1));
+      previous.forEach((team, index) =>
+        prevRanks.set(team.originalIndex, index + 1)
+      );
 
       return current.map((team, index) => {
         const rank = index + 1;
         const prevRank = prevRanks.get(team.originalIndex) || rank;
         const rankMovement = prevRank - rank;
         const eloChange = team.currentElo - team.previousElo;
-        return { ...team, rank, prevRank, rankMovement, eloChange };
+        return {
+          ...team,
+          rank,
+          prevRank,
+          rankMovement,
+          eloChange
+        };
       });
     }
 
@@ -844,13 +1024,20 @@
     }
 
     function formatChange(value) {
-      if (value > 0) return `+${Math.round(value)}`;
-      return `${Math.round(value)}`;
+      const rounded = Math.round(value * 10) / 10;
+      if (rounded > 0) return `+${rounded}`;
+      return `${rounded}`;
+    }
+
+    function formatRating(value) {
+      const rounded = Math.round(value * 10) / 10;
+      return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
     }
 
     function orderForTwoColumnDisplay(data) {
-      const left = data.slice(0, 8);
-      const right = data.slice(8, 16);
+      const splitPoint = Math.ceil(data.length / 2);
+      const left = data.slice(0, splitPoint);
+      const right = data.slice(splitPoint);
       const ordered = [];
       const maxRows = Math.max(left.length, right.length);
 
@@ -865,55 +1052,499 @@
     function renderRankings() {
       const data = buildRankData(state.currentWeek).slice(0, 16);
       const displayData = orderForTwoColumnDisplay(data);
-      const weekLabel = fullWeekLabel(state.weeks[state.currentWeek] || "Week 0");
-      document.getElementById("heroWeek").textContent = weekLabel;
+      const weekLabel = fullWeekLabel(
+        state.weeks[state.currentWeek] || "Week 0"
+      );
 
+      document.getElementById("heroWeek").textContent = weekLabel;
       renderSummary();
 
       const rankings = document.getElementById("rankings");
-      rankings.innerHTML = displayData.map(team => `
-        <article class="rank-card ${team.rank === 1 ? "top" : ""}">
-          <div class="rank-num">${team.rank}</div>
-          <div class="team-block">
-            <h3 title="${escapeAttribute(team.name || "Unnamed Team")}">${escapeHtml(team.name || "Unnamed Team")}</h3>
-            <div class="team-meta">
-              <span class="pill" title="${escapeAttribute(team.manager || "No manager")}">${escapeHtml(team.manager || "No manager")}</span>
-              <span class="pill">${escapeHtml(team.record || "-")}</span>
-              <span class="pill">ELO ${formatChange(team.eloChange)}</span>
+      rankings.innerHTML = displayData
+        .map(team => `
+          <article class="rank-card ${team.rank === 1 ? "top" : ""}">
+            <div class="rank-num">${team.rank}</div>
+            <div class="team-block">
+              <h3 title="${escapeAttribute(team.name || "Unnamed Team")}">${escapeHtml(team.name || "Unnamed Team")}</h3>
+              <div class="team-meta">
+                <span class="pill" title="${escapeAttribute(team.manager || "No manager")}">${escapeHtml(team.manager || "No manager")}</span>
+                <span class="pill">${escapeHtml(team.displayRecord || "-")}</span>
+                <span class="pill">ELO ${formatChange(team.eloChange)}</span>
+              </div>
             </div>
-          </div>
-          <div class="metric">
-            <span>ELO</span>
-            <strong>${Math.round(team.currentElo)}</strong>
-          </div>
-          <div class="movement ${movementClass(team.rankMovement)}">${movementText(team.rankMovement)}</div>
-        </article>
-      `).join("");
+            <div class="metric">
+              <span>ELO</span>
+              <strong>${formatRating(team.currentElo)}</strong>
+            </div>
+            <div class="movement ${movementClass(team.rankMovement)}">${movementText(team.rankMovement)}</div>
+          </article>
+        `)
+        .join("");
     }
 
     function renderSummary() {
       const strip = document.getElementById("summaryStrip");
-      const awards = Array.isArray(state.awards) ? state.awards : structuredCloneSafe(defaultState.awards);
+      const awards = getAwardsForWeek(state.currentWeek);
 
-      strip.innerHTML = awards.slice(0, 4).map(award => `
-        <div class="summary-card">
-          <span>${escapeHtml(award.title || "Award")}</span>
-          <strong>${escapeHtml(award.winner || "—")}</strong>
-          <small>${escapeHtml(award.detail || "Enter details above")}</small>
-        </div>
-      `).join("");
+      strip.innerHTML = awards
+        .slice(0, 4)
+        .map(award => `
+          <div class="summary-card">
+            <span>${escapeHtml(award.title || "Award")}</span>
+            <strong>${escapeHtml(award.winner || "—")}</strong>
+            <small>${escapeHtml(award.detail || "Enter details above")}</small>
+          </div>
+        `)
+        .join("");
+    }
+
+    function setFantraxStatus(message, type = "") {
+      const status = document.getElementById("fantraxStatus");
+      if (!status) return;
+      status.textContent = message;
+      status.className = `hint fantrax-status ${type}`.trim();
+    }
+
+    function validateFantraxData(data) {
+      if (!data || typeof data !== "object") {
+        throw new Error("The Fantrax data file is empty.");
+      }
+      if (!Array.isArray(data.teams) || !data.teams.length) {
+        throw new Error("No Fantrax teams were found.");
+      }
+      if (!Array.isArray(data.weeks) || !data.weeks.length) {
+        throw new Error("No Fantrax scoring periods were found.");
+      }
+    }
+
+    function populateFantraxPeriodSelect() {
+      const select = document.getElementById("fantraxPeriodSelect");
+      const importButton = document.getElementById("fantraxImportButton");
+      if (!select || !importButton || !fantraxSeasonData) return;
+
+      select.innerHTML = "";
+
+      fantraxSeasonData.weeks
+        .slice()
+        .sort((a, b) => Number(a.scoringPeriod) - Number(b.scoringPeriod))
+        .forEach(week => {
+          const option = document.createElement("option");
+          option.value = String(week.scoringPeriod);
+          option.textContent = `Week ${week.scoringPeriod} ${week.dateRange || ""}`.trim();
+          select.appendChild(option);
+        });
+
+      const savedPeriod = Number(state.fantraxMeta?.importedThrough);
+      const availablePeriods = fantraxSeasonData.weeks.map(week =>
+        Number(week.scoringPeriod)
+      );
+
+      select.value = availablePeriods.includes(savedPeriod)
+        ? String(savedPeriod)
+        : String(availablePeriods[0]);
+
+      select.disabled = false;
+      importButton.disabled = false;
+    }
+
+    async function loadFantraxSeason(showSuccess = true) {
+      const select = document.getElementById("fantraxPeriodSelect");
+      const importButton = document.getElementById("fantraxImportButton");
+
+      if (select) select.disabled = true;
+      if (importButton) importButton.disabled = true;
+      setFantraxStatus("Loading Fantrax season…");
+
+      try {
+        const response = await fetch(FANTRAX_DATA_URL, {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        validateFantraxData(data);
+        fantraxSeasonData = data;
+        populateFantraxPeriodSelect();
+
+        const leagueName = data.league?.name || "NiceHL";
+        const season = data.league?.season || "";
+        setFantraxStatus(
+          showSuccess
+            ? `${leagueName} ${season} loaded.`
+            : `${season} ready.`,
+          "success"
+        );
+      } catch (error) {
+        console.error("Could not load Fantrax data.", error);
+        if (select) {
+          select.innerHTML = "<option>Season unavailable</option>";
+          select.disabled = true;
+        }
+        setFantraxStatus(
+          "Could not load the Fantrax JSON file.",
+          "error"
+        );
+      }
+    }
+
+    function getWeeklyScoreEntries(week) {
+      const entries = [];
+
+      week.matchups.forEach(matchup => {
+        if (matchup?.away?.name) {
+          entries.push({
+            name: String(matchup.away.name),
+            score: Number(matchup.away.score)
+          });
+        }
+
+        if (matchup?.home?.name) {
+          entries.push({
+            name: String(matchup.home.name),
+            score: Number(matchup.home.score)
+          });
+        }
+      });
+
+      return entries.filter(entry => Number.isFinite(entry.score));
+    }
+
+    function calculateScoreRanks(entries) {
+      const sorted = entries
+        .slice()
+        .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+
+      const ranks = new Map();
+      let index = 0;
+
+      while (index < sorted.length) {
+        let end = index;
+        while (
+          end + 1 < sorted.length &&
+          sorted[end + 1].score === sorted[index].score
+        ) {
+          end++;
+        }
+
+        const averageRank = ((index + 1) + (end + 1)) / 2;
+        for (let i = index; i <= end; i++) {
+          ranks.set(sorted[i].name, averageRank);
+        }
+
+        index = end + 1;
+      }
+
+      return ranks;
+    }
+
+    function recordText(record) {
+      if (record.ties > 0) {
+        return `${record.wins}-${record.losses}-${record.ties}`;
+      }
+      return `${record.wins}-${record.losses}`;
+    }
+
+    function scoreDetail(team) {
+      const score = Math.round(Number(team.score) * 10) / 10;
+      return `${score} points`;
+    }
+
+    function buildWeekAwards(week, previousRatings) {
+      const winners = [];
+      const losers = [];
+      const decidedMatchups = [];
+
+      week.matchups.forEach(matchup => {
+        const awayScore = Number(matchup?.away?.score);
+        const homeScore = Number(matchup?.home?.score);
+        if (!Number.isFinite(awayScore) || !Number.isFinite(homeScore)) return;
+        if (awayScore === homeScore) return;
+
+        const away = {
+          name: String(matchup.away.name),
+          score: awayScore
+        };
+        const home = {
+          name: String(matchup.home.name),
+          score: homeScore
+        };
+
+        const winner = awayScore > homeScore ? away : home;
+        const loser = awayScore > homeScore ? home : away;
+        const margin = Math.abs(awayScore - homeScore);
+        const underdogGap =
+          Number(previousRatings.get(loser.name) || 1000) -
+          Number(previousRatings.get(winner.name) || 1000);
+
+        winners.push(winner);
+        losers.push(loser);
+        decidedMatchups.push({
+          winner,
+          loser,
+          margin,
+          underdogGap
+        });
+      });
+
+      const mostPointsInLoss = losers.length
+        ? losers.slice().sort((a, b) => b.score - a.score)[0]
+        : null;
+
+      const leastPointsInWin = winners.length
+        ? winners.slice().sort((a, b) => a.score - b.score)[0]
+        : null;
+
+      const narrowestWin = decidedMatchups.length
+        ? decidedMatchups
+            .slice()
+            .sort(
+              (a, b) =>
+                a.margin - b.margin ||
+                b.winner.score - a.winner.score
+            )[0]
+        : null;
+
+      const underdogWins = decidedMatchups
+        .filter(matchup => matchup.underdogGap > 0)
+        .sort(
+          (a, b) =>
+            b.underdogGap - a.underdogGap ||
+            b.margin - a.margin
+        );
+
+      const biggestUnderdogWin = underdogWins[0] || null;
+
+      return [
+        {
+          title: "Most Points in a Loss",
+          winner: mostPointsInLoss?.name || "—",
+          detail: mostPointsInLoss ? scoreDetail(mostPointsInLoss) : "No losses"
+        },
+        {
+          title: "Least Points in a Win",
+          winner: leastPointsInWin?.name || "—",
+          detail: leastPointsInWin ? scoreDetail(leastPointsInWin) : "No wins"
+        },
+        {
+          title: "Narrowest Win",
+          winner: narrowestWin?.winner?.name || "—",
+          detail: narrowestWin
+            ? `Beat ${narrowestWin.loser.name} by ${formatRating(narrowestWin.margin)}`
+            : "No decided matchups"
+        },
+        {
+          title: "Biggest Underdog Win",
+          winner: biggestUnderdogWin?.winner?.name || "—",
+          detail: biggestUnderdogWin
+            ? `Beat ${biggestUnderdogWin.loser.name} as a ${formatRating(biggestUnderdogWin.underdogGap)}-point ELO underdog`
+            : "No ELO underdog won"
+        }
+      ];
+    }
+
+    function importFantraxThroughWeek() {
+      if (!fantraxSeasonData) {
+        setFantraxStatus("Load the season first.", "error");
+        return;
+      }
+
+      updateFromTableSilently();
+
+      const selectedPeriod = Number(
+        document.getElementById("fantraxPeriodSelect").value
+      );
+
+      const weeksToImport = fantraxSeasonData.weeks
+        .filter(week => Number(week.scoringPeriod) <= selectedPeriod)
+        .slice()
+        .sort(
+          (a, b) =>
+            Number(a.scoringPeriod) - Number(b.scoringPeriod)
+        );
+
+      if (!weeksToImport.length) {
+        setFantraxStatus("No scoring periods were selected.", "error");
+        return;
+      }
+
+      const existingManagers = new Map(
+        state.teams.map(team => [team.name, team.manager || ""])
+      );
+
+      const teams = fantraxSeasonData.teams.map(team => ({
+        name: String(team.name),
+        manager: existingManagers.get(String(team.name)) || "",
+        record: "0-0",
+        recordHistory: ["0-0"],
+        elo: [1000],
+        fantraxTeamId: String(team.fantraxTeamId || ""),
+        teamLogoUrl: String(team.logoUrl || "")
+      }));
+
+      const teamMap = new Map(teams.map(team => [team.name, team]));
+      const records = new Map(
+        teams.map(team => [
+          team.name,
+          { wins: 0, losses: 0, ties: 0 }
+        ])
+      );
+
+      const weeks = ["Week 0"];
+      const awardsByWeek = [structuredCloneSafe(DEFAULT_AWARDS)];
+
+      weeksToImport.forEach(week => {
+        const period = Number(week.scoringPeriod);
+        weeks.push(`Week ${period}`);
+
+        const scoreEntries = getWeeklyScoreEntries(week);
+        const scoreRanks = calculateScoreRanks(scoreEntries);
+        const teamCount = scoreEntries.length;
+
+        const previousRatings = new Map(
+          teams.map(team => [
+            team.name,
+            Number(team.elo[team.elo.length - 1] ?? 1000)
+          ])
+        );
+
+        const weeklyChanges = new Map(
+          teams.map(team => [team.name, 0])
+        );
+
+        scoreEntries.forEach(entry => {
+          const rank = Number(scoreRanks.get(entry.name));
+          const scoreRankPoints = Number.isFinite(rank)
+            ? teamCount - rank
+            : 0;
+
+          weeklyChanges.set(
+            entry.name,
+            Number(weeklyChanges.get(entry.name) || 0) +
+              scoreRankPoints
+          );
+        });
+
+        week.matchups.forEach(matchup => {
+          const awayName = String(matchup?.away?.name || "");
+          const homeName = String(matchup?.home?.name || "");
+          const awayScore = Number(matchup?.away?.score);
+          const homeScore = Number(matchup?.home?.score);
+
+          if (
+            !teamMap.has(awayName) ||
+            !teamMap.has(homeName) ||
+            !Number.isFinite(awayScore) ||
+            !Number.isFinite(homeScore)
+          ) {
+            return;
+          }
+
+          const awayRank = Number(scoreRanks.get(awayName));
+          const homeRank = Number(scoreRanks.get(homeName));
+
+          if (awayScore > homeScore) {
+            const winPoints = teamCount + 1 - homeRank;
+            const lossPoints = -awayRank;
+
+            weeklyChanges.set(
+              awayName,
+              Number(weeklyChanges.get(awayName) || 0) + winPoints
+            );
+            weeklyChanges.set(
+              homeName,
+              Number(weeklyChanges.get(homeName) || 0) + lossPoints
+            );
+
+            records.get(awayName).wins++;
+            records.get(homeName).losses++;
+          } else if (homeScore > awayScore) {
+            const winPoints = teamCount + 1 - awayRank;
+            const lossPoints = -homeRank;
+
+            weeklyChanges.set(
+              homeName,
+              Number(weeklyChanges.get(homeName) || 0) + winPoints
+            );
+            weeklyChanges.set(
+              awayName,
+              Number(weeklyChanges.get(awayName) || 0) + lossPoints
+            );
+
+            records.get(homeName).wins++;
+            records.get(awayName).losses++;
+          } else {
+            records.get(awayName).ties++;
+            records.get(homeName).ties++;
+          }
+        });
+
+        teams.forEach(team => {
+          const previous = Number(
+            team.elo[team.elo.length - 1] ?? 1000
+          );
+          const change = Number(weeklyChanges.get(team.name) || 0);
+          const updated = Math.round((previous + change) * 10) / 10;
+          team.elo.push(updated);
+
+          const record = records.get(team.name);
+          const currentRecord = recordText(record);
+          team.recordHistory.push(currentRecord);
+          team.record = currentRecord;
+        });
+
+        awardsByWeek.push(
+          buildWeekAwards(week, previousRatings)
+        );
+      });
+
+      const importedWeekIndex = weeks.length - 1;
+
+      state = cleanState({
+        currentWeek: importedWeekIndex,
+        weeks,
+        teams,
+        awardsByWeek,
+        awards: awardsByWeek[importedWeekIndex],
+        logoDataUrl: state.logoDataUrl,
+        fantraxMeta: {
+          leagueId: String(fantraxSeasonData.league?.leagueId || ""),
+          leagueName: String(fantraxSeasonData.league?.name || ""),
+          season: String(fantraxSeasonData.league?.season || ""),
+          importedThrough: selectedPeriod,
+          importedAt: new Date().toISOString(),
+          formula:
+            "weekly score rank points plus opponent score-rank result points"
+        }
+      });
+
+      saveState();
+      renderAll();
+      populateFantraxPeriodSelect();
+
+      setFantraxStatus(
+        `Imported Weeks 1–${selectedPeriod}.`,
+        "success"
+      );
     }
 
     function toggleScreenshotMode() {
       updateFromTable();
       document.body.classList.toggle("screenshot-mode");
-      document.getElementById("captureArea").scrollIntoView({ block: "start", behavior: "smooth" });
+      document
+        .getElementById("captureArea")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
     }
 
     function downloadData() {
       updateFromTableSilently();
       const clean = cleanState(state);
-      const blob = new Blob([JSON.stringify(clean, null, 2)], { type: "application/json" });
+      const blob = new Blob(
+        [JSON.stringify(clean, null, 2)],
+        { type: "application/json" }
+      );
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -927,18 +1558,32 @@
     function importData(event) {
       const file = event.target.files[0];
       if (!file) return;
+
       const reader = new FileReader();
       reader.onload = e => {
         try {
           const imported = JSON.parse(e.target.result);
-          if (!Array.isArray(imported.weeks) || !Array.isArray(imported.teams)) throw new Error("Invalid data file");
+          if (
+            !Array.isArray(imported.weeks) ||
+            !Array.isArray(imported.teams)
+          ) {
+            throw new Error("Invalid data file");
+          }
+
           state = cleanState(imported);
           saveState();
           renderAll();
+
+          if (fantraxSeasonData) {
+            populateFantraxPeriodSelect();
+          }
         } catch (error) {
-          alert("That file does not match the fantasy power rankings format.");
+          alert(
+            "That file does not match the fantasy power rankings format."
+          );
         }
       };
+
       reader.readAsText(file);
       event.target.value = "";
     }
@@ -948,6 +1593,10 @@
       state = structuredCloneSafe(defaultState);
       saveState();
       renderAll();
+
+      if (fantraxSeasonData) {
+        populateFantraxPeriodSelect();
+      }
     }
 
     function escapeHtml(value) {
@@ -974,6 +1623,7 @@
 
     loadState();
     renderAll();
+    loadFantraxSeason(false);
   </script>
 </body>
 </html>
