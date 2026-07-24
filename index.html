@@ -737,6 +737,18 @@
           <section class="analysis-card">
             <div class="analysis-card-header">
               <div>
+                <span class="analysis-eyebrow">Score and opponent based</span>
+                <h2>Expected Record</h2>
+                <p>Average of each team's weekly all-play win rate and the inverse all-play rate of its opponent's score.</p>
+              </div>
+              <div class="analysis-chip">No ELO used</div>
+            </div>
+            <div class="analysis-list" id="expectedRecord"></div>
+          </section>
+
+          <section class="analysis-card">
+            <div class="analysis-card-header">
+              <div>
                 <span class="analysis-eyebrow">Score-based</span>
                 <h2>Schedule Strength So Far</h2>
                 <p>Opponents ranked by how their weekly scores compared with all 16 teams.</p>
@@ -1297,6 +1309,17 @@
       return `${formatProjectedNumber(wins)}–${formatProjectedNumber(losses)}`;
     }
 
+    function formatExpectedRecord(wins, losses) {
+      return `${Number(wins).toFixed(2)}–${Number(losses).toFixed(2)}`;
+    }
+
+    function formatExpectedDifference(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) return "—";
+      const sign = number > 0 ? "+" : "";
+      return `${sign}${number.toFixed(2)}`;
+    }
+
     function buildSeasonAnalysis() {
       if (!fantraxSeasonData) return null;
 
@@ -1332,7 +1355,11 @@
             scheduleAgainst: 0,
             expectedRemainingWins: 0,
             remainingGames: 0,
-            opponentEloTotal: 0
+            opponentEloTotal: 0,
+            expectedRecordWins: 0,
+            expectedRecordGames: 0,
+            offensiveExpectedWins: 0,
+            defensiveExpectedWins: 0
           }
         ])
       );
@@ -1388,6 +1415,43 @@
           awayStats.scheduleAgainst += maxRankPoints - awayOpponentRank;
           homeStats.scheduleFor += homeOpponentRank;
           homeStats.scheduleAgainst += maxRankPoints - homeOpponentRank;
+
+          /*
+           * Expected Record
+           *
+           * Offensive component:
+           *   the team's own weekly all-play wins divided by 15.
+           *
+           * Defensive component:
+           *   the inverse of its opponent's weekly all-play wins.
+           *   Facing the week's highest scorer produces 0.00 defensive wins;
+           *   facing the lowest scorer produces 1.00 defensive wins.
+           *
+           * Weekly expected wins are the average of those two components.
+           */
+          if (maxRankPoints > 0) {
+            const awayOwnRank = Number(weeklyRankPoints.get(awayName) || 0);
+            const homeOwnRank = Number(weeklyRankPoints.get(homeName) || 0);
+
+            const awayOffensiveWins = awayOwnRank / maxRankPoints;
+            const awayDefensiveWins =
+              (maxRankPoints - homeOwnRank) / maxRankPoints;
+            const homeOffensiveWins = homeOwnRank / maxRankPoints;
+            const homeDefensiveWins =
+              (maxRankPoints - awayOwnRank) / maxRankPoints;
+
+            awayStats.offensiveExpectedWins += awayOffensiveWins;
+            awayStats.defensiveExpectedWins += awayDefensiveWins;
+            awayStats.expectedRecordWins +=
+              (awayOffensiveWins + awayDefensiveWins) / 2;
+            awayStats.expectedRecordGames++;
+
+            homeStats.offensiveExpectedWins += homeOffensiveWins;
+            homeStats.defensiveExpectedWins += homeDefensiveWins;
+            homeStats.expectedRecordWins +=
+              (homeOffensiveWins + homeDefensiveWins) / 2;
+            homeStats.expectedRecordGames++;
+          }
         });
       });
 
@@ -1454,6 +1518,30 @@
             a.name.localeCompare(b.name)
         );
 
+      const expectedRecords = Array.from(stats.values())
+        .map(team => {
+          const expectedWins = team.expectedRecordWins;
+          const expectedLosses = Math.max(
+            0,
+            team.expectedRecordGames - expectedWins
+          );
+          const actualWinValue = team.wins + 0.5 * team.ties;
+
+          return {
+            ...team,
+            expectedWins,
+            expectedLosses,
+            actualWinValue,
+            difference: actualWinValue - expectedWins
+          };
+        })
+        .sort(
+          (a, b) =>
+            b.expectedWins - a.expectedWins ||
+            b.actualWinValue - a.actualWinValue ||
+            a.name.localeCompare(b.name)
+        );
+
       const remainingSos = Array.from(stats.values())
         .map(team => ({
           ...team,
@@ -1480,6 +1568,7 @@
         completedWeekCount: completedWeeks.length,
         remainingWeekCount: remainingWeeks.length,
         projections,
+        expectedRecords,
         scheduleStrength,
         remainingSos
       };
@@ -1493,16 +1582,18 @@
 
     function renderAnalysisCards() {
       const projected = document.getElementById("projectedStandings");
+      const expected = document.getElementById("expectedRecord");
       const schedule = document.getElementById("scheduleStrength");
       const remaining = document.getElementById("remainingSchedule");
       const remainingChip = document.getElementById("remainingGamesChip");
 
-      if (!projected || !schedule || !remaining) return;
+      if (!projected || !expected || !schedule || !remaining) return;
 
       const analysis = buildSeasonAnalysis();
       if (!analysis) {
         const loading = '<div class="analysis-empty">Loading Fantrax season data…</div>';
         projected.innerHTML = loading;
+        expected.innerHTML = loading;
         schedule.innerHTML = loading;
         remaining.innerHTML = loading;
         return;
@@ -1526,6 +1617,30 @@
           </div>
         </div>
       `);
+
+      if (analysis.completedWeekCount === 0) {
+        expected.innerHTML =
+          '<div class="analysis-empty">Import at least one completed week to calculate expected records.</div>';
+      } else {
+        const expectedRanked = analysis.expectedRecords.map((team, index) => ({
+          ...team,
+          rank: index + 1
+        }));
+
+        expected.innerHTML = renderAnalysisRows(expectedRanked, team => `
+          <div class="analysis-row">
+            <div class="analysis-position">${team.rank}</div>
+            <div class="analysis-team">
+              <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+              <small>Actual ${recordText(team)} · Own-score EW ${team.offensiveExpectedWins.toFixed(2)} · Points-against EW ${team.defensiveExpectedWins.toFixed(2)} · ${formatExpectedDifference(team.difference)} vs expected</small>
+            </div>
+            <div class="analysis-value">
+              <span>Expected</span>
+              <strong>${formatExpectedRecord(team.expectedWins, team.expectedLosses)}</strong>
+            </div>
+          </div>
+        `);
+      }
 
       if (analysis.completedWeekCount === 0) {
         schedule.innerHTML = '<div class="analysis-empty">Import at least one completed week to calculate score-based schedule strength.</div>';
