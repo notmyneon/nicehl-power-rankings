@@ -109,7 +109,6 @@
 
     input[type="number"] { width: 82px; }
     input.team-name { min-width: 185px; }
-    input.manager { min-width: 132px; }
     input.record { width: 76px; }
 
     .fantrax-status {
@@ -904,7 +903,6 @@
       weeks: ["Week 0"],
       teams: NICEHL_TEAMS.map(name => ({
         name,
-        manager: "",
         record: "0-0",
         recordHistory: ["0-0"],
         elo: [1000]
@@ -997,7 +995,6 @@
 
         return {
           name: String(team?.name || `Team ${index + 1}`),
-          manager: String(team?.manager || ""),
           record: String(recordHistory[currentWeek] || legacyRecord),
           recordHistory,
           elo: weeks.map((_, weekIndex) => {
@@ -1195,7 +1192,6 @@
         <thead>
           <tr>
             <th>Team</th>
-            <th>Manager</th>
             <th>${escapeHtml(fullWeekLabel(state.weeks[state.currentWeek]))} Record</th>
             ${weekHeaders}
             <th class="no-print">Remove</th>
@@ -1205,7 +1201,6 @@
           ${state.teams.map((team, rowIndex) => `
             <tr>
               <td><input class="team-name" type="text" value="${escapeAttribute(team.name)}" data-row="${rowIndex}" data-field="name" /></td>
-              <td><input class="manager" type="text" value="${escapeAttribute(team.manager || "")}" data-row="${rowIndex}" data-field="manager" /></td>
               <td><input class="record" type="text" value="${escapeAttribute(getRecordForWeek(team, state.currentWeek))}" data-row="${rowIndex}" data-field="record-current" /></td>
               ${state.weeks.map((_, weekIndex) => `
                 <td>
@@ -1242,8 +1237,8 @@
         const row = Number(input.dataset.row);
         if (!state.teams[row]) return;
 
-        if (input.dataset.field === "name" || input.dataset.field === "manager") {
-          state.teams[row][input.dataset.field] = input.value.trim();
+        if (input.dataset.field === "name") {
+          state.teams[row].name = input.value.trim();
         }
 
         if (input.dataset.field === "record-current") {
@@ -1278,7 +1273,6 @@
       updateFromTableSilently();
       state.teams.push({
         name: "New Team",
-        manager: "",
         record: "0-0",
         recordHistory: state.weeks.map(() => "0-0"),
         elo: state.weeks.map((_, index) => (index === 0 ? 1000 : null)),
@@ -2231,7 +2225,6 @@
             <div class="team-block">
               <h3 title="${escapeAttribute(team.name || "Unnamed Team")}">${escapeHtml(team.name || "Unnamed Team")}</h3>
               <div class="team-meta">
-                <span class="pill" title="${escapeAttribute(team.manager || "No manager")}">${escapeHtml(team.manager || "No manager")}</span>
                 <span class="pill">${escapeHtml(team.displayRecord || "-")}</span>
                 <span class="pill">ELO ${formatChange(team.eloChange)}</span>
               </div>
@@ -2683,13 +2676,8 @@
         return;
       }
 
-      const existingManagers = new Map(
-        state.teams.map(team => [team.name, team.manager || ""])
-      );
-
       const teams = fantraxSeasonData.teams.map(team => ({
         name: String(team.name),
-        manager: existingManagers.get(String(team.name)) || "",
         record: "0-0",
         recordHistory: ["0-0"],
         elo: [1000],
