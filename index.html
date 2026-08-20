@@ -854,9 +854,10 @@
 
   <script>
     const LEGACY_STORAGE_KEY = "niceHLEloPowerRankings_v7_fantrax_import";
-    const SEASON_STORAGE_PREFIX = "niceHLEloPowerRankings_v8_season_";
-    const SELECTED_SEASON_STORAGE_KEY = "niceHLEloPowerRankings_v8_selected_season";
+    const SEASON_STORAGE_PREFIX = "niceHLEloPowerRankings_v9_season_";
+    const SELECTED_SEASON_STORAGE_KEY = "niceHLEloPowerRankings_v9_selected_season";
     const LEAGUE_LOGO_STORAGE_KEY = "niceHLEloPowerRankings_v8_league_logo";
+    const LEGACY_STATE_SEASON_ID = "2025-26";
     const SEASON_MANIFEST_URL = "./data/seasons.json";
 
     const FALLBACK_SEASON_MANIFEST = {
@@ -1022,6 +1023,7 @@
       }
 
       return {
+        seasonId: selectedSeasonId,
         currentWeek,
         weeks,
         teams,
@@ -1042,9 +1044,18 @@
       try {
         const saved = localStorage.getItem(getSeasonStorageKey());
         if (saved) {
-          loadedState = JSON.parse(saved);
-          stateLoadedFromStorage = true;
-        } else if (selectedSeasonId === FALLBACK_SEASON_MANIFEST.defaultSeason) {
+          const parsed = JSON.parse(saved);
+          if (!parsed?.seasonId || parsed.seasonId === selectedSeasonId) {
+            loadedState = parsed;
+            stateLoadedFromStorage = true;
+          } else {
+            console.warn(
+              `Ignored saved state for ${parsed.seasonId} while loading ${selectedSeasonId}.`
+            );
+          }
+        } else if (selectedSeasonId === LEGACY_STATE_SEASON_ID) {
+          // The legacy v7 state belonged to 2025-26. Never migrate it into a
+          // newer season simply because that newer season is now the default.
           const legacySaved = localStorage.getItem(LEGACY_STORAGE_KEY);
           if (legacySaved) {
             loadedState = JSON.parse(legacySaved);
@@ -2457,6 +2468,38 @@
 
     function syncPreseasonTeamsFromFantrax() {
       if (!fantraxSeasonData?.teams?.length) return;
+
+      const importableWeeks = getImportableFantraxWeeks();
+
+      // Before the first completed scoring period, the selected season must
+      // always be a clean Week 0 state. This also clears any stale browser
+      // state that may have been saved under the new season ID.
+      if (importableWeeks.length === 0) {
+        state = cleanState({
+          currentWeek: 0,
+          weeks: ["Week 0"],
+          teams: fantraxSeasonData.teams.map(team => ({
+            name: String(team.name || ""),
+            record: "0-0",
+            recordHistory: ["0-0"],
+            elo: [1000],
+            fantraxTeamId: String(team.fantraxTeamId || ""),
+            teamLogoUrl: String(team.logoUrl || "")
+          })),
+          awardsByWeek: [normalizeAwards(DEFAULT_AWARDS)],
+          awards: normalizeAwards(DEFAULT_AWARDS),
+          logoDataUrl: state.logoDataUrl,
+          fantraxMeta: null
+        });
+
+        saveState();
+        renderAll();
+
+        const rankSelect = document.getElementById("weekSelect");
+        if (rankSelect) rankSelect.value = "0";
+        return;
+      }
+
       if (state.currentWeek !== 0) return;
 
       const existingByName = new Map(
@@ -3001,16 +3044,21 @@
       });
 
       if (fantraxSeasonData?.weeks?.length) {
-        const latestPeriod = Math.max(
-          ...fantraxSeasonData.weeks
-            .map(week => Number(week.scoringPeriod))
-            .filter(Number.isFinite)
-        );
-        importFantraxThroughWeek(latestPeriod, { silent: true });
-        setFantraxStatus(
-          `${getSeasonConfig()?.label || "Season"} restored from Fantrax data.`,
-          "success"
-        );
+        const latestCompletedPeriod = getLatestImportableFantraxPeriod();
+
+        if (latestCompletedPeriod !== null) {
+          importFantraxThroughWeek(latestCompletedPeriod, { silent: true });
+          setFantraxStatus(
+            `${getSeasonConfig()?.label || "Season"} restored through Week ${latestCompletedPeriod}.`,
+            "success"
+          );
+        } else {
+          syncPreseasonTeamsFromFantrax();
+          setFantraxStatus(
+            `${getSeasonConfig()?.label || "Season"} reset to Week 0. No completed scoring periods yet.`,
+            "success"
+          );
+        }
       } else {
         saveState();
         renderAll();
