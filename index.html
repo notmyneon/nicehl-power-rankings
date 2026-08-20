@@ -2494,7 +2494,16 @@
 
     function syncPreseasonTeamsFromFantrax() {
       if (!fantraxSeasonData?.teams?.length) return;
-      if (state.currentWeek !== 0) return;
+
+      const hasCompletedWeeks = getImportableFantraxWeeks().length > 0;
+      const stalePreseasonHistory =
+        !hasCompletedWeeks &&
+        (state.currentWeek !== 0 || state.weeks.length > 1);
+
+      // Once real games exist, preserve the imported weekly history.
+      // Before any games are complete, automatically discard stale history
+      // accidentally carried into the new season from browser storage.
+      if (state.currentWeek !== 0 && !stalePreseasonHistory) return;
 
       const existingByName = new Map(
         state.teams.map(team => [String(team.name), team])
@@ -2503,7 +2512,9 @@
       state.teams = fantraxSeasonData.teams.map(team => {
         const name = String(team.name || "");
         const existing = existingByName.get(name);
-        const preseasonElo = Number(existing?.elo?.[0]);
+        const preseasonElo = stalePreseasonHistory
+          ? 1000
+          : Number(existing?.elo?.[0]);
 
         return {
           name,
@@ -2519,6 +2530,7 @@
       state.currentWeek = 0;
       state.awardsByWeek = [normalizeAwards(DEFAULT_AWARDS)];
       state.awards = normalizeAwards(DEFAULT_AWARDS);
+      state.fantraxMeta = null;
 
       saveState();
       renderAll();
@@ -3037,12 +3049,9 @@
         logoDataUrl: getGlobalLeagueLogo() || ""
       });
 
-      if (fantraxSeasonData?.weeks?.length) {
-        const latestPeriod = Math.max(
-          ...fantraxSeasonData.weeks
-            .map(week => Number(week.scoringPeriod))
-            .filter(Number.isFinite)
-        );
+      const latestPeriod = getLatestImportableFantraxPeriod();
+
+      if (Number.isFinite(latestPeriod)) {
         importFantraxThroughWeek(latestPeriod, { silent: true });
         setFantraxStatus(
           `${getSeasonConfig()?.label || "Season"} restored from Fantrax data.`,
@@ -3051,6 +3060,11 @@
       } else {
         saveState();
         renderAll();
+        populateFantraxPeriodSelect();
+        setFantraxStatus(
+          `${getSeasonConfig()?.label || "Season"} reset to preseason.`,
+          "success"
+        );
       }
     }
 
