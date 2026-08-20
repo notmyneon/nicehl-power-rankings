@@ -1,11 +1,17 @@
 {
-  "defaultSeason": "2025-26",
+  "defaultSeason": "2026-27",
   "seasons": [
+        {
+      "id": "2026-27",
+      "label": "2026–27",
+      "file": "nicehl-2026-27-regular-season.json",
+      "complete": false
+    },
     {
       "id": "2025-26",
       "label": "2025–26",
       "file": "nicehl-2025-26-regular-season.json",
-      "complete": false
+      "complete": true
     },
     {
       "id": "2024-25",
