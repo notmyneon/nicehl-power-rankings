@@ -817,337 +817,345 @@
           "away": {
             "fantraxTeamId": "dwkgku5nmqn26z7k",
             "name": "Pacifica Blackwall",
-            "fantasyPoints": 0,
+            "fantasyPoints": 171,
             "adjustment": 0,
-            "score": 0
+            "score": 171
           },
           "home": {
             "fantraxTeamId": "s8r6hxgomqn26z7k",
             "name": "Pennant Pumpjacks",
-            "fantasyPoints": 0,
+            "fantasyPoints": 177,
             "adjustment": 0,
-            "score": 0
+            "score": 177
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "home",
+          "margin": 6
         },
         {
           "away": {
             "fantraxTeamId": "ek501gs9mqn26z7k",
             "name": "Rockaway Brattwursts",
-            "fantasyPoints": 0,
+            "fantasyPoints": 155,
             "adjustment": 0,
-            "score": 0
+            "score": 155
           },
           "home": {
             "fantraxTeamId": "l7mdv8g4mqn26z7k",
             "name": "High Point Herons",
-            "fantasyPoints": 0,
+            "fantasyPoints": 205,
             "adjustment": 0,
-            "score": 0
+            "score": 205
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "home",
+          "margin": 50
         },
         {
           "away": {
             "fantraxTeamId": "erz3cdwtmqn26z7k",
             "name": "Scotty",
-            "fantasyPoints": 0,
+            "fantasyPoints": 160,
             "adjustment": 0,
-            "score": 0
+            "score": 160
           },
           "home": {
             "fantraxTeamId": "gfbq4z0lmqn26z7k",
             "name": "Synth City Sphynx",
-            "fantasyPoints": 0,
+            "fantasyPoints": 165,
             "adjustment": 0,
-            "score": 0
+            "score": 165
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "home",
+          "margin": 5
         },
         {
           "away": {
             "fantraxTeamId": "cj644ehzmqn26z7k",
             "name": "Bowness Ice Beavers",
-            "fantasyPoints": 0,
+            "fantasyPoints": 134,
             "adjustment": 0,
-            "score": 0
+            "score": 134
           },
           "home": {
             "fantraxTeamId": "dtr8cpqgmqn26z7k",
             "name": "Cantuar Slough Sharks",
-            "fantasyPoints": 0,
+            "fantasyPoints": 132,
             "adjustment": 0,
-            "score": 0
+            "score": 132
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "away",
+          "margin": 2
         },
         {
           "away": {
             "fantraxTeamId": "s4d354ujmqn26z7k",
             "name": "Southside Hellbats",
-            "fantasyPoints": 0,
+            "fantasyPoints": 152,
             "adjustment": 0,
-            "score": 0
+            "score": 152
           },
           "home": {
             "fantraxTeamId": "c1z6npiwmqn26z7k",
             "name": "Mt. Pearl Vikings",
-            "fantasyPoints": 0,
+            "fantasyPoints": 165,
             "adjustment": 0,
-            "score": 0
+            "score": 165
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "home",
+          "margin": 13
         },
         {
           "away": {
             "fantraxTeamId": "ygjmdlbumqn26z7l",
             "name": "Alberta Cobra Chickens",
-            "fantasyPoints": 0,
+            "fantasyPoints": 169,
             "adjustment": 0,
-            "score": 0
+            "score": 169
           },
           "home": {
             "fantraxTeamId": "rwupy5momqn26z7k",
             "name": "Woodland Whistle Pigs",
-            "fantasyPoints": 0,
+            "fantasyPoints": 206,
             "adjustment": 0,
-            "score": 0
+            "score": 206
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "home",
+          "margin": 37
         },
         {
           "away": {
             "fantraxTeamId": "pd1tq6vhmqn26z7k",
             "name": "Driftless Hockey Club",
-            "fantasyPoints": 0,
+            "fantasyPoints": 135,
             "adjustment": 0,
-            "score": 0
+            "score": 135
           },
           "home": {
             "fantraxTeamId": "bkgajq33mqn26z7k",
             "name": "Steel Valley Fishercats",
-            "fantasyPoints": 0,
+            "fantasyPoints": 137,
             "adjustment": 0,
-            "score": 0
+            "score": 137
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "home",
+          "margin": 2
         },
         {
           "away": {
             "fantraxTeamId": "c88zi6avmqn26z7k",
             "name": "Les Rois de Lyon",
-            "fantasyPoints": 0,
+            "fantasyPoints": 201,
             "adjustment": 0,
-            "score": 0
+            "score": 201
           },
           "home": {
             "fantraxTeamId": "d00cz19hmqn26z7k",
             "name": "Potomac Poutine",
-            "fantasyPoints": 0,
+            "fantasyPoints": 148,
             "adjustment": 0,
-            "score": 0
+            "score": 148
           },
-          "winner": "tie",
-          "margin": 0
+          "winner": "away",
+          "margin": 53
         }
       ],
       "awards": {
         "highestScore": {
-          "name": "Alberta Cobra Chickens",
-          "score": 0,
-          "result": "T"
+          "name": "Woodland Whistle Pigs",
+          "score": 206,
+          "result": "W"
         },
         "lowestScore": {
-          "name": "Alberta Cobra Chickens",
-          "score": 0,
-          "result": "T"
+          "name": "Cantuar Slough Sharks",
+          "score": 132,
+          "result": "L"
         },
-        "mostPointsInLoss": null,
-        "lowestPointsInWin": null
+        "mostPointsInLoss": {
+          "name": "Pacifica Blackwall",
+          "score": 171,
+          "result": "L"
+        },
+        "lowestPointsInWin": {
+          "name": "Bowness Ice Beavers",
+          "score": 134,
+          "result": "W"
+        }
       },
       "cumulativeStandings": [
+        {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 0,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 3,
+          "winningPercentage": 1
+        },
         {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 1,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 0,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 3,
-          "winningPercentage": 0.8333333333333334
+          "winningPercentage": 0.6666666666666666
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 0,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 3,
+          "winningPercentage": 0.6666666666666666
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 1,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 0,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 3,
-          "winningPercentage": 0.8333333333333334
+          "winningPercentage": 0.6666666666666666
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 1,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 3,
-          "winningPercentage": 0.8333333333333334
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 1,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 3,
-          "winningPercentage": 0.8333333333333334
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 1,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 0,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.6666666666666666
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 0,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 3,
+          "winningPercentage": 0.6666666666666666
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 0,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 3,
+          "winningPercentage": 0.6666666666666666
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 0,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 3,
+          "winningPercentage": 0.6666666666666666
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 3,
+          "winningPercentage": 0.3333333333333333
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.3333333333333333
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.3333333333333333
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.3333333333333333
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 3,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.3333333333333333
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.3333333333333333
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 1,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 0,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 3,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.3333333333333333
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 1,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 0,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 3,
-          "winningPercentage": 0.16666666666666666
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 1,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 3,
-          "winningPercentage": 0.16666666666666666
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 1,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 3,
-          "winningPercentage": 0.16666666666666666
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 1,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 3,
-          "winningPercentage": 0.16666666666666666
+          "winningPercentage": 0
         }
       ]
     },
@@ -1316,180 +1324,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 1,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 4,
+          "winningPercentage": 0.875
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 2,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 1,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 4,
-          "winningPercentage": 0.75
+          "winningPercentage": 0.625
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 1,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 4,
+          "winningPercentage": 0.625
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 2,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 1,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 4,
-          "winningPercentage": 0.75
+          "winningPercentage": 0.625
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 2,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 4,
-          "winningPercentage": 0.75
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 2,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 4,
-          "winningPercentage": 0.75
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 2,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 1,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.625
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 1,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 4,
+          "winningPercentage": 0.625
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 1,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 4,
+          "winningPercentage": 0.625
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 1,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 4,
+          "winningPercentage": 0.625
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 4,
+          "winningPercentage": 0.375
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.375
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.375
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.375
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 4,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.375
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.375
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 2,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 1,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 4,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.375
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 2,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 1,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 4,
-          "winningPercentage": 0.25
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 2,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 4,
-          "winningPercentage": 0.25
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 2,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 4,
-          "winningPercentage": 0.25
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 2,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 4,
-          "winningPercentage": 0.25
+          "winningPercentage": 0.125
         }
       ]
     },
@@ -1658,180 +1666,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 2,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 5,
+          "winningPercentage": 0.8
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 3,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 2,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 5,
-          "winningPercentage": 0.7
+          "winningPercentage": 0.6
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 2,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 5,
+          "winningPercentage": 0.6
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 3,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 2,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 5,
-          "winningPercentage": 0.7
+          "winningPercentage": 0.6
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 3,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 5,
-          "winningPercentage": 0.7
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 3,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 5,
-          "winningPercentage": 0.7
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 3,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 2,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.6
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 2,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 5,
+          "winningPercentage": 0.6
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 2,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 5,
+          "winningPercentage": 0.6
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 2,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 5,
+          "winningPercentage": 0.6
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 5,
+          "winningPercentage": 0.4
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 5,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 3,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 2,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 5,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 3,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 2,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 5,
-          "winningPercentage": 0.3
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 3,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 5,
-          "winningPercentage": 0.3
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 3,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 5,
-          "winningPercentage": 0.3
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 3,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 5,
-          "winningPercentage": 0.3
+          "winningPercentage": 0.2
         }
       ]
     },
@@ -2000,180 +2008,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 3,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 6,
+          "winningPercentage": 0.75
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 4,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 3,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 6,
-          "winningPercentage": 0.6666666666666666
+          "winningPercentage": 0.5833333333333334
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 3,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 6,
+          "winningPercentage": 0.5833333333333334
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 4,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 3,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 6,
-          "winningPercentage": 0.6666666666666666
+          "winningPercentage": 0.5833333333333334
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 4,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 6,
-          "winningPercentage": 0.6666666666666666
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 4,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 6,
-          "winningPercentage": 0.6666666666666666
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 4,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 3,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5833333333333334
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 3,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 6,
+          "winningPercentage": 0.5833333333333334
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 3,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 6,
+          "winningPercentage": 0.5833333333333334
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 3,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 6,
+          "winningPercentage": 0.5833333333333334
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 6,
+          "winningPercentage": 0.4166666666666667
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4166666666666667
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4166666666666667
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4166666666666667
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 6,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4166666666666667
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4166666666666667
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 4,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 3,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 6,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4166666666666667
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 4,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 3,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 6,
-          "winningPercentage": 0.3333333333333333
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 4,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 6,
-          "winningPercentage": 0.3333333333333333
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 4,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 6,
-          "winningPercentage": 0.3333333333333333
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 4,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 6,
-          "winningPercentage": 0.3333333333333333
+          "winningPercentage": 0.25
         }
       ]
     },
@@ -2342,180 +2350,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 4,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 7,
+          "winningPercentage": 0.7142857142857143
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 5,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 4,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 7,
-          "winningPercentage": 0.6428571428571429
+          "winningPercentage": 0.5714285714285714
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 4,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 7,
+          "winningPercentage": 0.5714285714285714
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 5,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 4,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 7,
-          "winningPercentage": 0.6428571428571429
+          "winningPercentage": 0.5714285714285714
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 5,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 7,
-          "winningPercentage": 0.6428571428571429
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 5,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 7,
-          "winningPercentage": 0.6428571428571429
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 5,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 4,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5714285714285714
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 4,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 7,
+          "winningPercentage": 0.5714285714285714
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 4,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 7,
+          "winningPercentage": 0.5714285714285714
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 4,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 7,
+          "winningPercentage": 0.5714285714285714
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 7,
+          "winningPercentage": 0.42857142857142855
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.42857142857142855
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.42857142857142855
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.42857142857142855
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 7,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.42857142857142855
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.42857142857142855
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 5,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 4,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 7,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.42857142857142855
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 5,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 4,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 7,
-          "winningPercentage": 0.35714285714285715
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 5,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 7,
-          "winningPercentage": 0.35714285714285715
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 5,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 7,
-          "winningPercentage": 0.35714285714285715
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 5,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 7,
-          "winningPercentage": 0.35714285714285715
+          "winningPercentage": 0.2857142857142857
         }
       ]
     },
@@ -2684,180 +2692,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 5,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 8,
+          "winningPercentage": 0.6875
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 6,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 5,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 8,
-          "winningPercentage": 0.625
+          "winningPercentage": 0.5625
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 5,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 8,
+          "winningPercentage": 0.5625
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 6,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 5,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 8,
-          "winningPercentage": 0.625
+          "winningPercentage": 0.5625
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 6,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 8,
-          "winningPercentage": 0.625
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 6,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 8,
-          "winningPercentage": 0.625
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 6,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 5,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5625
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 5,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 8,
+          "winningPercentage": 0.5625
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 5,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 8,
+          "winningPercentage": 0.5625
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 5,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 8,
+          "winningPercentage": 0.5625
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 8,
+          "winningPercentage": 0.4375
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4375
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4375
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4375
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 8,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4375
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4375
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 6,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 5,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 8,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4375
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 6,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 5,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 8,
-          "winningPercentage": 0.375
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 6,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 8,
-          "winningPercentage": 0.375
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 6,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 8,
-          "winningPercentage": 0.375
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 6,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 8,
-          "winningPercentage": 0.375
+          "winningPercentage": 0.3125
         }
       ]
     },
@@ -3026,180 +3034,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 6,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 9,
+          "winningPercentage": 0.6666666666666666
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 7,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 6,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 9,
-          "winningPercentage": 0.6111111111111112
+          "winningPercentage": 0.5555555555555556
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 6,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 9,
+          "winningPercentage": 0.5555555555555556
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 7,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 6,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 9,
-          "winningPercentage": 0.6111111111111112
+          "winningPercentage": 0.5555555555555556
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 7,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 9,
-          "winningPercentage": 0.6111111111111112
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 7,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 9,
-          "winningPercentage": 0.6111111111111112
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 7,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 6,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5555555555555556
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 6,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 9,
+          "winningPercentage": 0.5555555555555556
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 6,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 9,
+          "winningPercentage": 0.5555555555555556
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 6,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 9,
+          "winningPercentage": 0.5555555555555556
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 9,
+          "winningPercentage": 0.4444444444444444
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4444444444444444
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4444444444444444
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4444444444444444
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 9,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4444444444444444
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4444444444444444
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 7,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 6,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 9,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4444444444444444
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 7,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 6,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 9,
-          "winningPercentage": 0.3888888888888889
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 7,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 9,
-          "winningPercentage": 0.3888888888888889
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 7,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 9,
-          "winningPercentage": 0.3888888888888889
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 7,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 9,
-          "winningPercentage": 0.3888888888888889
+          "winningPercentage": 0.3333333333333333
         }
       ]
     },
@@ -3368,180 +3376,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 7,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 10,
+          "winningPercentage": 0.65
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 8,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 7,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 10,
-          "winningPercentage": 0.6
+          "winningPercentage": 0.55
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 7,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 10,
+          "winningPercentage": 0.55
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 8,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 7,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 10,
-          "winningPercentage": 0.6
+          "winningPercentage": 0.55
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 8,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 10,
-          "winningPercentage": 0.6
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 8,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 10,
-          "winningPercentage": 0.6
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 8,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 7,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.55
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 7,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 10,
+          "winningPercentage": 0.55
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 7,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 10,
+          "winningPercentage": 0.55
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 7,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 10,
+          "winningPercentage": 0.55
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 10,
+          "winningPercentage": 0.45
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 10,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 8,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 7,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 10,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 8,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 7,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 10,
-          "winningPercentage": 0.4
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 8,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 10,
-          "winningPercentage": 0.4
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 8,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 10,
-          "winningPercentage": 0.4
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 8,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 10,
-          "winningPercentage": 0.4
+          "winningPercentage": 0.35
         }
       ]
     },
@@ -3710,180 +3718,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 8,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 11,
+          "winningPercentage": 0.6363636363636364
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 9,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 8,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 11,
-          "winningPercentage": 0.5909090909090909
+          "winningPercentage": 0.5454545454545454
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 8,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 11,
+          "winningPercentage": 0.5454545454545454
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 9,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 8,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 11,
-          "winningPercentage": 0.5909090909090909
+          "winningPercentage": 0.5454545454545454
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 9,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 11,
-          "winningPercentage": 0.5909090909090909
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 9,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 11,
-          "winningPercentage": 0.5909090909090909
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 9,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 8,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5454545454545454
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 8,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 11,
+          "winningPercentage": 0.5454545454545454
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 8,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 11,
+          "winningPercentage": 0.5454545454545454
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 8,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 11,
+          "winningPercentage": 0.5454545454545454
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 11,
+          "winningPercentage": 0.45454545454545453
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45454545454545453
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45454545454545453
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45454545454545453
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 11,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45454545454545453
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45454545454545453
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 9,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 8,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 11,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.45454545454545453
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 9,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 8,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 11,
-          "winningPercentage": 0.4090909090909091
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 9,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 11,
-          "winningPercentage": 0.4090909090909091
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 9,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 11,
-          "winningPercentage": 0.4090909090909091
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 9,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 11,
-          "winningPercentage": 0.4090909090909091
+          "winningPercentage": 0.36363636363636365
         }
       ]
     },
@@ -4052,180 +4060,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 9,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 12,
+          "winningPercentage": 0.625
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 10,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 9,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 12,
-          "winningPercentage": 0.5833333333333334
+          "winningPercentage": 0.5416666666666666
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 9,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 12,
+          "winningPercentage": 0.5416666666666666
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 10,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 9,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 12,
-          "winningPercentage": 0.5833333333333334
+          "winningPercentage": 0.5416666666666666
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 10,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 12,
-          "winningPercentage": 0.5833333333333334
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 10,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 12,
-          "winningPercentage": 0.5833333333333334
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 10,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 9,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5416666666666666
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 9,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 12,
+          "winningPercentage": 0.5416666666666666
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 9,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 12,
+          "winningPercentage": 0.5416666666666666
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 9,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 12,
+          "winningPercentage": 0.5416666666666666
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 12,
+          "winningPercentage": 0.4583333333333333
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4583333333333333
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4583333333333333
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4583333333333333
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 12,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4583333333333333
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4583333333333333
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 10,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 9,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 12,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4583333333333333
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 10,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 9,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 12,
-          "winningPercentage": 0.4166666666666667
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 10,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 12,
-          "winningPercentage": 0.4166666666666667
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 10,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 12,
-          "winningPercentage": 0.4166666666666667
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 10,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 12,
-          "winningPercentage": 0.4166666666666667
+          "winningPercentage": 0.375
         }
       ]
     },
@@ -4394,180 +4402,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 10,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 13,
+          "winningPercentage": 0.6153846153846154
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 11,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 10,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 13,
-          "winningPercentage": 0.5769230769230769
+          "winningPercentage": 0.5384615384615384
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 10,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 13,
+          "winningPercentage": 0.5384615384615384
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 11,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 10,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 13,
-          "winningPercentage": 0.5769230769230769
+          "winningPercentage": 0.5384615384615384
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 11,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 13,
-          "winningPercentage": 0.5769230769230769
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 11,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 13,
-          "winningPercentage": 0.5769230769230769
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 11,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 10,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5384615384615384
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 10,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 13,
+          "winningPercentage": 0.5384615384615384
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 10,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 13,
+          "winningPercentage": 0.5384615384615384
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 10,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 13,
+          "winningPercentage": 0.5384615384615384
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 13,
+          "winningPercentage": 0.46153846153846156
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46153846153846156
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46153846153846156
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46153846153846156
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 13,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46153846153846156
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46153846153846156
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 11,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 10,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 13,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46153846153846156
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 11,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 10,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 13,
-          "winningPercentage": 0.4230769230769231
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 11,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 13,
-          "winningPercentage": 0.4230769230769231
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 11,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 13,
-          "winningPercentage": 0.4230769230769231
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 11,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 13,
-          "winningPercentage": 0.4230769230769231
+          "winningPercentage": 0.38461538461538464
         }
       ]
     },
@@ -4736,180 +4744,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 11,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 14,
+          "winningPercentage": 0.6071428571428571
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 12,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 11,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 14,
-          "winningPercentage": 0.5714285714285714
+          "winningPercentage": 0.5357142857142857
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 11,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 14,
+          "winningPercentage": 0.5357142857142857
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 12,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 11,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 14,
-          "winningPercentage": 0.5714285714285714
+          "winningPercentage": 0.5357142857142857
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 12,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 14,
-          "winningPercentage": 0.5714285714285714
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 12,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 14,
-          "winningPercentage": 0.5714285714285714
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 12,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 11,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5357142857142857
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 11,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 14,
+          "winningPercentage": 0.5357142857142857
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 11,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 14,
+          "winningPercentage": 0.5357142857142857
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 11,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 14,
+          "winningPercentage": 0.5357142857142857
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 14,
+          "winningPercentage": 0.4642857142857143
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4642857142857143
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4642857142857143
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4642857142857143
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 14,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4642857142857143
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4642857142857143
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 12,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 11,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 14,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4642857142857143
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 12,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 11,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 14,
-          "winningPercentage": 0.42857142857142855
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 12,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 14,
-          "winningPercentage": 0.42857142857142855
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 12,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 14,
-          "winningPercentage": 0.42857142857142855
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 12,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 14,
-          "winningPercentage": 0.42857142857142855
+          "winningPercentage": 0.39285714285714285
         }
       ]
     },
@@ -5078,180 +5086,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 12,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 15,
+          "winningPercentage": 0.6
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 13,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 12,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 15,
-          "winningPercentage": 0.5666666666666667
+          "winningPercentage": 0.5333333333333333
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 12,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 15,
+          "winningPercentage": 0.5333333333333333
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 13,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 12,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 15,
-          "winningPercentage": 0.5666666666666667
+          "winningPercentage": 0.5333333333333333
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 13,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 15,
-          "winningPercentage": 0.5666666666666667
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 13,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 15,
-          "winningPercentage": 0.5666666666666667
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 13,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 12,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5333333333333333
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 12,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 15,
+          "winningPercentage": 0.5333333333333333
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 12,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 15,
+          "winningPercentage": 0.5333333333333333
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 12,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 15,
+          "winningPercentage": 0.5333333333333333
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 15,
+          "winningPercentage": 0.4666666666666667
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4666666666666667
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4666666666666667
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4666666666666667
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 15,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4666666666666667
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4666666666666667
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 13,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 12,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 15,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4666666666666667
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 13,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 12,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 15,
-          "winningPercentage": 0.43333333333333335
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 13,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 15,
-          "winningPercentage": 0.43333333333333335
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 13,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 15,
-          "winningPercentage": 0.43333333333333335
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 13,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 15,
-          "winningPercentage": 0.43333333333333335
+          "winningPercentage": 0.4
         }
       ]
     },
@@ -5420,180 +5428,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 13,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 16,
+          "winningPercentage": 0.59375
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 14,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 13,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 16,
-          "winningPercentage": 0.5625
+          "winningPercentage": 0.53125
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 13,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 16,
+          "winningPercentage": 0.53125
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 14,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 13,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 16,
-          "winningPercentage": 0.5625
+          "winningPercentage": 0.53125
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 14,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 16,
-          "winningPercentage": 0.5625
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 14,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 16,
-          "winningPercentage": 0.5625
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 14,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 13,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.53125
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 13,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 16,
+          "winningPercentage": 0.53125
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 13,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 16,
+          "winningPercentage": 0.53125
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 13,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 16,
+          "winningPercentage": 0.53125
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 16,
+          "winningPercentage": 0.46875
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46875
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46875
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46875
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 16,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46875
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46875
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 14,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 13,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 16,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.46875
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 14,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 13,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 16,
-          "winningPercentage": 0.4375
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 14,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 16,
-          "winningPercentage": 0.4375
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 14,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 16,
-          "winningPercentage": 0.4375
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 14,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 16,
-          "winningPercentage": 0.4375
+          "winningPercentage": 0.40625
         }
       ]
     },
@@ -5762,180 +5770,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 14,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 17,
+          "winningPercentage": 0.5882352941176471
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 15,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 14,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 17,
-          "winningPercentage": 0.5588235294117647
+          "winningPercentage": 0.5294117647058824
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 14,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 17,
+          "winningPercentage": 0.5294117647058824
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 15,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 14,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 17,
-          "winningPercentage": 0.5588235294117647
+          "winningPercentage": 0.5294117647058824
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 15,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 17,
-          "winningPercentage": 0.5588235294117647
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 15,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 17,
-          "winningPercentage": 0.5588235294117647
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 15,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 14,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5294117647058824
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 14,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 17,
+          "winningPercentage": 0.5294117647058824
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 14,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 17,
+          "winningPercentage": 0.5294117647058824
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 14,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 17,
+          "winningPercentage": 0.5294117647058824
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 17,
+          "winningPercentage": 0.47058823529411764
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47058823529411764
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47058823529411764
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47058823529411764
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 17,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47058823529411764
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47058823529411764
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 15,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 14,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 17,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47058823529411764
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 15,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 14,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 17,
-          "winningPercentage": 0.4411764705882353
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 15,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 17,
-          "winningPercentage": 0.4411764705882353
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 15,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 17,
-          "winningPercentage": 0.4411764705882353
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 15,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 17,
-          "winningPercentage": 0.4411764705882353
+          "winningPercentage": 0.4117647058823529
         }
       ]
     },
@@ -6104,180 +6112,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 15,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 18,
+          "winningPercentage": 0.5833333333333334
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 16,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 15,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 18,
-          "winningPercentage": 0.5555555555555556
+          "winningPercentage": 0.5277777777777778
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 15,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 18,
+          "winningPercentage": 0.5277777777777778
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 16,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 15,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 18,
-          "winningPercentage": 0.5555555555555556
+          "winningPercentage": 0.5277777777777778
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 16,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 18,
-          "winningPercentage": 0.5555555555555556
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 16,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 18,
-          "winningPercentage": 0.5555555555555556
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 16,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 15,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5277777777777778
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 15,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 18,
+          "winningPercentage": 0.5277777777777778
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 15,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 18,
+          "winningPercentage": 0.5277777777777778
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 15,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 18,
+          "winningPercentage": 0.5277777777777778
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 18,
+          "winningPercentage": 0.4722222222222222
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4722222222222222
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4722222222222222
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4722222222222222
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 18,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4722222222222222
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4722222222222222
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 16,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 15,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 18,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4722222222222222
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 16,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 15,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 18,
-          "winningPercentage": 0.4444444444444444
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 16,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 18,
-          "winningPercentage": 0.4444444444444444
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 16,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 18,
-          "winningPercentage": 0.4444444444444444
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 16,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 18,
-          "winningPercentage": 0.4444444444444444
+          "winningPercentage": 0.4166666666666667
         }
       ]
     },
@@ -6446,180 +6454,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 16,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 19,
+          "winningPercentage": 0.5789473684210527
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 17,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 16,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 19,
-          "winningPercentage": 0.5526315789473685
+          "winningPercentage": 0.5263157894736842
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 16,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 19,
+          "winningPercentage": 0.5263157894736842
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 17,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 16,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 19,
-          "winningPercentage": 0.5526315789473685
+          "winningPercentage": 0.5263157894736842
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 17,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 19,
-          "winningPercentage": 0.5526315789473685
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 17,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 19,
-          "winningPercentage": 0.5526315789473685
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 17,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 16,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5263157894736842
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 16,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 19,
+          "winningPercentage": 0.5263157894736842
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 16,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 19,
+          "winningPercentage": 0.5263157894736842
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 16,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 19,
+          "winningPercentage": 0.5263157894736842
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 19,
+          "winningPercentage": 0.47368421052631576
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47368421052631576
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47368421052631576
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47368421052631576
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 19,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47368421052631576
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47368421052631576
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 17,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 16,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 19,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47368421052631576
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 17,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 16,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 19,
-          "winningPercentage": 0.4473684210526316
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 17,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 19,
-          "winningPercentage": 0.4473684210526316
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 17,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 19,
-          "winningPercentage": 0.4473684210526316
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 17,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 19,
-          "winningPercentage": 0.4473684210526316
+          "winningPercentage": 0.42105263157894735
         }
       ]
     },
@@ -6788,180 +6796,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 17,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 20,
+          "winningPercentage": 0.575
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 18,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 17,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 20,
-          "winningPercentage": 0.55
+          "winningPercentage": 0.525
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 17,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 20,
+          "winningPercentage": 0.525
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 18,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 17,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 20,
-          "winningPercentage": 0.55
+          "winningPercentage": 0.525
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 18,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 20,
-          "winningPercentage": 0.55
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 18,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 20,
-          "winningPercentage": 0.55
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 18,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 17,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.525
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 17,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 20,
+          "winningPercentage": 0.525
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 17,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 20,
+          "winningPercentage": 0.525
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 17,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 20,
+          "winningPercentage": 0.525
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 20,
+          "winningPercentage": 0.475
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.475
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.475
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.475
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 20,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.475
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.475
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 18,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 17,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 20,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.475
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 18,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 17,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 20,
-          "winningPercentage": 0.45
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 18,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 20,
-          "winningPercentage": 0.45
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 18,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 20,
-          "winningPercentage": 0.45
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 18,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 20,
-          "winningPercentage": 0.45
+          "winningPercentage": 0.425
         }
       ]
     },
@@ -7130,180 +7138,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 18,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 21,
+          "winningPercentage": 0.5714285714285714
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 19,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 18,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 21,
-          "winningPercentage": 0.5476190476190477
+          "winningPercentage": 0.5238095238095238
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 18,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 21,
+          "winningPercentage": 0.5238095238095238
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 19,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 18,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 21,
-          "winningPercentage": 0.5476190476190477
+          "winningPercentage": 0.5238095238095238
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 19,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 21,
-          "winningPercentage": 0.5476190476190477
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 19,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 21,
-          "winningPercentage": 0.5476190476190477
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 19,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 18,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5238095238095238
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 18,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 21,
+          "winningPercentage": 0.5238095238095238
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 18,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 21,
+          "winningPercentage": 0.5238095238095238
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 18,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 21,
+          "winningPercentage": 0.5238095238095238
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 21,
+          "winningPercentage": 0.47619047619047616
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47619047619047616
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47619047619047616
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47619047619047616
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 21,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47619047619047616
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47619047619047616
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 19,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 18,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 21,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.47619047619047616
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 19,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 18,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 21,
-          "winningPercentage": 0.4523809523809524
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 19,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 21,
-          "winningPercentage": 0.4523809523809524
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 19,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 21,
-          "winningPercentage": 0.4523809523809524
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 19,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 21,
-          "winningPercentage": 0.4523809523809524
+          "winningPercentage": 0.42857142857142855
         }
       ]
     },
@@ -7472,180 +7480,180 @@
       },
       "cumulativeStandings": [
         {
+          "fantraxTeamId": "s8r6hxgomqn26z7k",
+          "name": "Pennant Pumpjacks",
+          "wins": 3,
+          "losses": 0,
+          "ties": 19,
+          "pointsFor": 503,
+          "pointsAgainst": 417,
+          "games": 22,
+          "winningPercentage": 0.5681818181818182
+        },
+        {
           "fantraxTeamId": "pd1tq6vhmqn26z7k",
           "name": "Driftless Hockey Club",
           "wins": 2,
-          "losses": 0,
-          "ties": 20,
-          "pointsFor": 427,
-          "pointsAgainst": 329,
+          "losses": 1,
+          "ties": 19,
+          "pointsFor": 562,
+          "pointsAgainst": 466,
           "games": 22,
-          "winningPercentage": 0.5454545454545454
+          "winningPercentage": 0.5227272727272727
+        },
+        {
+          "fantraxTeamId": "l7mdv8g4mqn26z7k",
+          "name": "High Point Herons",
+          "wins": 2,
+          "losses": 1,
+          "ties": 19,
+          "pointsFor": 522,
+          "pointsAgainst": 469,
+          "games": 22,
+          "winningPercentage": 0.5227272727272727
         },
         {
           "fantraxTeamId": "d00cz19hmqn26z7k",
           "name": "Potomac Poutine",
           "wins": 2,
-          "losses": 0,
-          "ties": 20,
-          "pointsFor": 368,
-          "pointsAgainst": 219,
+          "losses": 1,
+          "ties": 19,
+          "pointsFor": 516,
+          "pointsAgainst": 420,
           "games": 22,
-          "winningPercentage": 0.5454545454545454
+          "winningPercentage": 0.5227272727272727
         },
         {
           "fantraxTeamId": "s4d354ujmqn26z7k",
           "name": "Southside Hellbats",
           "wins": 2,
-          "losses": 0,
-          "ties": 20,
-          "pointsFor": 327,
-          "pointsAgainst": 227,
-          "games": 22,
-          "winningPercentage": 0.5454545454545454
-        },
-        {
-          "fantraxTeamId": "s8r6hxgomqn26z7k",
-          "name": "Pennant Pumpjacks",
-          "wins": 2,
-          "losses": 0,
-          "ties": 20,
-          "pointsFor": 326,
-          "pointsAgainst": 246,
-          "games": 22,
-          "winningPercentage": 0.5454545454545454
-        },
-        {
-          "fantraxTeamId": "l7mdv8g4mqn26z7k",
-          "name": "High Point Herons",
-          "wins": 1,
           "losses": 1,
-          "ties": 20,
-          "pointsFor": 317,
-          "pointsAgainst": 314,
+          "ties": 19,
+          "pointsFor": 479,
+          "pointsAgainst": 392,
           "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.5227272727272727
+        },
+        {
+          "fantraxTeamId": "gfbq4z0lmqn26z7k",
+          "name": "Synth City Sphynx",
+          "wins": 2,
+          "losses": 1,
+          "ties": 19,
+          "pointsFor": 447,
+          "pointsAgainst": 496,
+          "games": 22,
+          "winningPercentage": 0.5227272727272727
+        },
+        {
+          "fantraxTeamId": "bkgajq33mqn26z7k",
+          "name": "Steel Valley Fishercats",
+          "wins": 2,
+          "losses": 1,
+          "ties": 19,
+          "pointsFor": 443,
+          "pointsAgainst": 451,
+          "games": 22,
+          "winningPercentage": 0.5227272727272727
+        },
+        {
+          "fantraxTeamId": "cj644ehzmqn26z7k",
+          "name": "Bowness Ice Beavers",
+          "wins": 2,
+          "losses": 1,
+          "ties": 19,
+          "pointsFor": 386,
+          "pointsAgainst": 408,
+          "games": 22,
+          "winningPercentage": 0.5227272727272727
+        },
+        {
+          "fantraxTeamId": "c1z6npiwmqn26z7k",
+          "name": "Mt. Pearl Vikings",
+          "wins": 1,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 491,
+          "pointsAgainst": 546,
+          "games": 22,
+          "winningPercentage": 0.4772727272727273
         },
         {
           "fantraxTeamId": "ek501gs9mqn26z7k",
           "name": "Rockaway Brattwursts",
           "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 307,
-          "pointsAgainst": 304,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 462,
+          "pointsAgainst": 509,
           "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4772727272727273
         },
         {
-          "fantraxTeamId": "bkgajq33mqn26z7k",
-          "name": "Steel Valley Fishercats",
+          "fantraxTeamId": "c88zi6avmqn26z7k",
+          "name": "Les Rois de Lyon",
           "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 306,
-          "pointsAgainst": 316,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 426,
+          "pointsAgainst": 447,
           "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4772727272727273
         },
         {
-          "fantraxTeamId": "gfbq4z0lmqn26z7k",
-          "name": "Synth City Sphynx",
+          "fantraxTeamId": "rwupy5momqn26z7k",
+          "name": "Woodland Whistle Pigs",
           "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 282,
-          "pointsAgainst": 336,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 423,
+          "pointsAgainst": 468,
           "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4772727272727273
         },
         {
           "fantraxTeamId": "erz3cdwtmqn26z7k",
           "name": "Scotty",
           "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 256,
-          "pointsAgainst": 295,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 416,
+          "pointsAgainst": 460,
           "games": 22,
-          "winningPercentage": 0.5
-        },
-        {
-          "fantraxTeamId": "cj644ehzmqn26z7k",
-          "name": "Bowness Ice Beavers",
-          "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 252,
-          "pointsAgainst": 276,
-          "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4772727272727273
         },
         {
           "fantraxTeamId": "dwkgku5nmqn26z7k",
           "name": "Pacifica Blackwall",
           "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 235,
-          "pointsAgainst": 218,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 406,
+          "pointsAgainst": 395,
           "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4772727272727273
         },
         {
           "fantraxTeamId": "dtr8cpqgmqn26z7k",
           "name": "Cantuar Slough Sharks",
           "wins": 1,
-          "losses": 1,
-          "ties": 20,
-          "pointsFor": 208,
-          "pointsAgainst": 241,
+          "losses": 2,
+          "ties": 19,
+          "pointsFor": 340,
+          "pointsAgainst": 375,
           "games": 22,
-          "winningPercentage": 0.5
+          "winningPercentage": 0.4772727272727273
         },
         {
           "fantraxTeamId": "ygjmdlbumqn26z7l",
           "name": "Alberta Cobra Chickens",
           "wins": 0,
-          "losses": 2,
-          "ties": 20,
-          "pointsFor": 328,
-          "pointsAgainst": 394,
+          "losses": 3,
+          "ties": 19,
+          "pointsFor": 497,
+          "pointsAgainst": 600,
           "games": 22,
-          "winningPercentage": 0.45454545454545453
-        },
-        {
-          "fantraxTeamId": "c1z6npiwmqn26z7k",
-          "name": "Mt. Pearl Vikings",
-          "wins": 0,
-          "losses": 2,
-          "ties": 20,
-          "pointsFor": 326,
-          "pointsAgainst": 394,
-          "games": 22,
-          "winningPercentage": 0.45454545454545453
-        },
-        {
-          "fantraxTeamId": "c88zi6avmqn26z7k",
-          "name": "Les Rois de Lyon",
-          "wins": 0,
-          "losses": 2,
-          "ties": 20,
-          "pointsFor": 225,
-          "pointsAgainst": 299,
-          "games": 22,
-          "winningPercentage": 0.45454545454545453
-        },
-        {
-          "fantraxTeamId": "rwupy5momqn26z7k",
-          "name": "Woodland Whistle Pigs",
-          "wins": 0,
-          "losses": 2,
-          "ties": 20,
-          "pointsFor": 217,
-          "pointsAgainst": 299,
-          "games": 22,
-          "winningPercentage": 0.45454545454545453
+          "winningPercentage": 0.4318181818181818
         }
       ]
     }
