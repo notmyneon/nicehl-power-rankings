@@ -348,10 +348,13 @@
       border-radius: 20px;
       padding: 14px;
       background:
-        linear-gradient(145deg, rgba(8, 8, 8, 0.96), rgba(19, 19, 19, 0.94));
+        radial-gradient(circle at 12% 0%, rgba(119, 0, 35, 0.58) 0%, rgba(88, 0, 26, 0.28) 24%, transparent 52%),
+        radial-gradient(circle at 94% 100%, rgba(92, 0, 27, 0.30) 0%, transparent 44%),
+        linear-gradient(145deg, rgba(20, 7, 11, 0.98) 0%, rgba(12, 12, 14, 0.98) 58%, rgba(18, 8, 11, 0.98) 100%);
       box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        0 12px 28px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 -18px 42px rgba(91, 0, 27, 0.08);
     }
 
     .analysis-card.analysis-card-wide {
@@ -361,9 +364,11 @@
     .analysis-card-header {
       display: flex;
       align-items: center;
-      margin: -2px -2px 12px;
-      padding: 2px 4px 10px;
-      border-bottom: 1px solid rgba(192, 192, 192, 0.38);
+      margin: -14px -14px 12px;
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid rgba(192, 192, 192, 0.32);
+      background:
+        linear-gradient(90deg, rgba(112, 0, 33, 0.34), rgba(112, 0, 33, 0.08) 48%, transparent 78%);
     }
 
     .analysis-card-header h2 {
