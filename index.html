@@ -723,16 +723,16 @@
     }
 
     .weekly-review-story {
-      margin-top: 10px;
-      padding: 14px 16px;
+      margin-top: 12px;
+      padding: 17px 18px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025)),
-        rgba(0,0,0,0.16);
-      color: var(--silver-light);
-      font-size: 13px;
-      line-height: 1.58;
+        linear-gradient(135deg, rgba(111,0,31,.28), rgba(255,255,255,.035) 48%, rgba(0,0,0,.22)),
+        rgba(0,0,0,0.2);
+      color: #f4f4f4;
+      font-size: 15px;
+      line-height: 1.68;
     }
 
     .weekly-review-story p {
@@ -844,6 +844,120 @@
     .weekly-mover .positive { color: #b8f5d0; }
     .weekly-mover .negative { color: #ffb8bd; }
 
+    .weekly-player-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .weekly-player-panel {
+      min-width: 0;
+      padding: 13px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.15);
+      background:
+        linear-gradient(145deg, rgba(111,0,31,.34), rgba(16,16,16,.58) 54%, rgba(0,0,0,.55));
+    }
+
+    .weekly-player-panel h3 {
+      margin: 0 0 9px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+
+    .weekly-player-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .weekly-player-row {
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 9px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+    }
+
+    .weekly-player-rank {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--burgundy-dark);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 950;
+    }
+
+    .weekly-player-main {
+      min-width: 0;
+    }
+
+    .weekly-player-main strong {
+      display: block;
+      color: #fff;
+      font-size: 11px;
+      line-height: 1.15;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .weekly-player-main small {
+      display: block;
+      margin-top: 3px;
+      color: #d6d6d6;
+      font-size: 9px;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .weekly-player-score {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .weekly-player-score strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .weekly-player-score small {
+      display: block;
+      margin-top: 3px;
+      color: #cfcfcf;
+      font-size: 8px;
+      font-weight: 850;
+    }
+
+    .weekly-player-score .positive { color: #b8f5d0; }
+    .weekly-player-score .negative { color: #ffb8bd; }
+
+    .weekly-player-empty {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px dashed rgba(255,255,255,.16);
+      color: #cfcfcf;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .weekly-review-movers-panel {
+      margin-top: 10px;
+    }
+
     .weekly-matchup-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -908,7 +1022,7 @@
       .league-logo { width: 82px; height: 82px; }
       .analysis-chip { align-self: flex-start; }
       .weekly-review-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .weekly-review-columns, .weekly-matchup-grid { grid-template-columns: 1fr; }
+      .weekly-review-columns, .weekly-matchup-grid, .weekly-player-grid { grid-template-columns: 1fr; }
       .rank-card { grid-template-columns: 44px 1fr 74px; }
       .movement { grid-column: 1 / -1; }
       h1 { font-size: 44px; }
@@ -2471,6 +2585,216 @@
       return parts.join(" ");
     }
 
+    function weeklyPlayerIsGoalie(player) {
+      if (String(player?.positionGroup || "").toLowerCase() === "goalie") return true;
+      return /(^|[\s,\/])G($|[\s,\/])/i.test(String(player?.positions || ""));
+    }
+
+    function weeklyPlayerFantasyPoints(player) {
+      const value = Number(player?.fantasyPoints);
+      return Number.isFinite(value) ? value : null;
+    }
+
+    function weeklyPlayerGames(player) {
+      const value = Number(player?.gamesPlayed ?? player?.summaryStats?.gp);
+      return Number.isFinite(value) ? value : null;
+    }
+
+    function weeklyPlayerStat(player, keys) {
+      for (const key of keys) {
+        const direct = player?.summaryStats?.[key];
+        if (Number.isFinite(Number(direct))) return Number(direct);
+      }
+      return null;
+    }
+
+    function weeklyPlayerStatLine(player) {
+      const parts = [];
+      const isGoalie = weeklyPlayerIsGoalie(player);
+
+      if (isGoalie) {
+        const starts = weeklyPlayerStat(player, ["goalieStarts"]);
+        const wins = weeklyPlayerStat(player, ["wins"]);
+        const ga = weeklyPlayerStat(player, ["goalsAgainst"]);
+        const sho = weeklyPlayerStat(player, ["shutouts"]);
+
+        if (starts !== null) parts.push(`${formatRating(starts)} GS`);
+        if (wins !== null) parts.push(`${formatRating(wins)} W`);
+        if (ga !== null) parts.push(`${formatRating(ga)} GA`);
+        if (sho !== null && sho > 0) parts.push(`${formatRating(sho)} SHO`);
+      } else {
+        const goals = weeklyPlayerStat(player, ["goals"]);
+        const assists = weeklyPlayerStat(player, ["assists"]);
+        const sog = weeklyPlayerStat(player, ["sog"]);
+        const stp = weeklyPlayerStat(player, ["stp"]);
+        const hitsBlocks = weeklyPlayerStat(player, ["hitsBlocks"]);
+
+        if (goals !== null) parts.push(`${formatRating(goals)} G`);
+        if (assists !== null) parts.push(`${formatRating(assists)} A`);
+        if (sog !== null) parts.push(`${formatRating(sog)} SOG`);
+        if (stp !== null && stp > 0) parts.push(`${formatRating(stp)} STP`);
+        if (hitsBlocks !== null) parts.push(`${formatRating(hitsBlocks)} H+B`);
+      }
+
+      return parts.slice(0, 4).join(" · ");
+    }
+
+    function buildWeeklyPlayerReview(period, week) {
+      const players = Array.isArray(week?.players)
+        ? week.players.filter(player => Number.isFinite(weeklyPlayerFantasyPoints(player)))
+        : [];
+
+      if (!players.length) {
+        return {
+          available: false,
+          topSkaters: [],
+          topGoalies: [],
+          overperformers: [],
+          underperformers: []
+        };
+      }
+
+      const topSkaters = players
+        .filter(player => !weeklyPlayerIsGoalie(player))
+        .slice()
+        .sort((a, b) =>
+          weeklyPlayerFantasyPoints(b) - weeklyPlayerFantasyPoints(a) ||
+          String(a.name).localeCompare(String(b.name))
+        )
+        .slice(0, 5);
+
+      const topGoalies = players
+        .filter(weeklyPlayerIsGoalie)
+        .slice()
+        .sort((a, b) =>
+          weeklyPlayerFantasyPoints(b) - weeklyPlayerFantasyPoints(a) ||
+          String(a.name).localeCompare(String(b.name))
+        )
+        .slice(0, 5);
+
+      const history = new Map();
+
+      getSortedSeasonWeeks()
+        .filter(previous =>
+          Number(previous.scoringPeriod) < Number(period) &&
+          Array.isArray(previous.players)
+        )
+        .forEach(previous => {
+          previous.players.forEach(player => {
+            const id = String(player?.playerId || "");
+            const fpts = weeklyPlayerFantasyPoints(player);
+            const gp = weeklyPlayerGames(player);
+            if (!id || !Number.isFinite(fpts) || !Number.isFinite(gp) || gp <= 0) return;
+
+            if (!history.has(id)) history.set(id, { fpts: 0, gp: 0 });
+            const aggregate = history.get(id);
+            aggregate.fpts += fpts;
+            aggregate.gp += gp;
+          });
+        });
+
+      const performance = players
+        .map(player => {
+          const id = String(player?.playerId || "");
+          const actual = weeklyPlayerFantasyPoints(player);
+          const currentGp = weeklyPlayerGames(player);
+          const prior = history.get(id);
+
+          if (
+            !prior ||
+            !Number.isFinite(actual) ||
+            !Number.isFinite(currentGp) ||
+            currentGp <= 0
+          ) return null;
+
+          const minPriorGp = weeklyPlayerIsGoalie(player) ? 2 : 5;
+          if (prior.gp < minPriorGp) return null;
+
+          const rate = prior.fpts / prior.gp;
+          const expected = rate * currentGp;
+          const delta = actual - expected;
+
+          return {
+            ...player,
+            actual,
+            expected,
+            delta,
+            priorRate: rate
+          };
+        })
+        .filter(Boolean);
+
+      const overperformers = performance
+        .filter(player => player.delta > 0)
+        .slice()
+        .sort((a, b) => b.delta - a.delta || b.actual - a.actual)
+        .slice(0, 5);
+
+      const underperformers = performance
+        .filter(player => player.delta < 0)
+        .slice()
+        .sort((a, b) => a.delta - b.delta || a.actual - b.actual)
+        .slice(0, 5);
+
+      return {
+        available: true,
+        topSkaters,
+        topGoalies,
+        overperformers,
+        underperformers
+      };
+    }
+
+    function renderWeeklyPlayerRows(players, mode = "score") {
+      if (!players.length) {
+        return '<div class="weekly-player-empty">No qualifying player data for this week.</div>';
+      }
+
+      return players.map((player, index) => {
+        const teamName =
+          String(player?.fantasyTeamName || "").trim() ||
+          "Owned player";
+        const position = String(player?.positions || "").trim();
+        const nhlTeam = String(player?.nhlTeam || "").trim();
+        const statLine = weeklyPlayerStatLine(player);
+
+        const context = [
+          teamName,
+          [position, nhlTeam].filter(Boolean).join(" · "),
+          statLine
+        ].filter(Boolean).join(" · ");
+
+        let scoreHtml = "";
+        if (mode === "performance") {
+          const delta = Number(player.delta);
+          scoreHtml = `
+            <div class="weekly-player-score">
+              <strong class="${delta >= 0 ? "positive" : "negative"}">${formatChange(delta)}</strong>
+              <small>vs expected</small>
+            </div>
+          `;
+        } else {
+          scoreHtml = `
+            <div class="weekly-player-score">
+              <strong>${formatRating(weeklyPlayerFantasyPoints(player))}</strong>
+              <small>FPts</small>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="weekly-player-row">
+            <div class="weekly-player-rank">${index + 1}</div>
+            <div class="weekly-player-main">
+              <strong title="${escapeAttribute(player.name || "")}">${escapeHtml(player.name || "Unknown")}</strong>
+              <small title="${escapeAttribute(context)}">${escapeHtml(context)}</small>
+            </div>
+            ${scoreHtml}
+          </div>
+        `;
+      }).join("");
+    }
+
     function renderWeeklyReview() {
       const title = document.getElementById("weeklyReviewTitle");
       const date = document.getElementById("weeklyReviewDate");
@@ -2526,6 +2850,8 @@
         }
       ];
 
+      const playerReview = buildWeeklyPlayerReview(review.period, review.week);
+
       const moverRows = [
         ...review.risers.map(team => ({ ...team, direction: "up" })),
         ...review.fallers.map(team => ({ ...team, direction: "down" }))
@@ -2542,24 +2868,45 @@
           `).join("")
         : '<div class="analysis-empty">No ELO movement for this week.</div>';
 
-      const matchupCards = review.matchups.map(matchup => {
-        const scoreLine = matchup.tied
-          ? `${formatRating(matchup.awayScore)}–${formatRating(matchup.homeScore)}`
-          : `${formatRating(matchup.winner.score)}–${formatRating(matchup.loser.score)}`;
-        const nameLine = matchup.tied
-          ? `${matchup.awayName} vs ${matchup.homeName}`
-          : `${matchup.winner.name} over ${matchup.loser.name}`;
-
-        return `
-          <div class="weekly-matchup-card">
-            <div class="weekly-matchup-score">
-              <span title="${escapeAttribute(nameLine)}">${escapeHtml(nameLine)}</span>
-              <strong>${escapeHtml(scoreLine)}</strong>
+      const playerPanels = playerReview.available
+        ? `
+          <div class="weekly-player-grid">
+            <div class="weekly-player-panel">
+              <h3>Top Skaters</h3>
+              <div class="weekly-player-list">
+                ${renderWeeklyPlayerRows(playerReview.topSkaters, "score")}
+              </div>
             </div>
-            <p>${escapeHtml(matchupReviewText(matchup, review))}</p>
+            <div class="weekly-player-panel">
+              <h3>Top Goalies</h3>
+              <div class="weekly-player-list">
+                ${renderWeeklyPlayerRows(playerReview.topGoalies, "score")}
+              </div>
+            </div>
+            <div class="weekly-player-panel">
+              <h3>Overperformers</h3>
+              <div class="weekly-player-list">
+                ${renderWeeklyPlayerRows(playerReview.overperformers, "performance")}
+              </div>
+            </div>
+            <div class="weekly-player-panel">
+              <h3>Underperformers</h3>
+              <div class="weekly-player-list">
+                ${renderWeeklyPlayerRows(playerReview.underperformers, "performance")}
+              </div>
+            </div>
+          </div>
+        `
+        : `
+          <div class="weekly-player-grid">
+            <div class="weekly-player-panel" style="grid-column:1 / -1;">
+              <h3>Player Performances</h3>
+              <div class="weekly-player-empty">
+                This season file does not contain player-week data yet. Run the rich Fantrax exporter after a completed week, then replace the season JSON in the data folder.
+              </div>
+            </div>
           </div>
         `;
-      }).join("");
 
       content.innerHTML = `
         <div class="weekly-review-story">${narrative}</div>
@@ -2572,18 +2919,12 @@
             </div>
           `).join("")}
         </div>
-        <div class="weekly-review-columns">
-          <div class="weekly-review-panel">
-            <h3>Power Ranking Movers</h3>
-            <div class="weekly-movers">${movers}</div>
-          </div>
-          <div class="weekly-review-panel">
-            <h3>Matchup Recaps</h3>
-            <div class="weekly-matchup-grid">${matchupCards}</div>
-          </div>
-        </div>
-        <div class="weekly-review-player-note">
-          Player-level stars, goalie leaders, and over/underperformers will appear here once the player-week export is added.
+
+        ${playerPanels}
+
+        <div class="weekly-review-panel weekly-review-movers-panel">
+          <h3>Power Ranking Movers</h3>
+          <div class="weekly-movers">${movers}</div>
         </div>
       `;
     }
