@@ -2431,7 +2431,7 @@
       if (!player) return "";
       const owner = weeklyPlayerOwner(player);
       return owner
-        ? `${player.name} of ${owner}`
+        ? `${player.name} (${owner})`
         : String(player.name || "");
     }
 
@@ -2463,17 +2463,17 @@
       if (high && Number.isFinite(average)) {
         const difference = high.score - average;
         teamStory.push(
-          `${high.name} led the league with ${formatRating(high.score)} fantasy points, finishing ${formatRating(Math.abs(difference))} ${difference >= 0 ? "above" : "below"} the ${formatRating(average)}-point league average`
+          `${high.name} paced the league with ${formatRating(high.score)} fantasy points, ${formatRating(Math.abs(difference))} ${difference >= 0 ? "above" : "below"} the ${formatRating(average)}-point league average`
         );
       } else if (high) {
         teamStory.push(
-          `${high.name} led the league with ${formatRating(high.score)} fantasy points`
+          `${high.name} paced the league with ${formatRating(high.score)} fantasy points`
         );
       }
 
       if (blowout) {
         teamStory.push(
-          `${blowout.winner.name} recorded the largest win of the week, beating ${blowout.loser.name} by ${formatRating(blowout.margin)} points`
+          `${blowout.winner.name} posted the week's widest margin, beating ${blowout.loser.name} by ${formatRating(blowout.margin)} points`
         );
       }
 
@@ -2487,48 +2487,54 @@
       if (mostGoals?.players?.length) {
         const goalCount = finitePlayerNumber(mostGoals.value);
         const leaderText = weeklyLeaderNamesWithOwners(mostGoals);
-        const owner = weeklyPlayerOwner(mostGoals.players[0]);
-        const context =
-          mostGoals.players.length === 1
-            ? weeklyTeamMatchupContext(owner, review)
-            : "";
 
-        skaterStory.push(
-          `${leaderText} ${mostGoals.players.length === 1 ? "was" : "were"} the week's top goal scorer${mostGoals.players.length === 1 ? "" : "s"} with ${formatRating(goalCount)} goal${goalCount === 1 ? "" : "s"}${context ? `, ${context}` : ""}`
-        );
+        if (mostGoals.players.length === 1) {
+          const owner = weeklyPlayerOwner(mostGoals.players[0]);
+          const context = weeklyTeamMatchupContext(owner, review);
+          skaterStory.push(
+            `${leaderText} led the week with ${formatRating(goalCount)} goal${goalCount === 1 ? "" : "s"}${context ? `, ${context}` : ""}`
+          );
+        } else {
+          skaterStory.push(
+            `${leaderText} shared the weekly goal-scoring lead with ${formatRating(goalCount)} apiece`
+          );
+        }
       }
 
       if (mostBlocks?.players?.length) {
         const blockCount = finitePlayerNumber(mostBlocks.value);
         const leaderText = weeklyLeaderNamesWithOwners(mostBlocks);
-        const owner = weeklyPlayerOwner(mostBlocks.players[0]);
-        const context =
-          mostBlocks.players.length === 1
-            ? weeklyTeamMatchupContext(owner, review)
-            : "";
 
-        skaterStory.push(
-          `${leaderText} led all skaters with ${formatRating(blockCount)} blocked shot${blockCount === 1 ? "" : "s"}${context ? `, ${context}` : ""}`
-        );
+        if (mostBlocks.players.length === 1) {
+          const owner = weeklyPlayerOwner(mostBlocks.players[0]);
+          const context = weeklyTeamMatchupContext(owner, review);
+          skaterStory.push(
+            `${leaderText} led all skaters with ${formatRating(blockCount)} blocked shot${blockCount === 1 ? "" : "s"}${context ? `, ${context}` : ""}`
+          );
+        } else {
+          skaterStory.push(
+            `${leaderText} shared the blocked-shot lead with ${formatRating(blockCount)} apiece`
+          );
+        }
       }
 
       if (skaterStory.length) {
         paragraphs.push(`${skaterStory.join(". ")}.`);
       }
 
-      // 3. Goalie adversity: most goals allowed + games + FPts/game
+      // 3. Goalie adversity: most GA + games + FPts/game
       if (mostGoalsAllowed?.players?.length) {
         const ga = finitePlayerNumber(mostGoalsAllowed.value);
-        const goalieDetails = mostGoalsAllowed.players.map(player => {
+
+        if (mostGoalsAllowed.players.length === 1) {
+          const player = mostGoalsAllowed.players[0];
           const owner = weeklyPlayerOwner(player);
-          const label = weeklyPlayerWithOwner(player);
           const gp = weeklyPlayerGames(player);
           const fpts = weeklyPlayerFantasyPoints(player);
-          const avg =
-            gp !== null && gp > 0 && fpts !== null
-              ? fpts / gp
-              : null;
-          const context = weeklyTeamMatchupContext(owner, review);
+          const avg = gp !== null && gp > 0 && fpts !== null ? fpts / gp : null;
+          const matchup = review.matchups.find(item =>
+            item.awayName === owner || item.homeName === owner
+          );
 
           const details = [];
           if (gp !== null) {
@@ -2538,43 +2544,35 @@
             details.push(`${formatRating(avg)} fantasy points per game`);
           }
 
-          return `${label}${details.length ? ` played ${details.join(" and averaged ")}` : ""}${context ? `, ${context}` : ""}`;
-        });
+          let resultContext = "";
+          if (matchup && !matchup.tied) {
+            if (matchup.winner?.name === owner) {
+              resultContext = `${owner} still won its matchup by ${formatRating(matchup.margin)} points`;
+            } else if (matchup.loser?.name === owner) {
+              resultContext = `${owner} lost its matchup by ${formatRating(matchup.margin)} points`;
+            }
+          }
 
-        const goalieLead =
-          mostGoalsAllowed.players.length === 1
-            ? `${goalieDetails[0]} allowed a week-high ${formatRating(ga)} goal${ga === 1 ? "" : "s"}`
-            : `${weeklyLeaderNamesWithOwners(mostGoalsAllowed)} each allowed a week-high ${formatRating(ga)} goals`;
-
-        if (mostGoalsAllowed.players.length === 1) {
-          // Rebuild the single-goalie sentence so the games/average follow the GA cleanly.
-          const player = mostGoalsAllowed.players[0];
-          const owner = weeklyPlayerOwner(player);
-          const gp = weeklyPlayerGames(player);
-          const fpts = weeklyPlayerFantasyPoints(player);
-          const avg = gp !== null && gp > 0 && fpts !== null ? fpts / gp : null;
-          const context = weeklyTeamMatchupContext(owner, review);
-          const detailParts = [];
-          if (gp !== null) detailParts.push(`${formatRating(gp)} game${gp === 1 ? "" : "s"}`);
-          if (avg !== null) detailParts.push(`${formatRating(avg)} fantasy points per game`);
+          const detailText = details.length
+            ? ` in ${details[0]}${details[1] ? `, averaging ${details[1]}` : ""}`
+            : "";
 
           paragraphs.push(
-            `${weeklyPlayerWithOwner(player)} allowed a week-high ${formatRating(ga)} goal${ga === 1 ? "" : "s"}${detailParts.length ? ` across ${detailParts[0]}${detailParts[1] ? `, averaging ${detailParts[1]}` : ""}` : ""}${context ? `, ${context}` : ""}.`
+            `${weeklyPlayerWithOwner(player)} had the roughest week in net, allowing a week-high ${formatRating(ga)} goal${ga === 1 ? "" : "s"}${detailText}.${resultContext ? ` ${resultContext}.` : ""}`
           );
         } else {
-          const tiedDetails = mostGoalsAllowed.players.map(player => {
+          const tied = mostGoalsAllowed.players.map(player => {
             const gp = weeklyPlayerGames(player);
             const fpts = weeklyPlayerFantasyPoints(player);
             const avg = gp !== null && gp > 0 && fpts !== null ? fpts / gp : null;
-            const owner = weeklyPlayerOwner(player);
-            const context = weeklyTeamMatchupContext(owner, review);
-            const pieces = [];
-            if (gp !== null) pieces.push(`${formatRating(gp)} game${gp === 1 ? "" : "s"}`);
-            if (avg !== null) pieces.push(`${formatRating(avg)} FPts/game`);
-            return `${weeklyPlayerWithOwner(player)}${pieces.length ? ` (${pieces.join(", ")})` : ""}${context ? `, ${context}` : ""}`;
+            const details = [];
+            if (gp !== null) details.push(`${formatRating(gp)} game${gp === 1 ? "" : "s"}`);
+            if (avg !== null) details.push(`${formatRating(avg)} FPts/game`);
+            return `${weeklyPlayerWithOwner(player)}${details.length ? ` (${details.join(", ")})` : ""}`;
           });
+
           paragraphs.push(
-            `${weeklyLeaderNamesWithOwners(mostGoalsAllowed)} each allowed a week-high ${formatRating(ga)} goals. ${tiedDetails.join("; ")}.`
+            `${weeklyLeaderNamesWithOwners(mostGoalsAllowed)} shared the unwanted lead after allowing ${formatRating(ga)} goals apiece. ${tied.join("; ")}.`
           );
         }
       }
