@@ -724,7 +724,7 @@
 
     .weekly-review-story {
       margin-top: 8px;
-      padding: 12px 14px;
+      padding: 12px 15px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.18);
       background:
@@ -732,7 +732,7 @@
         rgba(0,0,0,0.2);
       color: #f7f7f7;
       font-size: 16px;
-      line-height: 1.48;
+      line-height: 1.5;
     }
 
     .weekly-review-story p {
@@ -741,49 +741,6 @@
 
     .weekly-review-story p + p {
       margin-top: 6px;
-    }
-
-    .weekly-review-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      margin-top: 7px;
-    }
-
-    .weekly-review-stat {
-      min-width: 0;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: linear-gradient(145deg, rgba(111,0,31,.42), rgba(0,0,0,.36));
-    }
-
-    .weekly-review-stat span {
-      display: block;
-      color: #d6d6d6;
-      font-size: 10px;
-      font-weight: 950;
-      letter-spacing: 0.075em;
-      text-transform: uppercase;
-    }
-
-    .weekly-review-stat strong {
-      display: block;
-      margin-top: 3px;
-      color: #fff;
-      font-size: 17px;
-      line-height: 1.05;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .weekly-review-stat small {
-      display: block;
-      margin-top: 2px;
-      color: #d9d9d9;
-      font-size: 11px;
-      line-height: 1.2;
     }
 
     .weekly-review-panel {
@@ -963,9 +920,7 @@
       .board-top-right { justify-content: space-between; }
       .league-logo { width: 82px; height: 82px; }
       .analysis-chip { align-self: flex-start; }
-      .weekly-review-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .weekly-review-columns, .weekly-matchup-grid, .weekly-player-grid, .weekly-movers { grid-template-columns: 1fr; }
-      .weekly-review-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .rank-card { grid-template-columns: 44px 1fr 74px; }
       .movement { grid-column: 1 / -1; }
       h1 { font-size: 44px; }
@@ -2441,52 +2396,80 @@
       };
     }
 
-    function weeklyReviewNarrative(review) {
+    function weeklyReviewNarrative(review, playerReview) {
       const paragraphs = [];
+
       const high = review.highestScore;
-      const average = review.leagueAverage;
+      const blowout = review.blowout;
+      const biggestRiser = review.risers?.[0] || null;
+
+      const topGoalScorer = playerReview?.mostGoals?.players?.[0] || null;
+      const topGoalCount = playerReview?.mostGoals?.value ?? null;
+
+      const topBlocker = playerReview?.mostBlockedShots?.players?.[0] || null;
+      const topBlockCount = playerReview?.mostBlockedShots?.value ?? null;
+
+      const topGoalie = playerReview?.mostGoaliePoints?.players?.[0] || null;
+      const topGoaliePoints = playerReview?.mostGoaliePoints?.value ?? null;
+
+      const topOver = playerReview?.overperformers?.[0] || null;
+      const topUnder = playerReview?.underperformers?.[0] || null;
 
       const first = [];
+
       if (high) {
-        const aboveAverage = high.score - average;
         first.push(
-          `Week ${review.period} was led by ${high.name} with ${formatRating(high.score)} points${aboveAverage > 0 ? `, ${formatRating(aboveAverage)} above the league average` : ""}`
+          `${high.name} led the league with ${formatRating(high.score)} fantasy points`
         );
       }
-      if (review.closest) {
+
+      if (topGoalScorer && topGoalCount !== null) {
         first.push(
-          `${review.closest.winner.name} won the closest matchup by ${formatRating(review.closest.margin)}`
+          `${topGoalScorer.name} scored a week-high ${formatRating(topGoalCount)} goal${Number(topGoalCount) === 1 ? "" : "s"}`
         );
       }
-      if (review.blowout && review.blowout !== review.closest) {
+
+      if (topBlocker && topBlockCount !== null) {
         first.push(
-          `${review.blowout.winner.name} posted the largest margin at ${formatRating(review.blowout.margin)} points`
+          `${topBlocker.name} led all skaters with ${formatRating(topBlockCount)} blocked shot${Number(topBlockCount) === 1 ? "" : "s"}`
         );
       }
+
+      if (topGoalie && topGoaliePoints !== null) {
+        first.push(
+          `${topGoalie.name} was the top goalie with ${formatRating(topGoaliePoints)} fantasy points`
+        );
+      }
+
       if (first.length) {
         paragraphs.push(`${first.join(". ")}.`);
       }
 
       const second = [];
-      if (review.biggestUpset) {
-        if (review.biggestUpset.winnerProbability < 0.5) {
-          second.push(
-            `${review.biggestUpset.winner.name} delivered the biggest upset at only ${formatPercent(review.biggestUpset.winnerProbability)} pre-week win probability`
-          );
-        } else {
-          second.push(
-            `${review.biggestUpset.winner.name} had the least certain win at ${formatPercent(review.biggestUpset.winnerProbability)} pre-week probability`
-          );
-        }
-      }
-      if (review.highestLoss) {
+
+      if (blowout) {
         second.push(
-          `${review.highestLoss.name} scored ${formatRating(review.highestLoss.score)} and still lost`
+          `${blowout.winner.name} recorded the largest win of the week, beating ${blowout.loser.name} by ${formatRating(blowout.margin)} points`
         );
       }
-      second.push(
-        `League average: ${formatRating(average)} points`
-      );
+
+      if (topOver) {
+        second.push(
+          `${topOver.name} was the biggest overperformer at ${formatChange(topOver.delta)} points versus baseline`
+        );
+      }
+
+      if (topUnder) {
+        second.push(
+          `${topUnder.name} had the largest shortfall at ${formatChange(topUnder.delta)} versus baseline`
+        );
+      }
+
+      if (biggestRiser) {
+        second.push(
+          `${biggestRiser.name} made the biggest Power Rankings jump at ${formatChange(biggestRiser.eloChange)} ELO`
+        );
+      }
 
       if (second.length) {
         paragraphs.push(`${second.join(". ")}.`);
@@ -2604,7 +2587,10 @@
           available: false,
           topPlayers: [],
           overperformers: [],
-          underperformers: []
+          underperformers: [],
+          mostGoals: null,
+          mostBlockedShots: null,
+          mostGoaliePoints: null
         };
       }
 
@@ -2615,6 +2601,24 @@
           String(a.name).localeCompare(String(b.name))
         )
         .slice(0, 3);
+
+      const mostGoals = weeklyLeaderByValue(
+        players,
+        player => player?.summaryStats?.goals,
+        player => !weeklyPlayerIsGoalie(player)
+      );
+
+      const mostBlockedShots = weeklyLeaderByValue(
+        players,
+        player => player?.summaryStats?.blockedShots,
+        player => !weeklyPlayerIsGoalie(player)
+      );
+
+      const mostGoaliePoints = weeklyLeaderByValue(
+        players,
+        player => weeklyPlayerFantasyPoints(player),
+        player => weeklyPlayerIsGoalie(player)
+      );
 
       const performance = players
         .map(player => {
@@ -2662,8 +2666,49 @@
         available: true,
         topPlayers,
         overperformers,
-        underperformers
+        underperformers,
+        mostGoals,
+        mostBlockedShots,
+        mostGoaliePoints
       };
+    }
+
+    function weeklyLeaderByValue(players, valueGetter, filter = () => true) {
+      const eligible = (players || [])
+        .filter(filter)
+        .map(player => ({
+          player,
+          value: finitePlayerNumber(valueGetter(player))
+        }))
+        .filter(entry => entry.value !== null);
+
+      if (!eligible.length) return null;
+
+      const max = Math.max(...eligible.map(entry => entry.value));
+      const tied = eligible
+        .filter(entry => entry.value === max)
+        .map(entry => entry.player)
+        .sort((a, b) => String(a.name).localeCompare(String(b.name)));
+
+      return {
+        value: max,
+        players: tied
+      };
+    }
+
+    function weeklyHeadlinePlayerName(leader) {
+      if (!leader?.players?.length) return "—";
+      const first = leader.players[0]?.name || "—";
+      return leader.players.length > 1
+        ? `${first} +${leader.players.length - 1}`
+        : first;
+    }
+
+    function weeklyHeadlinePlayerDetail(leader, unit) {
+      if (!leader?.players?.length) return "—";
+      const team = String(leader.players[0]?.fantasyTeamName || "").trim();
+      const value = `${formatRating(leader.value)} ${unit}`;
+      return team ? `${value} · ${team}` : value;
     }
 
     function renderWeeklyPlayerRows(players, mode = "score") {
@@ -2734,44 +2779,11 @@
       title.textContent = `Week ${review.period} Review`;
       date.textContent = String(review.week?.dateRange || "").replace(/[()]/g, "");
 
-      const narrative = weeklyReviewNarrative(review)
+      const playerReview = buildWeeklyPlayerReview(review.period, review.week);
+
+      const narrative = weeklyReviewNarrative(review, playerReview)
         .map(paragraph => `<p>${escapeHtml(paragraph)}</p>`)
         .join("");
-
-      const stats = [
-        {
-          label: "High Score",
-          value: review.highestScore?.name || "—",
-          detail: review.highestScore ? `${formatRating(review.highestScore.score)} points` : "—"
-        },
-        {
-          label: "League Average",
-          value: formatRating(review.leagueAverage),
-          detail: `${review.entries.length} teams`
-        },
-        {
-          label: "Closest Game",
-          value: review.closest?.winner?.name || "—",
-          detail: review.closest ? `by ${formatRating(review.closest.margin)}` : "—"
-        },
-        {
-          label: "Biggest Win",
-          value: review.blowout?.winner?.name || "—",
-          detail: review.blowout ? `by ${formatRating(review.blowout.margin)}` : "—"
-        },
-        {
-          label: "Biggest Upset",
-          value: review.biggestUpset?.winner?.name || "—",
-          detail: review.biggestUpset ? `${formatPercent(review.biggestUpset.winnerProbability)} pre-week` : "—"
-        },
-        {
-          label: "High Score in Loss",
-          value: review.highestLoss?.name || "—",
-          detail: review.highestLoss ? `${formatRating(review.highestLoss.score)} points` : "—"
-        }
-      ];
-
-      const playerReview = buildWeeklyPlayerReview(review.period, review.week);
 
       const moverRows = [
         ...review.risers.map(team => ({ ...team, direction: "up" })),
@@ -2825,15 +2837,6 @@
 
       content.innerHTML = `
         <div class="weekly-review-story">${narrative}</div>
-        <div class="weekly-review-stats">
-          ${stats.map(stat => `
-            <div class="weekly-review-stat">
-              <span>${escapeHtml(stat.label)}</span>
-              <strong title="${escapeAttribute(stat.value)}">${escapeHtml(stat.value)}</strong>
-              <small>${escapeHtml(stat.detail)}</small>
-            </div>
-          `).join("")}
-        </div>
 
         ${playerPanels}
 
