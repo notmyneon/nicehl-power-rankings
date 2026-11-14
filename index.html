@@ -2519,6 +2519,7 @@
       statValue,
       statLabel,
       statVerb,
+      statKind = "generic",
       review,
       seed
     }) {
@@ -2530,31 +2531,90 @@
 
       if (!matchup) {
         const subject = teamName ? `${playerName} (${teamName})` : playerName;
+
+        if (statKind === "goals") {
+          return `${subject} paced the scoring with ${formatRating(statValue)} ${pluralLabel}.`;
+        }
+
+        if (statKind === "blocks") {
+          return `${subject} led the defensive effort with ${formatRating(statValue)} ${pluralLabel}.`;
+        }
+
         return `${subject} ${statVerb} ${formatRating(statValue)} ${pluralLabel}.`;
       }
 
       if (matchup.result === "win") {
-        const templates = [
-          `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel} and helped ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
-          `${playerName}'s ${formatRating(statValue)} ${pluralLabel} helped power ${teamName} past ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
-          `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel}, contributing to ${teamName}'s ${formatRating(matchup.margin)}-point win over ${matchup.opponent}.`
-        ];
+        let templates;
+
+        if (statKind === "goals") {
+          templates = [
+            `${playerName} scored ${formatRating(statValue)} ${pluralLabel} and helped ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName} found the net ${formatRating(statValue)} time${Number(statValue) === 1 ? "" : "s"}, helping ${teamName} secure a ${formatRating(matchup.margin)}-point win over ${matchup.opponent}.`,
+            `${playerName} paced the attack with ${formatRating(statValue)} ${pluralLabel} as ${teamName} defeated ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName}'s ${formatRating(statValue)} ${pluralLabel} powered the offence in ${teamName}'s ${formatRating(matchup.margin)}-point victory over ${matchup.opponent}.`
+          ];
+        } else if (statKind === "blocks") {
+          templates = [
+            `${playerName} led the defensive effort with ${formatRating(statValue)} ${pluralLabel} as ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName} piled up ${formatRating(statValue)} ${pluralLabel}, helping ${teamName} hold off ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName} absorbed plenty of pressure with ${formatRating(statValue)} ${pluralLabel} in ${teamName}'s ${formatRating(matchup.margin)}-point win over ${matchup.opponent}.`,
+            `${playerName} recorded ${formatRating(statValue)} ${pluralLabel}, providing a strong defensive contribution as ${teamName} defeated ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        } else {
+          templates = [
+            `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel} and helped ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName}'s ${formatRating(statValue)} ${pluralLabel} helped power ${teamName} past ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel}, contributing to ${teamName}'s ${formatRating(matchup.margin)}-point win over ${matchup.opponent}.`
+          ];
+        }
 
         return templates[
-          stableNarrativeIndex(`${seed}|win|${playerName}|${teamName}`, templates.length)
+          stableNarrativeIndex(
+            `${seed}|${statKind}|win|${playerName}|${teamName}`,
+            templates.length
+          )
         ];
       }
 
       if (matchup.result === "loss") {
-        const templates = [
-          `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel}, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
-          `Despite ${playerName}'s ${formatRating(statValue)} ${pluralLabel}, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
-          `${playerName} supplied ${formatRating(statValue)} ${pluralLabel}, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
-        ];
+        let templates;
+
+        if (statKind === "goals") {
+          templates = [
+            `${playerName} scored ${formatRating(statValue)} ${pluralLabel}, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `Despite ${playerName} finding the net ${formatRating(statValue)} time${Number(statValue) === 1 ? "" : "s"}, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+            `${playerName} supplied ${formatRating(statValue)} ${pluralLabel}, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName} carried the scoring load with ${formatRating(statValue)} ${pluralLabel}, yet ${teamName} couldn't overcome ${matchup.opponent} and lost by ${formatRating(matchup.margin)} points.`
+          ];
+        } else if (statKind === "blocks") {
+          templates = [
+            `${playerName} blocked ${formatRating(statValue)} shots, but ${teamName} still lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `Despite ${playerName}'s ${formatRating(statValue)} blocked shots, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+            `${playerName} did plenty of defensive work with ${formatRating(statValue)} blocked shots, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${playerName} absorbed ${formatRating(statValue)} shots for ${teamName}, though ${matchup.opponent} still came away with a ${formatRating(matchup.margin)}-point win.`
+          ];
+        } else {
+          templates = [
+            `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel}, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `Despite ${playerName}'s ${formatRating(statValue)} ${pluralLabel}, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+            `${playerName} supplied ${formatRating(statValue)} ${pluralLabel}, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        }
 
         return templates[
-          stableNarrativeIndex(`${seed}|loss|${playerName}|${teamName}`, templates.length)
+          stableNarrativeIndex(
+            `${seed}|${statKind}|loss|${playerName}|${teamName}`,
+            templates.length
+          )
         ];
+      }
+
+      if (statKind === "goals") {
+        return `${playerName} scored ${formatRating(statValue)} ${pluralLabel} as ${teamName} finished level with ${matchup.opponent}.`;
+      }
+
+      if (statKind === "blocks") {
+        return `${playerName} recorded ${formatRating(statValue)} ${pluralLabel} as ${teamName} tied ${matchup.opponent}.`;
       }
 
       return `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel} as ${teamName} finished level with ${matchup.opponent}.`;
@@ -2638,6 +2698,7 @@
       teamName,
       statValue,
       statLabel,
+      statKind = "generic",
       review,
       seed
     }) {
@@ -2648,31 +2709,85 @@
         : statLabel.plural;
 
       if (!matchup) {
+        if (statKind === "goals") {
+          return `${names} shared the weekly goal-scoring lead with ${formatRating(statValue)} apiece for ${teamName}.`;
+        }
+
+        if (statKind === "blocks") {
+          return `${names} shared the blocked-shot lead with ${formatRating(statValue)} apiece for ${teamName}.`;
+        }
+
         return `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece for ${teamName}.`;
       }
 
       if (matchup.result === "win") {
-        const templates = [
-          `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece, helping ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
-          `${names} each posted ${formatRating(statValue)} ${pluralLabel}, helping power ${teamName} past ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
-          `${names} combined to lead the week at ${formatRating(statValue)} ${pluralLabel} apiece as ${teamName} defeated ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
-        ];
+        let templates;
+
+        if (statKind === "goals") {
+          templates = [
+            `${names} shared the weekly goal-scoring lead with ${formatRating(statValue)} apiece, helping ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${names} each scored ${formatRating(statValue)} times as ${teamName} powered past ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${names} combined to pace the attack with ${formatRating(statValue)} goals apiece in ${teamName}'s ${formatRating(matchup.margin)}-point win over ${matchup.opponent}.`
+          ];
+        } else if (statKind === "blocks") {
+          templates = [
+            `${names} shared the blocked-shot lead with ${formatRating(statValue)} apiece, anchoring the defensive effort in ${teamName}'s ${formatRating(matchup.margin)}-point win over ${matchup.opponent}.`,
+            `${names} each blocked ${formatRating(statValue)} shots as ${teamName} held off ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${names} combined for a strong defensive showing with ${formatRating(statValue)} blocks apiece, helping ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        } else {
+          templates = [
+            `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece, helping ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${names} each posted ${formatRating(statValue)} ${pluralLabel}, helping power ${teamName} past ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `${names} combined to lead the week at ${formatRating(statValue)} ${pluralLabel} apiece as ${teamName} defeated ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        }
 
         return templates[
-          stableNarrativeIndex(`${seed}|same-team-win|${teamName}`, templates.length)
+          stableNarrativeIndex(
+            `${seed}|${statKind}|same-team-win|${teamName}`,
+            templates.length
+          )
         ];
       }
 
       if (matchup.result === "loss") {
-        const templates = [
-          `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
-          `Despite ${names} each recording ${formatRating(statValue)} ${pluralLabel}, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
-          `${names} each delivered ${formatRating(statValue)} ${pluralLabel}, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
-        ];
+        let templates;
+
+        if (statKind === "goals") {
+          templates = [
+            `${names} shared the weekly goal-scoring lead with ${formatRating(statValue)} apiece, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `Despite ${names} each scoring ${formatRating(statValue)} goals, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+            `${names} each found the net ${formatRating(statValue)} times, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        } else if (statKind === "blocks") {
+          templates = [
+            `${names} shared the blocked-shot lead with ${formatRating(statValue)} apiece, but ${teamName} still lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `Despite ${names} each blocking ${formatRating(statValue)} shots, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+            `${names} combined for a strong defensive effort at ${formatRating(statValue)} blocks apiece, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        } else {
+          templates = [
+            `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+            `Despite ${names} each recording ${formatRating(statValue)} ${pluralLabel}, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+            `${names} each delivered ${formatRating(statValue)} ${pluralLabel}, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+          ];
+        }
 
         return templates[
-          stableNarrativeIndex(`${seed}|same-team-loss|${teamName}`, templates.length)
+          stableNarrativeIndex(
+            `${seed}|${statKind}|same-team-loss|${teamName}`,
+            templates.length
+          )
         ];
+      }
+
+      if (statKind === "goals") {
+        return `${names} shared the goal-scoring lead with ${formatRating(statValue)} apiece as ${teamName} tied ${matchup.opponent}.`;
+      }
+
+      if (statKind === "blocks") {
+        return `${names} shared the blocked-shot lead with ${formatRating(statValue)} apiece as ${teamName} tied ${matchup.opponent}.`;
       }
 
       return `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece as ${teamName} tied ${matchup.opponent}.`;
@@ -2731,6 +2846,7 @@
                 plural: "goals"
               },
               statVerb: "scored",
+              statKind: "goals",
               review,
               seed: `week-${review.period}-goals`
             })
@@ -2747,6 +2863,7 @@
                 singular: "goal",
                 plural: "goals"
               },
+              statKind: "goals",
               review,
               seed: `week-${review.period}-goals`
             })
@@ -2763,6 +2880,7 @@
                 plural: "goals"
               },
               statVerb: "scored",
+              statKind: "goals",
               review,
               seed: `week-${review.period}-goals-${player.playerId || player.name}`
             });
@@ -2792,6 +2910,7 @@
                 plural: "blocked shots"
               },
               statVerb: "recorded",
+              statKind: "blocks",
               review,
               seed: `week-${review.period}-blocks`
             })
@@ -2808,6 +2927,7 @@
                 singular: "blocked shot",
                 plural: "blocked shots"
               },
+              statKind: "blocks",
               review,
               seed: `week-${review.period}-blocks`
             })
@@ -2824,6 +2944,7 @@
                 plural: "blocked shots"
               },
               statVerb: "recorded",
+              statKind: "blocks",
               review,
               seed: `week-${review.period}-blocks-${player.playerId || player.name}`
             });
