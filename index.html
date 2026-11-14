@@ -724,7 +724,7 @@
 
     .weekly-review-story {
       margin-top: 8px;
-      padding: 12px 15px;
+      padding: 13px 16px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.18);
       background:
@@ -732,7 +732,7 @@
         rgba(0,0,0,0.2);
       color: #f7f7f7;
       font-size: 16px;
-      line-height: 1.5;
+      line-height: 1.52;
     }
 
     .weekly-review-story p {
@@ -740,7 +740,7 @@
     }
 
     .weekly-review-story p + p {
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
     .weekly-review-panel {
@@ -2400,79 +2400,126 @@
       const paragraphs = [];
 
       const high = review.highestScore;
+      const low = review.lowestScore;
+      const average = review.leagueAverage;
+      const closest = review.closest;
       const blowout = review.blowout;
+      const biggestUpset = review.biggestUpset;
+      const highestLoss = review.highestLoss;
       const biggestRiser = review.risers?.[0] || null;
 
+      const topPlayer = playerReview?.topPlayers?.[0] || null;
+
       const topGoalScorer = playerReview?.mostGoals?.players?.[0] || null;
-      const topGoalCount = playerReview?.mostGoals?.value ?? null;
+      const topGoalCount = finitePlayerNumber(playerReview?.mostGoals?.value);
 
       const topBlocker = playerReview?.mostBlockedShots?.players?.[0] || null;
-      const topBlockCount = playerReview?.mostBlockedShots?.value ?? null;
+      const topBlockCount = finitePlayerNumber(playerReview?.mostBlockedShots?.value);
 
       const topGoalie = playerReview?.mostGoaliePoints?.players?.[0] || null;
-      const topGoaliePoints = playerReview?.mostGoaliePoints?.value ?? null;
+      const topGoaliePoints = finitePlayerNumber(playerReview?.mostGoaliePoints?.value);
 
-      const topOver = playerReview?.overperformers?.[0] || null;
-      const topUnder = playerReview?.underperformers?.[0] || null;
-
-      const first = [];
+      // Paragraph 1: how the league scored that week.
+      const scoring = [];
 
       if (high) {
-        first.push(
-          `${high.name} led the league with ${formatRating(high.score)} fantasy points`
+        scoring.push(
+          `${high.name} set the pace with ${formatRating(high.score)} fantasy points`
         );
       }
 
+      if (Number.isFinite(average)) {
+        scoring.push(
+          `the league averaged ${formatRating(average)} points per team`
+        );
+      }
+
+      if (high && low) {
+        scoring.push(
+          `the full scoring range stretched ${formatRating(high.score - low.score)} points from first to last`
+        );
+      }
+
+      if (closest) {
+        scoring.push(
+          `${closest.winner.name} survived the closest matchup, winning by ${formatRating(closest.margin)}`
+        );
+      }
+
+      if (scoring.length) {
+        paragraphs.push(`${scoring.join(". ")}.`);
+      }
+
+      // Paragraph 2: individual player performances.
+      const players = [];
+
+      if (topPlayer) {
+        const fpts = weeklyPlayerFantasyPoints(topPlayer);
+        if (fpts !== null) {
+          players.push(
+            `${topPlayer.name} was the week's highest-scoring individual player with ${formatRating(fpts)} fantasy points`
+          );
+        }
+      }
+
       if (topGoalScorer && topGoalCount !== null) {
-        first.push(
-          `${topGoalScorer.name} scored a week-high ${formatRating(topGoalCount)} goal${Number(topGoalCount) === 1 ? "" : "s"}`
+        players.push(
+          `${topGoalScorer.name} led all skaters with ${formatRating(topGoalCount)} goal${topGoalCount === 1 ? "" : "s"}`
         );
       }
 
       if (topBlocker && topBlockCount !== null) {
-        first.push(
-          `${topBlocker.name} led all skaters with ${formatRating(topBlockCount)} blocked shot${Number(topBlockCount) === 1 ? "" : "s"}`
+        players.push(
+          `${topBlocker.name} recorded a week-high ${formatRating(topBlockCount)} blocked shot${topBlockCount === 1 ? "" : "s"}`
         );
       }
 
       if (topGoalie && topGoaliePoints !== null) {
-        first.push(
-          `${topGoalie.name} was the top goalie with ${formatRating(topGoaliePoints)} fantasy points`
+        players.push(
+          `${topGoalie.name} led the goalies with ${formatRating(topGoaliePoints)} fantasy points`
         );
       }
 
-      if (first.length) {
-        paragraphs.push(`${first.join(". ")}.`);
+      if (players.length) {
+        paragraphs.push(`${players.join(". ")}.`);
       }
 
-      const second = [];
+      // Paragraph 3: matchup drama and movement in the rankings.
+      const drama = [];
 
       if (blowout) {
-        second.push(
-          `${blowout.winner.name} recorded the largest win of the week, beating ${blowout.loser.name} by ${formatRating(blowout.margin)} points`
+        drama.push(
+          `${blowout.winner.name} delivered the week's largest victory, beating ${blowout.loser.name} by ${formatRating(blowout.margin)} points`
         );
       }
 
-      if (topOver) {
-        second.push(
-          `${topOver.name} was the biggest overperformer at ${formatChange(topOver.delta)} points versus baseline`
+      if (biggestUpset && biggestUpset.winnerProbability < 0.5) {
+        drama.push(
+          `${biggestUpset.winner.name} pulled off the biggest upset despite only a ${formatPercent(biggestUpset.winnerProbability)} pre-week win probability`
+        );
+      } else if (review.upsetCount > 0) {
+        drama.push(
+          `${review.upsetCount} matchup${review.upsetCount === 1 ? "" : "s"} went to the pre-week ELO underdog`
         );
       }
 
-      if (topUnder) {
-        second.push(
-          `${topUnder.name} had the largest shortfall at ${formatChange(topUnder.delta)} versus baseline`
+      if (highestLoss) {
+        drama.push(
+          `${highestLoss.name} had the toughest loss, scoring ${formatRating(highestLoss.score)} points without a win`
         );
       }
 
       if (biggestRiser) {
-        second.push(
-          `${biggestRiser.name} made the biggest Power Rankings jump at ${formatChange(biggestRiser.eloChange)} ELO`
+        const rankText = biggestRiser.rankMovement
+          ? ` and moved ${movementText(biggestRiser.rankMovement)}`
+          : "";
+        drama.push(
+          `${biggestRiser.name} made the biggest Power Rankings gain at ${formatChange(biggestRiser.eloChange)} ELO${rankText}`
         );
       }
 
-      if (second.length) {
-        paragraphs.push(`${second.join(". ")}.`);
+      if (drama.length) {
+        paragraphs.push(`${drama.join(". ")}.`);
       }
 
       return paragraphs;
