@@ -2458,7 +2458,7 @@
       const topGoalie = playerReview?.mostGoaliePoints || null;
       const mostGoalsAllowed = playerReview?.mostGoalsAllowed || null;
 
-      // Paragraph 1 — team story
+      // 1. Fantasy-team story
       const teamStory = [];
 
       if (high && Number.isFinite(average)) {
@@ -2482,16 +2482,16 @@
         paragraphs.push(`${teamStory.join(". ")}.`);
       }
 
-      // Paragraph 2 — skater story
+      // 2. Skater story
       const skaterStory = [];
 
       if (mostGoals?.players?.length) {
-        const leaderText = weeklyLeaderNamesWithOwners(mostGoals);
         const goalCount = finitePlayerNumber(mostGoals.value);
-        const firstOwner = weeklyPlayerOwner(mostGoals.players[0]);
+        const leaderText = weeklyLeaderNamesWithOwners(mostGoals);
+        const owner = weeklyPlayerOwner(mostGoals.players[0]);
         const context =
           mostGoals.players.length === 1
-            ? weeklyTeamMatchupContext(firstOwner, review)
+            ? weeklyTeamMatchupContext(owner, review)
             : "";
 
         skaterStory.push(
@@ -2500,40 +2500,56 @@
       }
 
       if (mostBlocks?.players?.length) {
-        const leaderText = weeklyLeaderNamesWithOwners(mostBlocks);
         const blockCount = finitePlayerNumber(mostBlocks.value);
-        const firstOwner = weeklyPlayerOwner(mostBlocks.players[0]);
+        const leaderText = weeklyLeaderNamesWithOwners(mostBlocks);
+        const owner = weeklyPlayerOwner(mostBlocks.players[0]);
         const context =
           mostBlocks.players.length === 1
-            ? weeklyTeamMatchupContext(firstOwner, review)
+            ? weeklyTeamMatchupContext(owner, review)
             : "";
 
         skaterStory.push(
-          `${leaderText} led the week with ${formatRating(blockCount)} blocked shot${blockCount === 1 ? "" : "s"}${context ? `, ${context}` : ""}`
+          `${leaderText} led all skaters with ${formatRating(blockCount)} blocked shot${blockCount === 1 ? "" : "s"}${context ? `, ${context}` : ""}`
         );
+      }
+
+      // Never let the skater paragraph vanish completely just because an
+      // older export used a different stat-column label.
+      if (!skaterStory.length && playerReview?.topSkaters?.length) {
+        const bestSkater = playerReview.topSkaters[0];
+
+        const fpts = weeklyPlayerFantasyPoints(bestSkater);
+        const owner = weeklyPlayerOwner(bestSkater);
+        const context = weeklyTeamMatchupContext(owner, review);
+
+        if (bestSkater && fpts !== null) {
+          skaterStory.push(
+            `${weeklyPlayerWithOwner(bestSkater)} was the week's top available skater performance at ${formatRating(fpts)} fantasy points${context ? `, ${context}` : ""}`
+          );
+        }
       }
 
       if (skaterStory.length) {
         paragraphs.push(`${skaterStory.join(". ")}.`);
       }
 
-      // Paragraph 3 — goalie story
+      // 3. Goalie story
       const goalieStory = [];
 
       if (topGoalie?.players?.length) {
-        const leaderText = weeklyLeaderNamesWithOwners(topGoalie);
         const goaliePoints = finitePlayerNumber(topGoalie.value);
-        const firstOwner = weeklyPlayerOwner(topGoalie.players[0]);
+        const leaderText = weeklyLeaderNamesWithOwners(topGoalie);
+        const owner = weeklyPlayerOwner(topGoalie.players[0]);
 
         let context = "";
         if (
           topGoalie.players.length === 1 &&
-          firstOwner &&
-          high?.name === firstOwner
+          owner &&
+          high?.name === owner
         ) {
-          context = `helping ${firstOwner} post the week's highest team score`;
+          context = `helping ${owner} post the week's highest team score`;
         } else if (topGoalie.players.length === 1) {
-          context = weeklyTeamMatchupContext(firstOwner, review);
+          context = weeklyTeamMatchupContext(owner, review);
         }
 
         goalieStory.push(
@@ -2542,26 +2558,18 @@
       }
 
       if (mostGoalsAllowed?.players?.length) {
+        const ga = finitePlayerNumber(mostGoalsAllowed.value);
         const leaderText = weeklyLeaderNamesWithOwners(mostGoalsAllowed);
-        const goalsAgainst = finitePlayerNumber(mostGoalsAllowed.value);
         const first = mostGoalsAllowed.players[0];
-        const firstOwner = weeklyPlayerOwner(first);
-        const fantasyPoints = weeklyPlayerFantasyPoints(first);
+        const owner = weeklyPlayerOwner(first);
+        const fpts = weeklyPlayerFantasyPoints(first);
         const context =
           mostGoalsAllowed.players.length === 1
-            ? weeklyTeamMatchupContext(firstOwner, review)
+            ? weeklyTeamMatchupContext(owner, review)
             : "";
 
-        let extra = "";
-        if (
-          mostGoalsAllowed.players.length === 1 &&
-          fantasyPoints !== null
-        ) {
-          extra = ` and finished with ${formatRating(fantasyPoints)} fantasy points`;
-        }
-
         goalieStory.push(
-          `${leaderText} allowed the most goals at ${formatRating(goalsAgainst)}${extra}${context ? `, ${context}` : ""}`
+          `${leaderText} allowed a week-high ${formatRating(ga)} goal${ga === 1 ? "" : "s"}${mostGoalsAllowed.players.length === 1 && fpts !== null ? ` while scoring ${formatRating(fpts)} fantasy points` : ""}${context ? `, ${context}` : ""}`
         );
       }
 
@@ -2630,11 +2638,61 @@
       );
     }
 
+    function normalizeWeeklyStatLabel(value) {
+      return String(value ?? "")
+        .toLowerCase()
+        .replace(/&amp;/g, "and")
+        .replace(/[^a-z0-9]+/g, "");
+    }
+
     function weeklyPlayerStat(player, keys) {
+      // First use the normalized summary fields produced by the newest exporter.
       for (const key of keys) {
         const direct = finitePlayerNumber(player?.summaryStats?.[key]);
         if (direct !== null) return direct;
       }
+
+      // Older rich exports still preserve every Fantrax column in player.stats.
+      // Search those raw labels so G / Blk / GA continue to work historically.
+      const rawStats = player?.stats && typeof player.stats === "object"
+        ? player.stats
+        : {};
+
+      const candidates = keys.map(normalizeWeeklyStatLabel);
+
+      for (const [label, value] of Object.entries(rawStats)) {
+        const normalized = normalizeWeeklyStatLabel(label);
+
+        const aliases = {
+          goals: ["g", "goal", "goals"],
+          blockedShots: [
+            "blk", "blks", "block", "blocks",
+            "blockedshot", "blockedshots", "bs"
+          ],
+          goalsAgainst: [
+            "ga", "goalagainst", "goalsagainst"
+          ],
+          goalieStarts: ["gs", "gamestarted", "gamesstarted"],
+          wins: ["w", "win", "wins"],
+          shutouts: ["sho", "shutout", "shutouts"],
+          saves: ["sv", "save", "saves"],
+          assists: ["a", "assist", "assists"],
+          sog: ["sog", "shotongoal", "shotsongoal", "shots"],
+          stp: ["stp", "specialteampoints", "specialteamspoints"],
+          hitsBlocks: ["hb", "hitsblocks", "hitsandblocks"]
+        };
+
+        const expanded = new Set(candidates);
+        for (const key of keys) {
+          (aliases[key] || []).forEach(alias => expanded.add(alias));
+        }
+
+        if (expanded.has(normalized)) {
+          const number = finitePlayerNumber(value);
+          if (number !== null) return number;
+        }
+      }
+
       return null;
     }
 
@@ -2679,8 +2737,8 @@
       if (!players.length) {
         return {
           available: false,
-          topPlayers: [],
-          overperformers: [],
+          topSkaters: [],
+          topGoalies: [],
           underperformers: [],
           mostGoals: null,
           mostBlockedShots: null,
@@ -2689,7 +2747,17 @@
         };
       }
 
-      const topPlayers = players
+      const topSkaters = players
+        .filter(player => !weeklyPlayerIsGoalie(player))
+        .slice()
+        .sort((a, b) =>
+          weeklyPlayerFantasyPoints(b) - weeklyPlayerFantasyPoints(a) ||
+          String(a.name).localeCompare(String(b.name))
+        )
+        .slice(0, 3);
+
+      const topGoalies = players
+        .filter(player => weeklyPlayerIsGoalie(player))
         .slice()
         .sort((a, b) =>
           weeklyPlayerFantasyPoints(b) - weeklyPlayerFantasyPoints(a) ||
@@ -2699,13 +2767,13 @@
 
       const mostGoals = weeklyLeaderByValue(
         players,
-        player => player?.summaryStats?.goals,
+        player => weeklyPlayerStat(player, ["goals"]),
         player => !weeklyPlayerIsGoalie(player)
       );
 
       const mostBlockedShots = weeklyLeaderByValue(
         players,
-        player => player?.summaryStats?.blockedShots,
+        player => weeklyPlayerStat(player, ["blockedShots"]),
         player => !weeklyPlayerIsGoalie(player)
       );
 
@@ -2717,7 +2785,7 @@
 
       const mostGoalsAllowed = weeklyLeaderByValue(
         players,
-        player => player?.summaryStats?.goalsAgainst,
+        player => weeklyPlayerStat(player, ["goalsAgainst"]),
         player => weeklyPlayerIsGoalie(player)
       );
 
@@ -2751,12 +2819,6 @@
         })
         .filter(Boolean);
 
-      const overperformers = performance
-        .filter(player => player.delta > 0)
-        .slice()
-        .sort((a, b) => b.delta - a.delta || b.actual - a.actual)
-        .slice(0, 3);
-
       const underperformers = performance
         .filter(player => player.delta < 0)
         .slice()
@@ -2765,8 +2827,8 @@
 
       return {
         available: true,
-        topPlayers,
-        overperformers,
+        topSkaters,
+        topGoalies,
         underperformers,
         mostGoals,
         mostBlockedShots,
@@ -2907,15 +2969,15 @@
         ? `
           <div class="weekly-player-grid">
             <div class="weekly-player-panel">
-              <h3>Top Players</h3>
+              <h3>Top Skaters</h3>
               <div class="weekly-player-list">
-                ${renderWeeklyPlayerRows(playerReview.topPlayers, "score")}
+                ${renderWeeklyPlayerRows(playerReview.topSkaters, "score")}
               </div>
             </div>
             <div class="weekly-player-panel">
-              <h3>Overperformers</h3>
+              <h3>Top Goalies</h3>
               <div class="weekly-player-list">
-                ${renderWeeklyPlayerRows(playerReview.overperformers, "performance")}
+                ${renderWeeklyPlayerRows(playerReview.topGoalies, "score")}
               </div>
             </div>
             <div class="weekly-player-panel">
