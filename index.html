@@ -704,6 +704,190 @@
       color: var(--black);
     }
 
+    .weekly-review-card {
+      grid-column: 1 / -1;
+    }
+
+    .weekly-review-card .analysis-card-header {
+      align-items: center;
+    }
+
+    .weekly-review-date {
+      color: var(--silver-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.86;
+      text-align: right;
+    }
+
+    .weekly-review-story {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025)),
+        rgba(0,0,0,0.16);
+      color: var(--silver-light);
+      font-size: 13px;
+      line-height: 1.58;
+    }
+
+    .weekly-review-story p {
+      margin: 0;
+    }
+
+    .weekly-review-story p + p {
+      margin-top: 8px;
+    }
+
+    .weekly-review-stats {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .weekly-review-stat {
+      min-width: 0;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.13);
+      background: linear-gradient(145deg, rgba(111,0,31,.38), rgba(0,0,0,.34));
+    }
+
+    .weekly-review-stat span {
+      display: block;
+      color: var(--silver);
+      font-size: 8px;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .weekly-review-stat strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--white);
+      font-size: 15px;
+      line-height: 1.08;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .weekly-review-stat small {
+      display: block;
+      margin-top: 3px;
+      color: var(--silver-light);
+      font-size: 9px;
+      line-height: 1.25;
+      opacity: .82;
+    }
+
+    .weekly-review-columns {
+      display: grid;
+      grid-template-columns: minmax(230px, .72fr) minmax(0, 1.75fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .weekly-review-panel {
+      min-width: 0;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.19);
+    }
+
+    .weekly-review-panel h3 {
+      margin: 0 0 9px;
+      color: var(--silver-light);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .weekly-movers {
+      display: grid;
+      gap: 7px;
+    }
+
+    .weekly-mover {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 9px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.035);
+    }
+
+    .weekly-mover strong {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 10px;
+    }
+
+    .weekly-mover span {
+      color: var(--silver);
+      font-size: 9px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .weekly-mover .positive { color: #b8f5d0; }
+    .weekly-mover .negative { color: #ffb8bd; }
+
+    .weekly-matchup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .weekly-matchup-card {
+      min-width: 0;
+      padding: 10px 11px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(135deg, rgba(255,255,255,.045), rgba(0,0,0,.12));
+    }
+
+    .weekly-matchup-score {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 950;
+    }
+
+    .weekly-matchup-score strong {
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .weekly-matchup-card p {
+      margin: 6px 0 0;
+      color: var(--silver);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+
+    .weekly-review-player-note {
+      margin-top: 10px;
+      color: var(--silver);
+      font-size: 9px;
+      line-height: 1.45;
+      opacity: .72;
+    }
+
     .footer-line {
       display: none;
     }
@@ -723,6 +907,8 @@
       .board-top-right { justify-content: space-between; }
       .league-logo { width: 82px; height: 82px; }
       .analysis-chip { align-self: flex-start; }
+      .weekly-review-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .weekly-review-columns, .weekly-matchup-grid { grid-template-columns: 1fr; }
       .rank-card { grid-template-columns: 44px 1fr 74px; }
       .movement { grid-column: 1 / -1; }
       h1 { font-size: 44px; }
@@ -812,6 +998,14 @@
         <div class="rankings-grid" id="rankings"></div>
 
         <div class="analysis-stack" id="analysisStack">
+          <section class="analysis-card analysis-card-wide weekly-review-card" id="weeklyReviewCard">
+            <div class="analysis-card-header">
+              <h2 id="weeklyReviewTitle">Weekly Review</h2>
+              <div class="weekly-review-date" id="weeklyReviewDate"></div>
+            </div>
+            <div id="weeklyReviewContent"></div>
+          </section>
+
           <section class="analysis-card analysis-card-wide">
             <div class="analysis-card-header">
               <h2 id="nextWeekTitle">Next Week Win Probabilities</h2>
@@ -2028,7 +2222,374 @@
         .join("");
     }
 
+    function buildWeeklyReview() {
+      if (!fantraxSeasonData) return null;
+
+      const period = getCurrentScoringPeriod();
+      if (!period) return { period: 0, available: false };
+
+      const week = getSortedSeasonWeeks().find(
+        item => Number(item.scoringPeriod) === period
+      );
+
+      if (!week || !fantraxWeekHasCompleteScores(week)) {
+        return { period, available: false, week };
+      }
+
+      const entries = getWeeklyScoreEntries(week)
+        .slice()
+        .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+
+      const leagueAverage = entries.length
+        ? entries.reduce((sum, entry) => sum + entry.score, 0) / entries.length
+        : 0;
+
+      const scoreRank = new Map(
+        entries.map((entry, index) => [entry.name, index + 1])
+      );
+
+      const stateTeamMap = new Map(state.teams.map(team => [team.name, team]));
+      const previousWeekIndex = Math.max(0, state.currentWeek - 1);
+      const previousRatings = new Map(
+        state.teams.map(team => [
+          team.name,
+          getValueForWeek(team, previousWeekIndex)
+        ])
+      );
+
+      const matchups = [];
+      const winners = [];
+      const losers = [];
+
+      (week.matchups || []).forEach(matchup => {
+        const awayName = String(matchup?.away?.name || "");
+        const homeName = String(matchup?.home?.name || "");
+        const awayScore = Number(matchup?.away?.score);
+        const homeScore = Number(matchup?.home?.score);
+
+        if (
+          !awayName ||
+          !homeName ||
+          !Number.isFinite(awayScore) ||
+          !Number.isFinite(homeScore)
+        ) return;
+
+        const awayTeam = stateTeamMap.get(awayName);
+        const homeTeam = stateTeamMap.get(homeName);
+        const awayPreviousElo = Number(previousRatings.get(awayName) || 1000);
+        const homePreviousElo = Number(previousRatings.get(homeName) || 1000);
+        const awayCurrentElo = getValueForWeek(awayTeam || { elo: [1000] }, state.currentWeek);
+        const homeCurrentElo = getValueForWeek(homeTeam || { elo: [1000] }, state.currentWeek);
+
+        const awayProbability = eloWinProbability(awayPreviousElo, homePreviousElo);
+        const homeProbability = 1 - awayProbability;
+
+        if (awayScore === homeScore) {
+          matchups.push({
+            tied: true,
+            awayName,
+            homeName,
+            awayScore,
+            homeScore,
+            margin: 0,
+            awayProbability,
+            homeProbability,
+            awayEloChange: awayCurrentElo - awayPreviousElo,
+            homeEloChange: homeCurrentElo - homePreviousElo
+          });
+          return;
+        }
+
+        const awayWon = awayScore > homeScore;
+        const winner = {
+          name: awayWon ? awayName : homeName,
+          score: awayWon ? awayScore : homeScore,
+          probability: awayWon ? awayProbability : homeProbability,
+          eloChange: awayWon
+            ? awayCurrentElo - awayPreviousElo
+            : homeCurrentElo - homePreviousElo
+        };
+        const loser = {
+          name: awayWon ? homeName : awayName,
+          score: awayWon ? homeScore : awayScore,
+          probability: awayWon ? homeProbability : awayProbability,
+          eloChange: awayWon
+            ? homeCurrentElo - homePreviousElo
+            : awayCurrentElo - awayPreviousElo
+        };
+
+        winners.push(winner);
+        losers.push(loser);
+        matchups.push({
+          tied: false,
+          awayName,
+          homeName,
+          awayScore,
+          homeScore,
+          winner,
+          loser,
+          margin: Math.abs(awayScore - homeScore),
+          winnerProbability: winner.probability,
+          winnerScoreRank: scoreRank.get(winner.name) || null,
+          loserScoreRank: scoreRank.get(loser.name) || null
+        });
+      });
+
+      const decided = matchups.filter(matchup => !matchup.tied);
+      const closest = decided.length
+        ? decided.slice().sort((a, b) => a.margin - b.margin || b.winner.score - a.winner.score)[0]
+        : null;
+      const blowout = decided.length
+        ? decided.slice().sort((a, b) => b.margin - a.margin || b.winner.score - a.winner.score)[0]
+        : null;
+      const biggestUpset = decided.length
+        ? decided.slice().sort((a, b) => a.winnerProbability - b.winnerProbability || b.margin - a.margin)[0]
+        : null;
+      const highestLoss = losers.length
+        ? losers.slice().sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))[0]
+        : null;
+      const highestScore = entries[0] || null;
+      const lowestScore = entries[entries.length - 1] || null;
+
+      const rankData = buildRankData(state.currentWeek);
+      const risers = rankData
+        .filter(team => team.eloChange > 0)
+        .slice()
+        .sort((a, b) => b.eloChange - a.eloChange || b.rankMovement - a.rankMovement)
+        .slice(0, 3);
+      const fallers = rankData
+        .filter(team => team.eloChange < 0)
+        .slice()
+        .sort((a, b) => a.eloChange - b.eloChange || a.rankMovement - b.rankMovement)
+        .slice(0, 3);
+
+      const upsetCount = decided.filter(matchup => matchup.winnerProbability < 0.5).length;
+
+      return {
+        available: true,
+        period,
+        week,
+        entries,
+        leagueAverage,
+        matchups,
+        closest,
+        blowout,
+        biggestUpset,
+        highestLoss,
+        highestScore,
+        lowestScore,
+        risers,
+        fallers,
+        upsetCount
+      };
+    }
+
+    function weeklyReviewNarrative(review) {
+      if (!review?.available) return [];
+
+      const paragraphs = [];
+      const high = review.highestScore;
+      const average = review.leagueAverage;
+
+      if (high) {
+        const aboveAverage = high.score - average;
+        paragraphs.push(
+          `Week ${review.period} was led by ${high.name}, which posted ${formatRating(high.score)} points${aboveAverage > 0 ? `, ${formatRating(aboveAverage)} above the league average` : ""}. The league averaged ${formatRating(average)} points across ${review.entries.length} teams.`
+        );
+      }
+
+      const details = [];
+      if (review.closest) {
+        details.push(
+          `${review.closest.winner.name} survived the closest matchup, beating ${review.closest.loser.name} by ${formatRating(review.closest.margin)} points`
+        );
+      }
+      if (review.blowout && review.blowout !== review.closest) {
+        details.push(
+          `${review.blowout.winner.name} delivered the biggest win, finishing ${formatRating(review.blowout.margin)} points ahead of ${review.blowout.loser.name}`
+        );
+      }
+      if (details.length) {
+        paragraphs.push(`${details.join(". ")}.`);
+      }
+
+      if (review.biggestUpset) {
+        if (review.biggestUpset.winnerProbability < 0.5) {
+          paragraphs.push(
+            `The biggest upset belonged to ${review.biggestUpset.winner.name}, which entered the week with only a ${formatPercent(review.biggestUpset.winnerProbability)} win probability against ${review.biggestUpset.loser.name}. ${review.upsetCount > 1 ? `${review.upsetCount} underdogs won during the week.` : "It was the week's only ELO underdog victory."}`
+          );
+        } else {
+          paragraphs.push(
+            `${review.biggestUpset.winner.name} had the least certain win of the week at ${formatPercent(review.biggestUpset.winnerProbability)} entering its matchup with ${review.biggestUpset.loser.name}; every winner was favoured by ELO.`
+          );
+        }
+      }
+
+      if (review.highestLoss) {
+        paragraphs.push(
+          `${review.highestLoss.name} had the toughest scoring result, putting up ${formatRating(review.highestLoss.score)} points and still taking a loss.`
+        );
+      }
+
+      return paragraphs;
+    }
+
+    function matchupReviewText(matchup, review) {
+      if (matchup.tied) {
+        return `${matchup.awayName} and ${matchup.homeName} finished level at ${formatRating(matchup.awayScore)} points.`;
+      }
+
+      const parts = [];
+      parts.push(
+        `${matchup.winner.name} beat ${matchup.loser.name} ${formatRating(matchup.winner.score)}–${formatRating(matchup.loser.score)}.`
+      );
+
+      if (review.closest === matchup) {
+        parts.push(`It was the week's closest game.`);
+      } else if (review.blowout === matchup) {
+        parts.push(`The ${formatRating(matchup.margin)}-point margin was the largest of the week.`);
+      }
+
+      if (matchup.winnerProbability < 0.5) {
+        parts.push(
+          `${matchup.winner.name} entered as a ${formatPercent(matchup.winnerProbability)} ELO underdog.`
+        );
+      } else {
+        parts.push(
+          `${matchup.winner.name} entered with a ${formatPercent(matchup.winnerProbability)} win probability.`
+        );
+      }
+
+      if (review.highestScore?.name === matchup.winner.name) {
+        parts.push(`${matchup.winner.name} also posted the league's highest score.`);
+      }
+
+      if (review.highestLoss?.name === matchup.loser.name) {
+        parts.push(`${matchup.loser.name} recorded the week's highest score in a loss.`);
+      }
+
+      return parts.join(" ");
+    }
+
+    function renderWeeklyReview() {
+      const title = document.getElementById("weeklyReviewTitle");
+      const date = document.getElementById("weeklyReviewDate");
+      const content = document.getElementById("weeklyReviewContent");
+      if (!title || !date || !content) return;
+
+      const review = buildWeeklyReview();
+      if (!review || !review.available) {
+        title.textContent = review?.period ? `Week ${review.period} Review` : "Weekly Review";
+        date.textContent = "";
+        content.innerHTML =
+          '<div class="analysis-empty">Select a completed week to generate the weekly recap.</div>';
+        return;
+      }
+
+      title.textContent = `Week ${review.period} Review`;
+      date.textContent = String(review.week?.dateRange || "").replace(/[()]/g, "");
+
+      const narrative = weeklyReviewNarrative(review)
+        .map(paragraph => `<p>${escapeHtml(paragraph)}</p>`)
+        .join("");
+
+      const stats = [
+        {
+          label: "High Score",
+          value: review.highestScore?.name || "—",
+          detail: review.highestScore ? `${formatRating(review.highestScore.score)} points` : "—"
+        },
+        {
+          label: "League Average",
+          value: formatRating(review.leagueAverage),
+          detail: `${review.entries.length} teams`
+        },
+        {
+          label: "Closest Game",
+          value: review.closest?.winner?.name || "—",
+          detail: review.closest ? `by ${formatRating(review.closest.margin)}` : "—"
+        },
+        {
+          label: "Biggest Win",
+          value: review.blowout?.winner?.name || "—",
+          detail: review.blowout ? `by ${formatRating(review.blowout.margin)}` : "—"
+        },
+        {
+          label: "Biggest Upset",
+          value: review.biggestUpset?.winner?.name || "—",
+          detail: review.biggestUpset ? `${formatPercent(review.biggestUpset.winnerProbability)} pre-week` : "—"
+        },
+        {
+          label: "High Score in Loss",
+          value: review.highestLoss?.name || "—",
+          detail: review.highestLoss ? `${formatRating(review.highestLoss.score)} points` : "—"
+        }
+      ];
+
+      const moverRows = [
+        ...review.risers.map(team => ({ ...team, direction: "up" })),
+        ...review.fallers.map(team => ({ ...team, direction: "down" }))
+      ];
+
+      const movers = moverRows.length
+        ? moverRows.map(team => `
+            <div class="weekly-mover">
+              <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
+              <span class="${team.direction === "up" ? "positive" : "negative"}">
+                ${formatChange(team.eloChange)} ELO${team.rankMovement ? ` · ${movementText(team.rankMovement)}` : ""}
+              </span>
+            </div>
+          `).join("")
+        : '<div class="analysis-empty">No ELO movement for this week.</div>';
+
+      const matchupCards = review.matchups.map(matchup => {
+        const scoreLine = matchup.tied
+          ? `${formatRating(matchup.awayScore)}–${formatRating(matchup.homeScore)}`
+          : `${formatRating(matchup.winner.score)}–${formatRating(matchup.loser.score)}`;
+        const nameLine = matchup.tied
+          ? `${matchup.awayName} vs ${matchup.homeName}`
+          : `${matchup.winner.name} over ${matchup.loser.name}`;
+
+        return `
+          <div class="weekly-matchup-card">
+            <div class="weekly-matchup-score">
+              <span title="${escapeAttribute(nameLine)}">${escapeHtml(nameLine)}</span>
+              <strong>${escapeHtml(scoreLine)}</strong>
+            </div>
+            <p>${escapeHtml(matchupReviewText(matchup, review))}</p>
+          </div>
+        `;
+      }).join("");
+
+      content.innerHTML = `
+        <div class="weekly-review-story">${narrative}</div>
+        <div class="weekly-review-stats">
+          ${stats.map(stat => `
+            <div class="weekly-review-stat">
+              <span>${escapeHtml(stat.label)}</span>
+              <strong title="${escapeAttribute(stat.value)}">${escapeHtml(stat.value)}</strong>
+              <small>${escapeHtml(stat.detail)}</small>
+            </div>
+          `).join("")}
+        </div>
+        <div class="weekly-review-columns">
+          <div class="weekly-review-panel">
+            <h3>Power Ranking Movers</h3>
+            <div class="weekly-movers">${movers}</div>
+          </div>
+          <div class="weekly-review-panel">
+            <h3>Matchup Recaps</h3>
+            <div class="weekly-matchup-grid">${matchupCards}</div>
+          </div>
+        </div>
+        <div class="weekly-review-player-note">
+          Player-level stars, goalie leaders, and over/underperformers will appear here once the player-week export is added.
+        </div>
+      `;
+    }
+
     function renderAnalysisCards() {
+      renderWeeklyReview();
       const nextWeekTitle = document.getElementById("nextWeekTitle");
       const nextWeekMatchups = document.getElementById("nextWeekMatchups");
       const projected = document.getElementById("projectedStandings");
@@ -2221,7 +2782,7 @@
               <strong title="${escapeAttribute(team.name)}">${escapeHtml(team.name)}</strong>
             </div>
             <div class="analysis-value">
-              <span>Avg win odds</span>
+              <span>Avg team win probability</span>
               <strong>${formatPercent(team.avgWinProbability)}</strong>
             </div>
           </div>
