@@ -2529,7 +2529,8 @@
           : statLabel.plural;
 
       if (!matchup) {
-        return `${playerName} ${statVerb} ${formatRating(statValue)} ${pluralLabel}.`;
+        const subject = teamName ? `${playerName} (${teamName})` : playerName;
+        return `${subject} ${statVerb} ${formatRating(statValue)} ${pluralLabel}.`;
       }
 
       if (matchup.result === "win") {
@@ -2581,7 +2582,8 @@
           : "";
 
       if (!matchup) {
-        return `${playerName} allowed a week-high ${formatRating(goalsAgainst)} goals in ${gameText}${averageText}.`;
+        const subject = teamName ? `${playerName} (${teamName})` : playerName;
+        return `${subject} allowed a week-high ${formatRating(goalsAgainst)} goals in ${gameText}${averageText}.`;
       }
 
       if (matchup.result === "win") {
@@ -2609,6 +2611,71 @@
       }
 
       return `${playerName} allowed ${formatRating(goalsAgainst)} goals in ${gameText}${averageText} as ${teamName} tied ${matchup.opponent}.`;
+    }
+
+    function weeklyPlayerNameList(players) {
+      const names = (players || [])
+        .map(player => String(player?.name || "").trim())
+        .filter(Boolean);
+
+      if (!names.length) return "";
+      if (names.length === 1) return names[0];
+      if (names.length === 2) return `${names[0]} and ${names[1]}`;
+      return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
+    }
+
+    function allPlayersShareFantasyTeam(players) {
+      const teams = (players || [])
+        .map(weeklyPlayerOwner)
+        .filter(Boolean);
+
+      return teams.length === players.length &&
+        new Set(teams).size === 1;
+    }
+
+    function sameTeamTieImpactSentence({
+      players,
+      teamName,
+      statValue,
+      statLabel,
+      review,
+      seed
+    }) {
+      const names = weeklyPlayerNameList(players);
+      const matchup = weeklyMatchupForTeam(teamName, review);
+      const pluralLabel = Number(statValue) === 1
+        ? statLabel.singular
+        : statLabel.plural;
+
+      if (!matchup) {
+        return `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece for ${teamName}.`;
+      }
+
+      if (matchup.result === "win") {
+        const templates = [
+          `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece, helping ${teamName} beat ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+          `${names} each posted ${formatRating(statValue)} ${pluralLabel}, helping power ${teamName} past ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+          `${names} combined to lead the week at ${formatRating(statValue)} ${pluralLabel} apiece as ${teamName} defeated ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+        ];
+
+        return templates[
+          stableNarrativeIndex(`${seed}|same-team-win|${teamName}`, templates.length)
+        ];
+      }
+
+      if (matchup.result === "loss") {
+        const templates = [
+          `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece, but it wasn't enough as ${teamName} lost to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`,
+          `Despite ${names} each recording ${formatRating(statValue)} ${pluralLabel}, ${teamName} came up ${formatRating(matchup.margin)} points short against ${matchup.opponent}.`,
+          `${names} each delivered ${formatRating(statValue)} ${pluralLabel}, but ${teamName} still fell to ${matchup.opponent} by ${formatRating(matchup.margin)} points.`
+        ];
+
+        return templates[
+          stableNarrativeIndex(`${seed}|same-team-loss|${teamName}`, templates.length)
+        ];
+      }
+
+      return `${names} shared the weekly lead with ${formatRating(statValue)} ${pluralLabel} apiece as ${teamName} tied ${matchup.opponent}.`;
     }
 
     function weeklyReviewNarrative(review, playerReview) {
@@ -2656,7 +2723,7 @@
 
           paragraphs.push(
             skaterImpactSentence({
-              playerName: `${player.name} (${owner})`,
+              playerName: player.name,
               teamName: owner,
               statValue: goalCount,
               statLabel: {
@@ -2668,11 +2735,27 @@
               seed: `week-${review.period}-goals`
             })
           );
+        } else if (allPlayersShareFantasyTeam(mostGoals.players)) {
+          const owner = weeklyPlayerOwner(mostGoals.players[0]);
+
+          paragraphs.push(
+            sameTeamTieImpactSentence({
+              players: mostGoals.players,
+              teamName: owner,
+              statValue: goalCount,
+              statLabel: {
+                singular: "goal",
+                plural: "goals"
+              },
+              review,
+              seed: `week-${review.period}-goals`
+            })
+          );
         } else {
           const tiedSentences = mostGoals.players.map(player => {
             const owner = weeklyPlayerOwner(player);
             return skaterImpactSentence({
-              playerName: `${player.name} (${owner})`,
+              playerName: player.name,
               teamName: owner,
               statValue: goalCount,
               statLabel: {
@@ -2701,7 +2784,7 @@
 
           paragraphs.push(
             skaterImpactSentence({
-              playerName: `${player.name} (${owner})`,
+              playerName: player.name,
               teamName: owner,
               statValue: blockCount,
               statLabel: {
@@ -2713,11 +2796,27 @@
               seed: `week-${review.period}-blocks`
             })
           );
+        } else if (allPlayersShareFantasyTeam(mostBlocks.players)) {
+          const owner = weeklyPlayerOwner(mostBlocks.players[0]);
+
+          paragraphs.push(
+            sameTeamTieImpactSentence({
+              players: mostBlocks.players,
+              teamName: owner,
+              statValue: blockCount,
+              statLabel: {
+                singular: "blocked shot",
+                plural: "blocked shots"
+              },
+              review,
+              seed: `week-${review.period}-blocks`
+            })
+          );
         } else {
           const tiedSentences = mostBlocks.players.map(player => {
             const owner = weeklyPlayerOwner(player);
             return skaterImpactSentence({
-              playerName: `${player.name} (${owner})`,
+              playerName: player.name,
               teamName: owner,
               statValue: blockCount,
               statLabel: {
@@ -2748,7 +2847,7 @@
           const avg = gp !== null && gp > 0 && fpts !== null ? fpts / gp : null;
           paragraphs.push(
             goalieAdversitySentence({
-              playerName: weeklyPlayerWithOwner(player),
+              playerName: player.name,
               teamName: owner,
               goalsAgainst: ga,
               gamesPlayed: gp,
