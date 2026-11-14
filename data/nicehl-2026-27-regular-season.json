@@ -1,7 +1,7 @@
 {
   "version": 2,
   "exportType": "nicehl-regular-season-with-player-weeks",
-  "exportedAt": "2026-11-14T20:34:58.053Z",
+  "exportedAt": "2026-11-14T20:44:45.565Z",
   "league": {
     "leagueId": "nkff39cwmqn26z64",
     "leagueHistoryId": "dh8whnfikbr76sso",
@@ -1616,7 +1616,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 9.5,
           "stats": {
-            "Rk": 117,
+            "Rk": 118,
             "Sta": "DRIFT",
             "Ros": 83,
             "Age": 40,
@@ -2090,7 +2090,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 8.5,
           "stats": {
-            "Rk": 119,
+            "Rk": 120,
             "Sta": "SYN",
             "Ros": 96,
             "Age": 30,
@@ -2232,7 +2232,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 8.5,
           "stats": {
-            "Rk": 140,
+            "Rk": 141,
             "Sta": "ACC",
             "Ros": 97,
             "Age": 21,
@@ -2659,7 +2659,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 15,
           "stats": {
-            "Rk": 116,
+            "Rk": 117,
             "Sta": "Fishers",
             "Ros": 83,
             "Age": 29,
@@ -2897,7 +2897,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 7,
           "stats": {
-            "Rk": 550,
+            "Rk": 551,
             "Sta": "WWP",
             "Ros": 56,
             "Age": 20,
@@ -3227,7 +3227,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 3.25,
           "stats": {
-            "Rk": 132,
+            "Rk": 133,
             "Sta": "BIB",
             "Ros": 55,
             "Age": 22,
@@ -3653,7 +3653,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 128,
+            "Rk": 129,
             "Sta": "MPV",
             "Ros": 92,
             "Age": 32,
@@ -3795,7 +3795,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 6,
           "stats": {
-            "Rk": 543,
+            "Rk": 544,
             "Sta": "Metz17",
             "Ros": 98,
             "Age": 31,
@@ -4504,7 +4504,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.67,
           "stats": {
-            "Rk": 238,
+            "Rk": 239,
             "Sta": "Metz17",
             "Ros": 30,
             "Age": 25,
@@ -4789,7 +4789,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5.5,
           "stats": {
-            "Rk": 123,
+            "Rk": 116,
             "Sta": "POT",
             "Ros": 67,
             "Age": 28,
@@ -5075,7 +5075,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 127,
+            "Rk": 128,
             "Sta": "PBW",
             "Ros": 99,
             "Age": 26,
@@ -5359,7 +5359,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 129,
+            "Rk": 130,
             "Sta": "LYON",
             "Ros": 20,
             "Age": 33,
@@ -5406,7 +5406,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 134,
+            "Rk": 135,
             "Sta": "ACC",
             "Ros": 83,
             "Age": 23,
@@ -5641,7 +5641,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 139,
+            "Rk": 140,
             "Sta": "LYON",
             "Ros": 59,
             "Age": 30,
@@ -5926,7 +5926,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4.5,
           "stats": {
-            "Rk": 135,
+            "Rk": 136,
             "Sta": "BIB",
             "Ros": 83,
             "Age": 29,
@@ -6021,7 +6021,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4.5,
           "stats": {
-            "Rk": 131,
+            "Rk": 132,
             "Sta": "DRIFT",
             "Ros": 52,
             "Age": 33,
@@ -6116,7 +6116,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4.5,
           "stats": {
-            "Rk": 466,
+            "Rk": 467,
             "Sta": "SYN",
             "Ros": 70,
             "Age": 25,
@@ -6352,7 +6352,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 136,
+            "Rk": 137,
             "Sta": "Fishers",
             "Ros": 99,
             "Age": 29,
@@ -6494,7 +6494,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4.5,
           "stats": {
-            "Rk": 126,
+            "Rk": 127,
             "Sta": "MPV",
             "Ros": 73,
             "Age": 36,
@@ -6682,7 +6682,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 468,
+            "Rk": 469,
             "Sta": "RCBW",
             "Ros": 85,
             "Age": 29,
@@ -6776,7 +6776,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 228,
+            "Rk": 229,
             "Sta": "RCBW",
             "Ros": 71,
             "Age": 25,
@@ -7154,7 +7154,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 235,
+            "Rk": 236,
             "Sta": "Fishers",
             "Ros": 64,
             "Age": 27,
@@ -7249,7 +7249,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 121,
+            "Rk": 122,
             "Sta": "DRIFT",
             "Ros": 89,
             "Age": 33,
@@ -8104,7 +8104,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.33,
           "stats": {
-            "Rk": 138,
+            "Rk": 139,
             "Sta": "POT",
             "Ros": 69,
             "Age": 20,
@@ -8199,7 +8199,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 3.5,
           "stats": {
-            "Rk": 242,
+            "Rk": 243,
             "Sta": "WWP",
             "Ros": 89,
             "Age": 26,
@@ -8576,7 +8576,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 230,
+            "Rk": 231,
             "Sta": "HPH",
             "Ros": 53,
             "Age": 22,
@@ -8670,7 +8670,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 142,
+            "Rk": 143,
             "Sta": "DRIFT",
             "Ros": 72,
             "Age": 30,
@@ -8812,7 +8812,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 125,
+            "Rk": 126,
             "Sta": "LYON",
             "Ros": 15,
             "Age": 33,
@@ -9095,7 +9095,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 233,
+            "Rk": 234,
             "Sta": "ACC",
             "Ros": 75,
             "Age": 30,
@@ -9476,7 +9476,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 133,
+            "Rk": 134,
             "Sta": "MPV",
             "Ros": 95,
             "Age": 30,
@@ -9523,7 +9523,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 477,
+            "Rk": 478,
             "Sta": "PPJ",
             "Ros": 24,
             "Age": 22,
@@ -9806,7 +9806,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 118,
+            "Rk": 119,
             "Sta": "Fishers",
             "Ros": 78,
             "Age": 32,
@@ -10184,7 +10184,7 @@
           "gamesPlayed": 2.99,
           "fantasyPointsPerGame": 1.67,
           "stats": {
-            "Rk": 562,
+            "Rk": 543,
             "Sta": "RCBW",
             "Ros": 24,
             "Age": 21,
@@ -10563,7 +10563,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 474,
+            "Rk": 475,
             "Sta": "POT",
             "Ros": 46,
             "Age": 20,
@@ -11083,7 +11083,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 1.5,
           "stats": {
-            "Rk": 237,
+            "Rk": 238,
             "Sta": "PPJ",
             "Ros": 39,
             "Age": 30,
@@ -11556,7 +11556,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 137,
+            "Rk": 138,
             "Sta": "LYON",
             "Ros": 88,
             "Age": 25,
@@ -12220,7 +12220,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 245,
+            "Rk": 228,
             "Sta": "PBW",
             "Ros": 76,
             "Age": 25,
@@ -12410,7 +12410,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 239,
+            "Rk": 240,
             "Sta": "SHB",
             "Ros": 99,
             "Age": 24,
@@ -12646,7 +12646,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 0.5,
           "stats": {
-            "Rk": 141,
+            "Rk": 142,
             "Sta": "WWP",
             "Ros": 89,
             "Age": 27,
@@ -12741,7 +12741,7 @@
           "gamesPlayed": 3.03,
           "fantasyPointsPerGame": 0.33,
           "stats": {
-            "Rk": 458,
+            "Rk": 459,
             "Sta": "HPH",
             "Ros": 34,
             "Age": 35,
@@ -13026,7 +13026,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 489,
+            "Rk": 490,
             "Sta": "CSS",
             "Ros": 23,
             "Age": 30,
@@ -13879,7 +13879,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 490,
+            "Rk": 491,
             "Sta": "Fishers",
             "Ros": 72,
             "Age": 34,
@@ -14681,7 +14681,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 465,
+            "Rk": 466,
             "Sta": "HPH",
             "Ros": 23,
             "Age": 26,
@@ -14728,7 +14728,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 143,
+            "Rk": 125,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 21,
@@ -15107,7 +15107,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 236,
+            "Rk": 237,
             "Sta": "CSS",
             "Ros": 82,
             "Age": 25,
@@ -15154,7 +15154,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 470,
+            "Rk": 471,
             "Sta": "PPJ",
             "Ros": 91,
             "Age": 30,
@@ -16099,7 +16099,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 232,
+            "Rk": 233,
             "Sta": "Metz17",
             "Ros": 26,
             "Age": 24,
@@ -16193,7 +16193,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 130,
+            "Rk": 131,
             "Sta": "Fishers",
             "Ros": 54,
             "Age": 34,
@@ -18743,7 +18743,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": -1,
           "stats": {
-            "Rk": 508,
+            "Rk": 509,
             "Sta": "SHB",
             "Ros": 57,
             "Age": 25,
@@ -20324,7 +20324,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 5.5,
           "stats": {
-            "Rk": 458,
+            "Rk": 459,
             "Sta": "HPH",
             "Ros": 34,
             "Age": 35,
@@ -21224,7 +21224,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 6,
           "stats": {
-            "Rk": 136,
+            "Rk": 137,
             "Sta": "Fishers",
             "Ros": 99,
             "Age": 29,
@@ -22220,7 +22220,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 129,
+            "Rk": 130,
             "Sta": "LYON",
             "Ros": 20,
             "Age": 33,
@@ -22314,7 +22314,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 128,
+            "Rk": 129,
             "Sta": "MPV",
             "Ros": 92,
             "Age": 32,
@@ -22408,7 +22408,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 138,
+            "Rk": 139,
             "Sta": "POT",
             "Ros": 69,
             "Age": 20,
@@ -22550,7 +22550,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 119,
+            "Rk": 120,
             "Sta": "SYN",
             "Ros": 96,
             "Age": 30,
@@ -22786,7 +22786,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.67,
           "stats": {
-            "Rk": 121,
+            "Rk": 122,
             "Sta": "DRIFT",
             "Ros": 89,
             "Age": 33,
@@ -23212,7 +23212,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.33,
           "stats": {
-            "Rk": 490,
+            "Rk": 491,
             "Sta": "Fishers",
             "Ros": 72,
             "Age": 34,
@@ -23498,7 +23498,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 3.25,
           "stats": {
-            "Rk": 116,
+            "Rk": 117,
             "Sta": "Fishers",
             "Ros": 83,
             "Age": 29,
@@ -23640,7 +23640,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 470,
+            "Rk": 471,
             "Sta": "PPJ",
             "Ros": 91,
             "Age": 30,
@@ -23782,7 +23782,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 127,
+            "Rk": 128,
             "Sta": "PBW",
             "Ros": 99,
             "Age": 26,
@@ -24304,7 +24304,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.67,
           "stats": {
-            "Rk": 118,
+            "Rk": 119,
             "Sta": "Fishers",
             "Ros": 78,
             "Age": 32,
@@ -25391,7 +25391,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 130,
+            "Rk": 131,
             "Sta": "Fishers",
             "Ros": 54,
             "Age": 34,
@@ -25721,7 +25721,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 134,
+            "Rk": 135,
             "Sta": "ACC",
             "Ros": 83,
             "Age": 23,
@@ -26148,7 +26148,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 133,
+            "Rk": 134,
             "Sta": "MPV",
             "Ros": 95,
             "Age": 30,
@@ -26289,7 +26289,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4.5,
           "stats": {
-            "Rk": 465,
+            "Rk": 466,
             "Sta": "HPH",
             "Ros": 23,
             "Age": 26,
@@ -26715,7 +26715,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 123,
+            "Rk": 116,
             "Sta": "POT",
             "Ros": 67,
             "Age": 28,
@@ -26762,7 +26762,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 8,
           "stats": {
-            "Rk": 139,
+            "Rk": 140,
             "Sta": "LYON",
             "Ros": 59,
             "Age": 30,
@@ -26810,7 +26810,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 8,
           "stats": {
-            "Rk": 489,
+            "Rk": 490,
             "Sta": "CSS",
             "Ros": 23,
             "Age": 30,
@@ -26998,7 +26998,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.67,
           "stats": {
-            "Rk": 135,
+            "Rk": 136,
             "Sta": "BIB",
             "Ros": 83,
             "Age": 29,
@@ -27707,7 +27707,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.33,
           "stats": {
-            "Rk": 142,
+            "Rk": 143,
             "Sta": "DRIFT",
             "Ros": 72,
             "Age": 30,
@@ -27803,7 +27803,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.33,
           "stats": {
-            "Rk": 132,
+            "Rk": 133,
             "Sta": "BIB",
             "Ros": 55,
             "Age": 22,
@@ -28514,7 +28514,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 125,
+            "Rk": 126,
             "Sta": "LYON",
             "Ros": 15,
             "Age": 33,
@@ -28890,7 +28890,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 562,
+            "Rk": 543,
             "Sta": "RCBW",
             "Ros": 24,
             "Age": 21,
@@ -29128,7 +29128,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 1.5,
           "stats": {
-            "Rk": 137,
+            "Rk": 138,
             "Sta": "LYON",
             "Ros": 88,
             "Age": 25,
@@ -29412,7 +29412,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 1.25,
           "stats": {
-            "Rk": 117,
+            "Rk": 118,
             "Sta": "DRIFT",
             "Ros": 83,
             "Age": 40,
@@ -29650,7 +29650,7 @@
           "gamesPlayed": 2.99,
           "fantasyPointsPerGame": 1.67,
           "stats": {
-            "Rk": 141,
+            "Rk": 142,
             "Sta": "WWP",
             "Ros": 89,
             "Age": 27,
@@ -29745,7 +29745,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 468,
+            "Rk": 469,
             "Sta": "RCBW",
             "Ros": 85,
             "Age": 29,
@@ -30169,7 +30169,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 543,
+            "Rk": 544,
             "Sta": "Metz17",
             "Ros": 98,
             "Age": 31,
@@ -30263,7 +30263,7 @@
           "gamesPlayed": 3.01,
           "fantasyPointsPerGame": 1.33,
           "stats": {
-            "Rk": 126,
+            "Rk": 127,
             "Sta": "MPV",
             "Ros": 73,
             "Age": 36,
@@ -30642,7 +30642,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 131,
+            "Rk": 132,
             "Sta": "DRIFT",
             "Ros": 52,
             "Age": 33,
@@ -30689,7 +30689,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 474,
+            "Rk": 475,
             "Sta": "POT",
             "Ros": 46,
             "Age": 20,
@@ -31113,7 +31113,7 @@
           "gamesPlayed": 2.99,
           "fantasyPointsPerGame": 0.67,
           "stats": {
-            "Rk": 550,
+            "Rk": 551,
             "Sta": "WWP",
             "Ros": 56,
             "Age": 20,
@@ -31536,7 +31536,7 @@
           "gamesPlayed": 2.99,
           "fantasyPointsPerGame": 0.67,
           "stats": {
-            "Rk": 140,
+            "Rk": 141,
             "Sta": "ACC",
             "Ros": 97,
             "Age": 21,
@@ -31961,7 +31961,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 508,
+            "Rk": 509,
             "Sta": "SHB",
             "Ros": 57,
             "Age": 25,
@@ -32244,7 +32244,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 466,
+            "Rk": 467,
             "Sta": "SYN",
             "Ros": 70,
             "Age": 25,
@@ -34471,7 +34471,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 143,
+            "Rk": 125,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 21,
@@ -34566,7 +34566,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 477,
+            "Rk": 478,
             "Sta": "PPJ",
             "Ros": 24,
             "Age": 22,
@@ -39266,7 +39266,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 7.33,
           "stats": {
-            "Rk": 127,
+            "Rk": 128,
             "Sta": "PBW",
             "Ros": 99,
             "Age": 26,
@@ -40402,7 +40402,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 139,
+            "Rk": 140,
             "Sta": "LYON",
             "Ros": 59,
             "Age": 30,
@@ -41353,7 +41353,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5.33,
           "stats": {
-            "Rk": 131,
+            "Rk": 132,
             "Sta": "DRIFT",
             "Ros": 52,
             "Age": 33,
@@ -41400,7 +41400,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5.33,
           "stats": {
-            "Rk": 119,
+            "Rk": 120,
             "Sta": "SYN",
             "Ros": 96,
             "Age": 30,
@@ -41542,7 +41542,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5.33,
           "stats": {
-            "Rk": 141,
+            "Rk": 142,
             "Sta": "WWP",
             "Ros": 89,
             "Age": 27,
@@ -41779,7 +41779,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 143,
+            "Rk": 125,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 21,
@@ -41875,7 +41875,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 474,
+            "Rk": 475,
             "Sta": "POT",
             "Ros": 46,
             "Age": 20,
@@ -41970,7 +41970,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 130,
+            "Rk": 131,
             "Sta": "Fishers",
             "Ros": 54,
             "Age": 34,
@@ -42017,7 +42017,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 7.5,
           "stats": {
-            "Rk": 136,
+            "Rk": 137,
             "Sta": "Fishers",
             "Ros": 99,
             "Age": 29,
@@ -42631,7 +42631,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 7,
           "stats": {
-            "Rk": 466,
+            "Rk": 467,
             "Sta": "SYN",
             "Ros": 70,
             "Age": 25,
@@ -42820,7 +42820,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 3.5,
           "stats": {
-            "Rk": 134,
+            "Rk": 135,
             "Sta": "ACC",
             "Ros": 83,
             "Age": 23,
@@ -43056,7 +43056,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.33,
           "stats": {
-            "Rk": 135,
+            "Rk": 136,
             "Sta": "BIB",
             "Ros": 83,
             "Age": 29,
@@ -43245,7 +43245,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 3.25,
           "stats": {
-            "Rk": 142,
+            "Rk": 143,
             "Sta": "DRIFT",
             "Ros": 72,
             "Age": 30,
@@ -43340,7 +43340,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 3.25,
           "stats": {
-            "Rk": 125,
+            "Rk": 126,
             "Sta": "LYON",
             "Ros": 15,
             "Age": 33,
@@ -43670,7 +43670,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.33,
           "stats": {
-            "Rk": 137,
+            "Rk": 138,
             "Sta": "LYON",
             "Ros": 88,
             "Age": 25,
@@ -43717,7 +43717,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.33,
           "stats": {
-            "Rk": 140,
+            "Rk": 141,
             "Sta": "ACC",
             "Ros": 97,
             "Age": 21,
@@ -43811,7 +43811,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 6,
           "stats": {
-            "Rk": 489,
+            "Rk": 490,
             "Sta": "CSS",
             "Ros": 23,
             "Age": 30,
@@ -44190,7 +44190,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 118,
+            "Rk": 119,
             "Sta": "Fishers",
             "Ros": 78,
             "Age": 32,
@@ -44237,7 +44237,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 138,
+            "Rk": 139,
             "Sta": "POT",
             "Ros": 69,
             "Age": 20,
@@ -44758,7 +44758,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.67,
           "stats": {
-            "Rk": 117,
+            "Rk": 118,
             "Sta": "DRIFT",
             "Ros": 83,
             "Age": 40,
@@ -45186,7 +45186,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.67,
           "stats": {
-            "Rk": 126,
+            "Rk": 127,
             "Sta": "MPV",
             "Ros": 73,
             "Age": 36,
@@ -45421,7 +45421,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5.5,
           "stats": {
-            "Rk": 123,
+            "Rk": 116,
             "Sta": "POT",
             "Ros": 67,
             "Age": 28,
@@ -45468,7 +45468,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 2.75,
           "stats": {
-            "Rk": 116,
+            "Rk": 117,
             "Sta": "Fishers",
             "Ros": 83,
             "Age": 29,
@@ -46176,7 +46176,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 133,
+            "Rk": 134,
             "Sta": "MPV",
             "Ros": 95,
             "Age": 30,
@@ -47170,7 +47170,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 508,
+            "Rk": 509,
             "Sta": "SHB",
             "Ros": 57,
             "Age": 25,
@@ -47694,7 +47694,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.33,
           "stats": {
-            "Rk": 490,
+            "Rk": 491,
             "Sta": "Fishers",
             "Ros": 72,
             "Age": 34,
@@ -47976,7 +47976,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.33,
           "stats": {
-            "Rk": 129,
+            "Rk": 130,
             "Sta": "LYON",
             "Ros": 20,
             "Age": 33,
@@ -48353,7 +48353,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 132,
+            "Rk": 133,
             "Sta": "BIB",
             "Ros": 55,
             "Age": 22,
@@ -48780,7 +48780,7 @@
           "gamesPlayed": 2.99,
           "fantasyPointsPerGame": 1.67,
           "stats": {
-            "Rk": 470,
+            "Rk": 471,
             "Sta": "PPJ",
             "Ros": 91,
             "Age": 30,
@@ -49351,7 +49351,7 @@
           "gamesPlayed": 3.01,
           "fantasyPointsPerGame": 1.33,
           "stats": {
-            "Rk": 550,
+            "Rk": 551,
             "Sta": "WWP",
             "Ros": 56,
             "Age": 20,
@@ -49445,7 +49445,7 @@
           "gamesPlayed": 3.01,
           "fantasyPointsPerGame": 1.33,
           "stats": {
-            "Rk": 121,
+            "Rk": 122,
             "Sta": "DRIFT",
             "Ros": 89,
             "Age": 33,
@@ -49634,7 +49634,7 @@
           "gamesPlayed": 3.01,
           "fantasyPointsPerGame": 1.33,
           "stats": {
-            "Rk": 562,
+            "Rk": 543,
             "Sta": "RCBW",
             "Ros": 24,
             "Age": 21,
@@ -50013,7 +50013,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 477,
+            "Rk": 478,
             "Sta": "PPJ",
             "Ros": 24,
             "Age": 22,
@@ -50628,7 +50628,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 128,
+            "Rk": 129,
             "Sta": "MPV",
             "Ros": 92,
             "Age": 32,
@@ -51053,7 +51053,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 465,
+            "Rk": 466,
             "Sta": "HPH",
             "Ros": 23,
             "Age": 26,
@@ -54269,7 +54269,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 543,
+            "Rk": 544,
             "Sta": "Metz17",
             "Ros": 98,
             "Age": 31,
@@ -55826,7 +55826,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 458,
+            "Rk": 459,
             "Sta": "HPH",
             "Ros": 34,
             "Age": 35,
@@ -55969,7 +55969,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 468,
+            "Rk": 469,
             "Sta": "RCBW",
             "Ros": 85,
             "Age": 29,
@@ -57782,7 +57782,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 6.5,
           "stats": {
-            "Rk": 127,
+            "Rk": 128,
             "Sta": "PBW",
             "Ros": 99,
             "Age": 26,
@@ -57878,7 +57878,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 8.67,
           "stats": {
-            "Rk": 137,
+            "Rk": 138,
             "Sta": "LYON",
             "Ros": 88,
             "Age": 25,
@@ -58493,7 +58493,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 7,
           "stats": {
-            "Rk": 128,
+            "Rk": 129,
             "Sta": "MPV",
             "Ros": 92,
             "Age": 32,
@@ -59344,7 +59344,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 6.33,
           "stats": {
-            "Rk": 114,
+            "Rk": 113,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 23,
@@ -59723,7 +59723,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 6,
           "stats": {
-            "Rk": 138,
+            "Rk": 139,
             "Sta": "POT",
             "Ros": 69,
             "Age": 20,
@@ -60855,7 +60855,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 132,
+            "Rk": 133,
             "Sta": "BIB",
             "Ros": 55,
             "Age": 22,
@@ -61187,7 +61187,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 7,
           "stats": {
-            "Rk": 135,
+            "Rk": 136,
             "Sta": "BIB",
             "Ros": 83,
             "Age": 29,
@@ -61614,7 +61614,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.33,
           "stats": {
-            "Rk": 133,
+            "Rk": 134,
             "Sta": "MPV",
             "Ros": 95,
             "Age": 30,
@@ -62086,7 +62086,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 115,
+            "Rk": 114,
             "Sta": "LYON",
             "Ros": 48,
             "Age": 35,
@@ -62371,7 +62371,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 125,
+            "Rk": 126,
             "Sta": "LYON",
             "Ros": 15,
             "Age": 33,
@@ -62512,7 +62512,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 116,
+            "Rk": 115,
             "Sta": "DRIFT",
             "Ros": 51,
             "Age": 26,
@@ -62606,7 +62606,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 141,
+            "Rk": 142,
             "Sta": "WWP",
             "Ros": 89,
             "Age": 27,
@@ -63033,7 +63033,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 2.75,
           "stats": {
-            "Rk": 131,
+            "Rk": 132,
             "Sta": "DRIFT",
             "Ros": 52,
             "Age": 33,
@@ -63792,7 +63792,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 143,
+            "Rk": 125,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 21,
@@ -64076,7 +64076,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 113,
+            "Rk": 112,
             "Sta": "POT",
             "Ros": 86,
             "Age": 32,
@@ -64264,7 +64264,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 126,
+            "Rk": 127,
             "Sta": "MPV",
             "Ros": 73,
             "Age": 36,
@@ -64311,7 +64311,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 129,
+            "Rk": 130,
             "Sta": "LYON",
             "Ros": 20,
             "Age": 33,
@@ -64501,7 +64501,7 @@
           "gamesPlayed": 4,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 140,
+            "Rk": 141,
             "Sta": "ACC",
             "Ros": 97,
             "Age": 21,
@@ -64643,7 +64643,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 490,
+            "Rk": 491,
             "Sta": "Fishers",
             "Ros": 72,
             "Age": 34,
@@ -64737,7 +64737,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 477,
+            "Rk": 478,
             "Sta": "PPJ",
             "Ros": 24,
             "Age": 22,
@@ -64879,7 +64879,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 470,
+            "Rk": 471,
             "Sta": "PPJ",
             "Ros": 91,
             "Age": 30,
@@ -65352,7 +65352,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 112,
+            "Rk": 111,
             "Sta": "SHB",
             "Ros": 100,
             "Age": 27,
@@ -65495,7 +65495,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 111,
+            "Rk": 116,
             "Sta": "POT",
             "Ros": 67,
             "Age": 28,
@@ -66013,7 +66013,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.67,
           "stats": {
-            "Rk": 142,
+            "Rk": 143,
             "Sta": "DRIFT",
             "Ros": 72,
             "Age": 30,
@@ -66251,7 +66251,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 3.5,
           "stats": {
-            "Rk": 489,
+            "Rk": 490,
             "Sta": "CSS",
             "Ros": 23,
             "Age": 30,
@@ -67291,7 +67291,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 130,
+            "Rk": 131,
             "Sta": "Fishers",
             "Ros": 54,
             "Age": 34,
@@ -68095,7 +68095,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 134,
+            "Rk": 135,
             "Sta": "ACC",
             "Ros": 83,
             "Age": 23,
@@ -68809,7 +68809,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 550,
+            "Rk": 551,
             "Sta": "WWP",
             "Ros": 56,
             "Age": 20,
@@ -68856,7 +68856,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 1.5,
           "stats": {
-            "Rk": 474,
+            "Rk": 475,
             "Sta": "POT",
             "Ros": 46,
             "Age": 20,
@@ -69897,7 +69897,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 136,
+            "Rk": 137,
             "Sta": "Fishers",
             "Ros": 99,
             "Age": 29,
@@ -72026,7 +72026,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 465,
+            "Rk": 466,
             "Sta": "HPH",
             "Ros": 23,
             "Age": 26,
@@ -72263,7 +72263,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 508,
+            "Rk": 509,
             "Sta": "SHB",
             "Ros": 57,
             "Age": 25,
@@ -72972,7 +72972,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 466,
+            "Rk": 467,
             "Sta": "SYN",
             "Ros": 70,
             "Age": 25,
@@ -73114,7 +73114,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 543,
+            "Rk": 544,
             "Sta": "Metz17",
             "Ros": 98,
             "Age": 31,
@@ -73916,7 +73916,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 562,
+            "Rk": 543,
             "Sta": "RCBW",
             "Ros": 24,
             "Age": 21,
@@ -74672,7 +74672,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 458,
+            "Rk": 459,
             "Sta": "HPH",
             "Ros": 34,
             "Age": 35,
@@ -74862,7 +74862,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 468,
+            "Rk": 469,
             "Sta": "RCBW",
             "Ros": 85,
             "Age": 29,
@@ -75429,7 +75429,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": -1,
           "stats": {
-            "Rk": 139,
+            "Rk": 140,
             "Sta": "LYON",
             "Ros": 59,
             "Age": 30,
@@ -77526,7 +77526,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 10,
           "stats": {
-            "Rk": 465,
+            "Rk": 466,
             "Sta": "HPH",
             "Ros": 23,
             "Age": 26,
@@ -77809,7 +77809,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 6.33,
           "stats": {
-            "Rk": 143,
+            "Rk": 125,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 21,
@@ -77998,7 +77998,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 6.33,
           "stats": {
-            "Rk": 132,
+            "Rk": 133,
             "Sta": "BIB",
             "Ros": 55,
             "Age": 22,
@@ -78992,7 +78992,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5.67,
           "stats": {
-            "Rk": 141,
+            "Rk": 142,
             "Sta": "WWP",
             "Ros": 89,
             "Age": 27,
@@ -79513,7 +79513,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5.33,
           "stats": {
-            "Rk": 114,
+            "Rk": 113,
             "Sta": "WWP",
             "Ros": 99,
             "Age": 23,
@@ -79892,7 +79892,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 134,
+            "Rk": 135,
             "Sta": "ACC",
             "Ros": 83,
             "Age": 23,
@@ -80316,7 +80316,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.67,
           "stats": {
-            "Rk": 137,
+            "Rk": 138,
             "Sta": "LYON",
             "Ros": 88,
             "Age": 25,
@@ -80741,7 +80741,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4.33,
           "stats": {
-            "Rk": 125,
+            "Rk": 126,
             "Sta": "LYON",
             "Ros": 15,
             "Age": 33,
@@ -81354,7 +81354,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 6,
           "stats": {
-            "Rk": 133,
+            "Rk": 134,
             "Sta": "MPV",
             "Ros": 95,
             "Age": 30,
@@ -81496,7 +81496,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 135,
+            "Rk": 136,
             "Sta": "BIB",
             "Ros": 83,
             "Age": 29,
@@ -81687,7 +81687,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 116,
+            "Rk": 115,
             "Sta": "DRIFT",
             "Ros": 51,
             "Age": 26,
@@ -81734,7 +81734,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 6,
           "stats": {
-            "Rk": 126,
+            "Rk": 127,
             "Sta": "MPV",
             "Ros": 73,
             "Age": 36,
@@ -81972,7 +81972,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5.5,
           "stats": {
-            "Rk": 139,
+            "Rk": 140,
             "Sta": "LYON",
             "Ros": 59,
             "Age": 30,
@@ -82589,7 +82589,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.67,
           "stats": {
-            "Rk": 140,
+            "Rk": 141,
             "Sta": "ACC",
             "Ros": 97,
             "Age": 21,
@@ -82779,7 +82779,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 477,
+            "Rk": 478,
             "Sta": "PPJ",
             "Ros": 24,
             "Age": 22,
@@ -82874,7 +82874,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 131,
+            "Rk": 132,
             "Sta": "DRIFT",
             "Ros": 52,
             "Age": 33,
@@ -82921,7 +82921,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 142,
+            "Rk": 143,
             "Sta": "DRIFT",
             "Ros": 72,
             "Age": 30,
@@ -83017,7 +83017,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3.33,
           "stats": {
-            "Rk": 138,
+            "Rk": 139,
             "Sta": "POT",
             "Ros": 69,
             "Age": 20,
@@ -83112,7 +83112,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 136,
+            "Rk": 137,
             "Sta": "Fishers",
             "Ros": 99,
             "Age": 29,
@@ -83868,7 +83868,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 130,
+            "Rk": 131,
             "Sta": "Fishers",
             "Ros": 54,
             "Age": 34,
@@ -84248,7 +84248,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 9,
           "stats": {
-            "Rk": 468,
+            "Rk": 469,
             "Sta": "RCBW",
             "Ros": 85,
             "Age": 29,
@@ -84532,7 +84532,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 4,
           "stats": {
-            "Rk": 128,
+            "Rk": 129,
             "Sta": "MPV",
             "Ros": 92,
             "Age": 32,
@@ -84579,7 +84579,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2.67,
           "stats": {
-            "Rk": 115,
+            "Rk": 114,
             "Sta": "LYON",
             "Ros": 48,
             "Age": 35,
@@ -85715,7 +85715,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 3,
           "stats": {
-            "Rk": 508,
+            "Rk": 509,
             "Sta": "SHB",
             "Ros": 57,
             "Age": 25,
@@ -86142,7 +86142,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 113,
+            "Rk": 112,
             "Sta": "POT",
             "Ros": 86,
             "Age": 32,
@@ -86284,7 +86284,7 @@
           "gamesPlayed": 3,
           "fantasyPointsPerGame": 2,
           "stats": {
-            "Rk": 129,
+            "Rk": 130,
             "Sta": "LYON",
             "Ros": 20,
             "Age": 33,
@@ -86473,7 +86473,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 5,
           "stats": {
-            "Rk": 470,
+            "Rk": 471,
             "Sta": "PPJ",
             "Ros": 91,
             "Age": 30,
@@ -86520,7 +86520,7 @@
           "gamesPlayed": 2,
           "fantasyPointsPerGame": 2.5,
           "stats": {
-            "Rk": 466,
+            "Rk": 467,
             "Sta": "SYN",
             "Ros": 70,
             "Age": 25,
@@ -87798,7 +87798,7 @@
           "gamesPlayed": 2.99,
           "fantasyPointsPerGame": 0.67,
           "stats": {
-            "Rk": 474,
+            "Rk": 475,
             "Sta": "POT",
             "Ros": 46,
             "Age": 20,
@@ -88176,7 +88176,7 @@
           "gamesPlayed": 1,
           "fantasyPointsPerGame": 1,
           "stats": {
-            "Rk": 489,
+            "Rk": 490,
             "Sta": "CSS",
             "Ros": 23,
             "Age": 30,
@@ -88601,7 +88601,7 @@
           "gamesPlayed": 3.03,
           "fantasyPointsPerGame": 0.33,
           "stats": {
-            "Rk": 562,
+            "Rk": 543,
             "Sta": "RCBW",
             "Ros": 24,
             "Age": 21,
@@ -89838,7 +89838,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 490,
+            "Rk": 491,
             "Sta": "Fishers",
             "Ros": 72,
             "Age": 34,
@@ -91114,7 +91114,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 550,
+            "Rk": 551,
             "Sta": "WWP",
             "Ros": 56,
             "Age": 20,
@@ -91776,7 +91776,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 543,
+            "Rk": 544,
             "Sta": "Metz17",
             "Ros": 98,
             "Age": 31,
@@ -92058,7 +92058,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 127,
+            "Rk": 128,
             "Sta": "PBW",
             "Ros": 99,
             "Age": 26,
@@ -92625,7 +92625,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 112,
+            "Rk": 111,
             "Sta": "SHB",
             "Ros": 100,
             "Age": 27,
@@ -93568,7 +93568,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 111,
+            "Rk": 116,
             "Sta": "POT",
             "Ros": 67,
             "Age": 28,
@@ -93615,7 +93615,7 @@
           "gamesPlayed": null,
           "fantasyPointsPerGame": 0,
           "stats": {
-            "Rk": 458,
+            "Rk": 459,
             "Sta": "HPH",
             "Ros": 34,
             "Age": 35,
