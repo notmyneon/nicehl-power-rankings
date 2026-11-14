@@ -841,7 +841,7 @@
 
     .weekly-player-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 7px;
       margin-top: 7px;
     }
@@ -871,11 +871,11 @@
 
     .weekly-player-row {
       display: grid;
-      grid-template-columns: 28px minmax(0, 1fr) auto;
-      gap: 8px;
+      grid-template-columns: 28px minmax(0, 1fr) minmax(58px, auto);
+      gap: 6px;
       align-items: center;
-      min-height: 48px;
-      padding: 6px 8px;
+      min-height: 46px;
+      padding: 5px 7px;
       border-radius: 9px;
       border: 1px solid rgba(255,255,255,.11);
       background: rgba(0,0,0,.24);
@@ -919,8 +919,10 @@
     }
 
     .weekly-player-score {
+      justify-self: end;
       text-align: right;
       white-space: nowrap;
+      min-width: 54px;
     }
 
     .weekly-player-score strong {
@@ -2600,24 +2602,13 @@
       if (!players.length) {
         return {
           available: false,
-          topSkaters: [],
-          topGoalies: [],
+          topPlayers: [],
           overperformers: [],
           underperformers: []
         };
       }
 
-      const topSkaters = players
-        .filter(player => !weeklyPlayerIsGoalie(player))
-        .slice()
-        .sort((a, b) =>
-          weeklyPlayerFantasyPoints(b) - weeklyPlayerFantasyPoints(a) ||
-          String(a.name).localeCompare(String(b.name))
-        )
-        .slice(0, 3);
-
-      const topGoalies = players
-        .filter(weeklyPlayerIsGoalie)
+      const topPlayers = players
         .slice()
         .sort((a, b) =>
           weeklyPlayerFantasyPoints(b) - weeklyPlayerFantasyPoints(a) ||
@@ -2669,8 +2660,7 @@
 
       return {
         available: true,
-        topSkaters,
-        topGoalies,
+        topPlayers,
         overperformers,
         underperformers
       };
@@ -2803,15 +2793,9 @@
         ? `
           <div class="weekly-player-grid">
             <div class="weekly-player-panel">
-              <h3>Top Skaters</h3>
+              <h3>Top Players</h3>
               <div class="weekly-player-list">
-                ${renderWeeklyPlayerRows(playerReview.topSkaters, "score")}
-              </div>
-            </div>
-            <div class="weekly-player-panel">
-              <h3>Top Goalies</h3>
-              <div class="weekly-player-list">
-                ${renderWeeklyPlayerRows(playerReview.topGoalies, "score")}
+                ${renderWeeklyPlayerRows(playerReview.topPlayers, "score")}
               </div>
             </div>
             <div class="weekly-player-panel">
