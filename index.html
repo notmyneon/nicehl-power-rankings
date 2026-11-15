@@ -635,21 +635,47 @@
     .week-preview-history-placeholder {
       min-width: 0;
       height: 40px;
-      display: flex;
-      align-items: center;
-      padding: 7px 9px;
+      padding: 6px 8px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.23);
       color: #f0f0f0;
-      font-size: 11px;
-      font-weight: 800;
-      line-height: 1.25;
       overflow: hidden;
     }
 
     .week-preview-game {
-      white-space: normal;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .week-preview-game-team {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .week-preview-game-score {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 950;
+      line-height: 1;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .week-preview-history-placeholder {
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.25;
     }
 
     .week-preview-history-placeholder {
@@ -1332,14 +1358,14 @@
             <div class="analysis-list" id="expectedRecord"></div>
           </section>
 
-          <section class="analysis-card analysis-card-wide">
+          <section class="analysis-card">
             <div class="analysis-card-header">
               <h2>Schedule Strength So Far</h2>
             </div>
             <div class="analysis-list" id="scheduleStrength"></div>
           </section>
 
-          <section class="analysis-card analysis-card-wide">
+          <section class="analysis-card">
             <div class="analysis-card-header">
               <h2>Remaining Strength of Schedule</h2>
             </div>
@@ -4539,9 +4565,32 @@
       const rows = [];
 
       (recentGames || []).slice(0, 3).forEach(game => {
-        rows.push(
-          `<div class="week-preview-game">${escapeHtml(game)}</div>`
-        );
+        const text = String(game || "").trim();
+        const match = text.match(/^(.*)\s+(-?\d+(?:\.\d+)?)\s*[–-]\s*(-?\d+(?:\.\d+)?)$/);
+
+        if (match) {
+          const team = match[1].trim();
+          const score = `${match[2]}–${match[3]}`;
+
+          rows.push(`
+            <div class="week-preview-game">
+              <div class="week-preview-game-team" title="${escapeAttribute(team)}">
+                ${escapeHtml(team)}
+              </div>
+              <div class="week-preview-game-score">
+                ${escapeHtml(score)}
+              </div>
+            </div>
+          `);
+        } else {
+          rows.push(`
+            <div class="week-preview-game">
+              <div class="week-preview-game-team" title="${escapeAttribute(text)}">
+                ${escapeHtml(text)}
+              </div>
+            </div>
+          `);
+        }
       });
 
       while (rows.length < 3) {
