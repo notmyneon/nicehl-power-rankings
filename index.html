@@ -4646,13 +4646,17 @@
       `;
     }
 
-    async function dashboardCardToPngBlob(card) {
+    async function nativeDashboardCardToPngBlob(card) {
       if (!card) {
         throw new Error("Dashboard card not found.");
       }
 
-      if (typeof window.html2canvas !== "function") {
-        throw new Error("Card renderer did not load.");
+      if (
+        !("content" in HTMLCanvasElement.prototype) ||
+        typeof CanvasRenderingContext2D === "undefined" ||
+        typeof CanvasRenderingContext2D.prototype.drawElementImage !== "function"
+      ) {
+        throw new Error("Native HTML-in-Canvas is not supported.");
       }
 
       if (document.fonts?.ready) {
@@ -4661,6 +4665,122 @@
         } catch (error) {
           console.warn("Font readiness check failed.", error);
         }
+      }
+
+      const rect = card.getBoundingClientRect();
+      const width = Math.ceil(rect.width);
+      const height = Math.ceil(rect.height);
+      const pixelRatio = Math.max(
+        1,
+        Number(window.devicePixelRatio) || 1
+      );
+
+      const canvas = document.createElement("canvas");
+      canvas.setAttribute("content", "drawable");
+      canvas.width = Math.max(1, Math.round(width * pixelRatio));
+      canvas.height = Math.max(1, Math.round(height * pixelRatio));
+
+      Object.assign(canvas.style, {
+        position: "fixed",
+        left: "0",
+        top: "0",
+        width: `${width}px`,
+        height: `${height}px`,
+        pointerEvents: "none",
+        zIndex: "-2147483647"
+      });
+
+      const clone = card.cloneNode(true);
+
+      clone
+        .querySelectorAll(".card-copy-button, .no-print")
+        .forEach(node => node.remove());
+
+      clone.setAttribute("drawable", "");
+      clone.style.width = `${width}px`;
+      clone.style.maxWidth = `${width}px`;
+      clone.style.margin = "0";
+
+      canvas.appendChild(clone);
+      document.body.appendChild(canvas);
+
+      try {
+        const context = canvas.getContext("2d");
+
+        if (!context || typeof context.drawElementImage !== "function") {
+          throw new Error("Native HTML-in-Canvas 2D context is unavailable.");
+        }
+
+        await new Promise((resolve, reject) => {
+          let settled = false;
+          let timeoutId = null;
+
+          const finish = () => {
+            if (settled) return;
+            settled = true;
+            if (timeoutId) clearTimeout(timeoutId);
+            resolve();
+          };
+
+          canvas.onpaint = () => {
+            try {
+              if (typeof context.reset === "function") {
+                context.reset();
+              } else {
+                context.setTransform(1, 0, 0, 1, 0, 0);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+              }
+
+              context.drawElementImage(clone, 0, 0);
+
+              /*
+                Wait one animation frame after native paint so the canvas
+                backing store is fully updated before toBlob().
+              */
+              requestAnimationFrame(finish);
+            } catch (error) {
+              if (!settled) {
+                settled = true;
+                if (timeoutId) clearTimeout(timeoutId);
+                reject(error);
+              }
+            }
+          };
+
+          timeoutId = setTimeout(() => {
+            if (settled) return;
+            settled = true;
+            reject(
+              new Error("Native HTML-in-Canvas paint timed out.")
+            );
+          }, 3000);
+
+          if (typeof canvas.requestPaint === "function") {
+            canvas.requestPaint();
+          } else {
+            reject(
+              new Error("Native HTML-in-Canvas requestPaint() is unavailable.")
+            );
+          }
+        });
+
+        return await new Promise((resolve, reject) => {
+          canvas.toBlob(
+            blob => blob
+              ? resolve(blob)
+              : reject(new Error("Could not create native PNG image.")),
+            "image/png",
+            1
+          );
+        });
+      } finally {
+        canvas.remove();
+      }
+    }
+
+    async function html2CanvasDashboardCardToPngBlob(card) {
+      if (typeof window.html2canvas !== "function") {
+        throw new Error("Fallback card renderer did not load.");
       }
 
       const scale = Math.max(
@@ -4695,6 +4815,23 @@
           1
         );
       });
+    }
+
+    async function dashboardCardToPngBlob(card) {
+      if (!card) {
+        throw new Error("Dashboard card not found.");
+      }
+
+      try {
+        return await nativeDashboardCardToPngBlob(card);
+      } catch (nativeError) {
+        console.warn(
+          "Native HTML-in-Canvas capture unavailable; using fallback renderer.",
+          nativeError
+        );
+
+        return await html2CanvasDashboardCardToPngBlob(card);
+      }
     }
 
     async function copyDashboardCard(cardId, button) {
@@ -4765,10 +4902,10 @@
               String(error?.name || "") + " " + String(error?.message || "")
             )
               ? "Clipboard blocked"
-              : /renderer|html2canvas|load/i.test(
+              : /renderer|html2canvas|native|canvas|paint|load/i.test(
                   String(error?.message || "")
                 )
-                ? "Renderer failed"
+                ? "Capture failed"
                 : "Copy failed";
 
           button.textContent = message;
