@@ -626,7 +626,7 @@
     .week-preview-recent,
     .week-preview-watch-list {
       display: grid;
-      grid-template-rows: repeat(3, 46px);
+      grid-template-rows: repeat(3, 40px);
       gap: 6px;
       margin-top: 7px;
     }
@@ -634,7 +634,7 @@
     .week-preview-game,
     .week-preview-history-placeholder {
       min-width: 0;
-      height: 46px;
+      height: 40px;
       display: flex;
       align-items: center;
       padding: 7px 9px;
@@ -658,7 +658,7 @@
     }
 
     .week-preview-player {
-      height: 46px;
+      height: 40px;
       display: grid;
       grid-template-columns: 24px minmax(0, 1fr) auto;
       gap: 8px;
@@ -724,10 +724,10 @@
     }
 
     .week-preview-player-placeholder {
-      height: 46px;
+      height: 40px;
       display: flex;
       align-items: center;
-      padding: 7px 9px;
+      padding: 6px 8px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,.07);
       background: rgba(0,0,0,.12);
@@ -2763,7 +2763,7 @@
           resultText = `Tie ${formatRating(scoreA)}–${formatRating(scoreB)}`;
         }
 
-        return `${game.season} W${game.period} · ${resultText}`;
+        return resultText;
       });
 
       return {
@@ -4508,9 +4508,6 @@
               <strong title="${escapeAttribute(player.name || "")}">
                 ${escapeHtml(player.name || "Unknown")}
               </strong>
-              <small title="${escapeAttribute(player.fantasyTeamName || "")}">
-                ${escapeHtml(player.fantasyTeamName || "")}
-              </small>
             </div>
             <div class="week-preview-player-points">
               ${formatRating(player.previewFantasyPoints)}
