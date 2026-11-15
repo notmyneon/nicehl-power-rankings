@@ -575,22 +575,46 @@
       letter-spacing: .08em;
     }
 
+    .week-preview-series-row {
+      padding: 7px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(90deg, rgba(111,0,31,.25), rgba(0,0,0,.12));
+      color: #f3f3f3;
+      font-size: 11px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .week-preview-series-row.first-meeting {
+      color: #cfcfcf;
+      font-style: italic;
+      font-weight: 700;
+    }
+
     .week-preview-body {
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-      min-height: 122px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .week-preview-history,
+    .week-preview-watch {
+      min-width: 0;
+      padding: 8px 10px 10px;
     }
 
     .week-preview-history {
-      min-width: 0;
-      display: grid;
-      align-content: start;
-      gap: 6px;
-      padding: 9px 10px 10px;
       background: rgba(0,0,0,.18);
     }
 
+    .week-preview-watch {
+      border-left: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(145deg, rgba(111,0,31,.22), rgba(0,0,0,.26));
+    }
+
     .week-preview-panel-title {
+      min-height: 14px;
       color: #d5d5d5;
       font-size: 9px;
       font-weight: 950;
@@ -598,57 +622,46 @@
       text-transform: uppercase;
     }
 
-    .week-preview-series {
-      color: #f1f1f1;
-      font-size: 11px;
-      font-weight: 850;
-      line-height: 1.25;
-    }
-
-    .week-preview-recent {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .week-preview-game {
-      min-width: 0;
-      padding: 4px 6px;
-      border-radius: 7px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.055);
-      color: #dcdcdc;
-      font-size: 9px;
-      font-weight: 750;
-      line-height: 1.2;
-    }
-
-    .week-preview-first {
-      color: #cfcfcf;
-      font-size: 10px;
-      font-style: italic;
-    }
-
-    .week-preview-watch {
-      min-width: 0;
-      padding: 9px 10px 10px;
-      border-left: 1px solid rgba(255,255,255,.10);
-      background:
-        linear-gradient(145deg, rgba(111,0,31,.22), rgba(0,0,0,.26));
-    }
-
+    .week-preview-recent,
     .week-preview-watch-list {
       display: grid;
+      grid-template-rows: repeat(3, 38px);
       gap: 5px;
       margin-top: 6px;
     }
 
+    .week-preview-game,
+    .week-preview-history-placeholder {
+      min-width: 0;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      padding: 5px 7px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.23);
+      color: #dedede;
+      font-size: 9px;
+      font-weight: 750;
+      line-height: 1.2;
+      overflow: hidden;
+    }
+
+    .week-preview-game {
+      white-space: normal;
+    }
+
+    .week-preview-history-placeholder {
+      color: rgba(255,255,255,.30);
+      font-style: italic;
+    }
+
     .week-preview-player {
+      height: 38px;
       display: grid;
       grid-template-columns: 22px minmax(0, 1fr) auto;
       gap: 7px;
       align-items: center;
-      min-height: 34px;
       padding: 5px 6px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,.10);
@@ -707,6 +720,19 @@
       color: #cfcfcf;
       font-size: 7px;
       font-weight: 850;
+    }
+
+    .week-preview-player-placeholder {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      padding: 5px 7px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(0,0,0,.12);
+      color: rgba(255,255,255,.30);
+      font-size: 9px;
+      font-style: italic;
     }
 
     .week-preview-watch-empty {
@@ -4471,39 +4497,64 @@
         ? `Players to Watch · Week ${watch.sourcePeriod}`
         : "Players to Watch";
 
-      if (!watch.players.length) {
-        return `
-          <div class="week-preview-watch">
-            <div class="week-preview-panel-title">${escapeHtml(title)}</div>
-            <div class="week-preview-watch-empty">
-              No previous-week player data available.
+      const rows = [];
+
+      watch.players.slice(0, 3).forEach((player, index) => {
+        rows.push(`
+          <div class="week-preview-player">
+            <div class="week-preview-player-rank">${index + 1}</div>
+            <div class="week-preview-player-main">
+              <strong title="${escapeAttribute(player.name || "")}">
+                ${escapeHtml(player.name || "Unknown")}
+              </strong>
+              <small title="${escapeAttribute(player.fantasyTeamName || "")}">
+                ${escapeHtml(player.fantasyTeamName || "")}
+              </small>
+            </div>
+            <div class="week-preview-player-points">
+              ${formatRating(player.previewFantasyPoints)}
+              <small>FPts</small>
             </div>
           </div>
-        `;
+        `);
+      });
+
+      while (rows.length < 3) {
+        rows.push(`
+          <div class="week-preview-player-placeholder">
+            ${watch.sourcePeriod === null ? "No previous-week player data" : "—"}
+          </div>
+        `);
       }
 
       return `
         <div class="week-preview-watch">
           <div class="week-preview-panel-title">${escapeHtml(title)}</div>
           <div class="week-preview-watch-list">
-            ${watch.players.map((player, index) => `
-              <div class="week-preview-player">
-                <div class="week-preview-player-rank">${index + 1}</div>
-                <div class="week-preview-player-main">
-                  <strong title="${escapeAttribute(player.name || "")}">
-                    ${escapeHtml(player.name || "Unknown")}
-                  </strong>
-                  <small title="${escapeAttribute(player.fantasyTeamName || "")}">
-                    ${escapeHtml(player.fantasyTeamName || "")}
-                  </small>
-                </div>
-                <div class="week-preview-player-points">
-                  ${formatRating(player.previewFantasyPoints)}
-                  <small>FPts</small>
-                </div>
-              </div>
-            `).join("")}
+            ${rows.join("")}
           </div>
+        </div>
+      `;
+    }
+
+    function renderPreviewRecentMeetings(recentGames) {
+      const rows = [];
+
+      (recentGames || []).slice(0, 3).forEach(game => {
+        rows.push(
+          `<div class="week-preview-game">${escapeHtml(game)}</div>`
+        );
+      });
+
+      while (rows.length < 3) {
+        rows.push(
+          `<div class="week-preview-history-placeholder">${rows.length === 0 ? "No previous meetings" : "—"}</div>`
+        );
+      }
+
+      return `
+        <div class="week-preview-recent">
+          ${rows.join("")}
         </div>
       `;
     }
@@ -4570,15 +4621,9 @@
               analysis.nextWeekPeriod
             );
 
-            const recentHtml = history.recent.length
-              ? `
-                <div class="week-preview-recent">
-                  ${history.recent.map(game => `
-                    <div class="week-preview-game">${escapeHtml(game)}</div>
-                  `).join("")}
-                </div>
-              `
-              : "";
+            const recentHtml = renderPreviewRecentMeetings(
+              history.recent
+            );
 
             const playersToWatchHtml = renderPreviewPlayersToWatch(
               matchup.awayName,
@@ -4620,12 +4665,13 @@
                   </div>
                 </div>
 
+                <div class="week-preview-series-row${history.recent.length ? "" : " first-meeting"}">
+                  ${escapeHtml(history.seriesText)}
+                </div>
+
                 <div class="week-preview-body">
                   <div class="week-preview-history">
-                    <div class="week-preview-panel-title">Matchup History</div>
-                    <div class="${history.recent.length ? "week-preview-series" : "week-preview-first"}">
-                      ${escapeHtml(history.seriesText)}
-                    </div>
+                    <div class="week-preview-panel-title">Recent Meetings</div>
                     ${recentHtml}
                   </div>
 
