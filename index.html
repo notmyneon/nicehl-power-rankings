@@ -508,6 +508,52 @@
       box-shadow: inset 4px 0 0 rgba(111,0,31,.95);
     }
 
+    .week-preview-card-wrap {
+      min-width: 0;
+      display: grid;
+      gap: 5px;
+    }
+
+    .week-preview-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 5px;
+      min-height: 24px;
+      padding: 0 2px;
+    }
+
+    .week-preview-action {
+      min-height: 24px;
+      padding: 3px 9px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: linear-gradient(135deg, rgba(111,0,31,.90), rgba(15,15,15,.96));
+      color: #fff;
+      font: inherit;
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .week-preview-action:hover {
+      border-color: rgba(255,255,255,.45);
+      transform: translateY(-1px);
+    }
+
+    .week-preview-action:disabled {
+      opacity: .55;
+      cursor: wait;
+      transform: none;
+    }
+
+    .week-preview-exporting .week-preview-actions {
+      visibility: hidden;
+    }
+
+
     .week-preview-header {
       display: grid;
       grid-template-columns: 76px minmax(0, 1fr) 76px;
@@ -1238,6 +1284,7 @@
         print-color-adjust: exact;
       }
       .editor, .no-print { display: none !important; }
+      .week-preview-actions { display: none !important; }
       .app { width: 100%; margin: 0; }
       .board-shell { border-radius: 0; box-shadow: none; }
       .board { min-height: auto; padding: 12px; }
@@ -4606,6 +4653,212 @@
       `;
     }
 
+    function sanitizePreviewFilename(value) {
+      return String(value || "week-preview")
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 120) || "week-preview";
+    }
+
+    function inlinePreviewComputedStyles(sourceRoot, cloneRoot) {
+      const sourceNodes = [sourceRoot, ...sourceRoot.querySelectorAll("*")];
+      const cloneNodes = [cloneRoot, ...cloneRoot.querySelectorAll("*")];
+
+      sourceNodes.forEach((sourceNode, index) => {
+        const cloneNode = cloneNodes[index];
+        if (!cloneNode || !(sourceNode instanceof Element)) return;
+
+        const computed = getComputedStyle(sourceNode);
+        let cssText = "";
+
+        for (let i = 0; i < computed.length; i++) {
+          const property = computed[i];
+          cssText += `${property}:${computed.getPropertyValue(property)};`;
+        }
+
+        cloneNode.setAttribute("style", cssText);
+      });
+    }
+
+    async function weekPreviewCardToPngBlob(card) {
+      if (!card) {
+        throw new Error("Preview card not found.");
+      }
+
+      if (document.fonts?.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (error) {
+          console.warn("Font readiness check failed.", error);
+        }
+      }
+
+      const rect = card.getBoundingClientRect();
+      const width = Math.ceil(rect.width);
+      const height = Math.ceil(rect.height);
+
+      const clone = card.cloneNode(true);
+      inlinePreviewComputedStyles(card, clone);
+
+      clone.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+      clone.style.width = `${width}px`;
+      clone.style.height = `${height}px`;
+      clone.style.margin = "0";
+      clone.style.transform = "none";
+
+      clone
+        .querySelectorAll(".week-preview-actions, .week-preview-action")
+        .forEach(node => node.remove());
+
+      const serialized = new XMLSerializer().serializeToString(clone);
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+          <foreignObject x="0" y="0" width="100%" height="100%">
+            ${serialized}
+          </foreignObject>
+        </svg>
+      `;
+
+      const svgBlob = new Blob(
+        [svg],
+        { type: "image/svg+xml;charset=utf-8" }
+      );
+
+      const url = URL.createObjectURL(svgBlob);
+
+      try {
+        const image = await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error("Could not render preview card."));
+          img.src = url;
+        });
+
+        const scale = Math.max(2, Math.min(3, window.devicePixelRatio || 2));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(width * scale);
+        canvas.height = Math.round(height * scale);
+
+        const context = canvas.getContext("2d");
+        context.setTransform(scale, 0, 0, scale, 0, 0);
+        context.drawImage(image, 0, 0, width, height);
+
+        return await new Promise((resolve, reject) => {
+          canvas.toBlob(
+            blob => blob
+              ? resolve(blob)
+              : reject(new Error("Could not create PNG image.")),
+            "image/png",
+            1
+          );
+        });
+      } finally {
+        URL.revokeObjectURL(url);
+      }
+    }
+
+    function previewCardFilename(card) {
+      const week = card?.dataset?.previewWeek || "week";
+      const away = card?.dataset?.awayTeam || "team-a";
+      const home = card?.dataset?.homeTeam || "team-b";
+
+      return sanitizePreviewFilename(
+        `${week}-${away}-vs-${home}`
+      ) + ".png";
+    }
+
+    async function downloadWeekPreviewCard(cardId, button) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      const originalText = button?.textContent || "Download";
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Working…";
+      }
+
+      try {
+        const blob = await weekPreviewCardToPngBlob(card);
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = previewCardFilename(card);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        if (button) {
+          button.textContent = "Downloaded";
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 1100);
+        }
+      } catch (error) {
+        console.error("Preview PNG download failed:", error);
+        if (button) {
+          button.textContent = "Failed";
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 1400);
+        }
+      }
+    }
+
+    async function copyWeekPreviewCard(cardId, button) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      const originalText = button?.textContent || "Copy";
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Working…";
+      }
+
+      try {
+        if (
+          !navigator.clipboard?.write ||
+          typeof ClipboardItem === "undefined"
+        ) {
+          throw new Error(
+            "This browser does not support copying PNG images to the clipboard."
+          );
+        }
+
+        const blob = await weekPreviewCardToPngBlob(card);
+
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "image/png": blob
+          })
+        ]);
+
+        if (button) {
+          button.textContent = "Copied!";
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 1100);
+        }
+      } catch (error) {
+        console.error("Preview clipboard copy failed:", error);
+
+        if (button) {
+          button.textContent = "Use Download";
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 1700);
+        }
+      }
+    }
+
     function renderAnalysisCards() {
       renderWeeklyReview();
       const nextWeekTitle = document.getElementById("nextWeekTitle");
@@ -4660,7 +4913,7 @@
         }
 
         nextWeekMatchups.innerHTML = analysis.nextWeekMatchups
-          .map(matchup => {
+          .map((matchup, matchupIndex) => {
             const history = buildHeadToHeadPreview(
               matchup.awayName,
               matchup.homeName,
@@ -4678,8 +4931,30 @@
               analysis.nextWeekPeriod
             );
 
+            const previewCardId = `weekPreviewCard-${analysis.nextWeekPeriod}-${matchupIndex}`;
+
             return `
-              <div class="week-preview-matchup">
+              <div class="week-preview-card-wrap">
+                <div class="week-preview-actions no-print">
+                  <button
+                    type="button"
+                    class="week-preview-action"
+                    onclick="copyWeekPreviewCard('${previewCardId}', this)"
+                  >Copy</button>
+                  <button
+                    type="button"
+                    class="week-preview-action"
+                    onclick="downloadWeekPreviewCard('${previewCardId}', this)"
+                  >Download PNG</button>
+                </div>
+
+                <div
+                  class="week-preview-matchup"
+                  id="${previewCardId}"
+                  data-preview-week="week-${analysis.nextWeekPeriod}"
+                  data-away-team="${escapeAttribute(matchup.awayName)}"
+                  data-home-team="${escapeAttribute(matchup.homeName)}"
+                >
                 <div class="week-preview-header">
                   <div class="week-preview-probability">
                     ${formatPercent(matchup.awayProbability)}
@@ -4724,6 +4999,7 @@
 
                   ${playersToWatchHtml}
                 </div>
+              </div>
               </div>
             `;
           })
