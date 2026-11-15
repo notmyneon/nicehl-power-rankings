@@ -508,51 +508,35 @@
       box-shadow: inset 4px 0 0 rgba(111,0,31,.95);
     }
 
-    .week-preview-card-wrap {
-      min-width: 0;
-      display: grid;
-      gap: 5px;
-    }
-
-    .week-preview-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 5px;
-      min-height: 24px;
-      padding: 0 2px;
-    }
-
-    .week-preview-action {
-      min-height: 24px;
-      padding: 3px 9px;
+    .card-copy-button {
+      margin-left: auto;
+      min-height: 26px;
+      padding: 4px 10px;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,.20);
-      background: linear-gradient(135deg, rgba(111,0,31,.90), rgba(15,15,15,.96));
+      border: 1px solid rgba(255,255,255,.24);
+      background:
+        linear-gradient(135deg, rgba(111,0,31,.92), rgba(16,16,16,.98));
       color: #fff;
       font: inherit;
       font-size: 9px;
       font-weight: 950;
-      letter-spacing: .045em;
+      letter-spacing: .055em;
       text-transform: uppercase;
       cursor: pointer;
       box-shadow: none;
+      flex: 0 0 auto;
     }
 
-    .week-preview-action:hover {
-      border-color: rgba(255,255,255,.45);
+    .card-copy-button:hover {
+      border-color: rgba(255,255,255,.48);
       transform: translateY(-1px);
     }
 
-    .week-preview-action:disabled {
-      opacity: .55;
+    .card-copy-button:disabled {
+      opacity: .58;
       cursor: wait;
       transform: none;
     }
-
-    .week-preview-exporting .week-preview-actions {
-      visibility: hidden;
-    }
-
 
     .week-preview-header {
       display: grid;
@@ -1284,7 +1268,7 @@
         print-color-adjust: exact;
       }
       .editor, .no-print { display: none !important; }
-      .week-preview-actions { display: none !important; }
+      .card-copy-button { display: none !important; }
       .app { width: 100%; margin: 0; }
       .board-shell { border-radius: 0; box-shadow: none; }
       .board { min-height: auto; padding: 12px; }
@@ -1365,56 +1349,64 @@
             <div class="analysis-card-header">
               <h2 id="weeklyReviewTitle">Weekly Review</h2>
               <div class="weekly-review-date" id="weeklyReviewDate"></div>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('weeklyReviewCard', this)">Copy</button>
             </div>
             <div id="weeklyReviewContent"></div>
           </section>
 
-          <section class="analysis-card analysis-card-wide week-preview-card">
+          <section class="analysis-card analysis-card-wide week-preview-card" id="weekPreviewCard">
             <div class="analysis-card-header">
               <h2 id="nextWeekTitle">Week Preview</h2>
               <div class="week-preview-date" id="nextWeekDate"></div>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('weekPreviewCard', this)">Copy</button>
             </div>
             <div class="matchup-list week-preview-list" id="nextWeekMatchups"></div>
           </section>
 
-          <section class="analysis-card">
+          <section class="analysis-card" id="projectedStandingsCard">
             <div class="analysis-card-header">
               <h2>Projected Standings</h2>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('projectedStandingsCard', this)">Copy</button>
             </div>
             <div class="analysis-list" id="projectedStandings"></div>
           </section>
 
-          <section class="analysis-card">
+          <section class="analysis-card" id="playoffProbabilityCard">
             <div class="analysis-card-header">
               <h2>Playoff Probability</h2>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('playoffProbabilityCard', this)">Copy</button>
             </div>
             <div class="analysis-list" id="playoffProbability"></div>
           </section>
 
-          <section class="analysis-card">
+          <section class="analysis-card" id="tankathonRankingsCard">
             <div class="analysis-card-header">
               <h2>Tankathon Rankings</h2>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('tankathonRankingsCard', this)">Copy</button>
             </div>
             <div class="analysis-list" id="tankathonRankings"></div>
           </section>
 
-          <section class="analysis-card">
+          <section class="analysis-card" id="expectedRecordCard">
             <div class="analysis-card-header">
               <h2>Expected Record</h2>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('expectedRecordCard', this)">Copy</button>
             </div>
             <div class="analysis-list" id="expectedRecord"></div>
           </section>
 
-          <section class="analysis-card">
+          <section class="analysis-card" id="scheduleStrengthCard">
             <div class="analysis-card-header">
               <h2>Schedule Strength So Far</h2>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('scheduleStrengthCard', this)">Copy</button>
             </div>
             <div class="analysis-list" id="scheduleStrength"></div>
           </section>
 
-          <section class="analysis-card">
+          <section class="analysis-card" id="remainingScheduleCard">
             <div class="analysis-card-header">
               <h2>Remaining Strength of Schedule</h2>
+              <button type="button" class="card-copy-button no-print" onclick="copyDashboardCard('remainingScheduleCard', this)">Copy</button>
             </div>
             <div class="analysis-list" id="remainingSchedule"></div>
           </section>
@@ -4653,15 +4645,6 @@
       `;
     }
 
-    function sanitizePreviewFilename(value) {
-      return String(value || "week-preview")
-        .toLowerCase()
-        .replace(/&/g, "and")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "")
-        .slice(0, 120) || "week-preview";
-    }
-
     function inlinePreviewComputedStyles(sourceRoot, cloneRoot) {
       const sourceNodes = [sourceRoot, ...sourceRoot.querySelectorAll("*")];
       const cloneNodes = [cloneRoot, ...cloneRoot.querySelectorAll("*")];
@@ -4682,9 +4665,9 @@
       });
     }
 
-    async function weekPreviewCardToPngBlob(card) {
+    async function dashboardCardToPngBlob(card) {
       if (!card) {
-        throw new Error("Preview card not found.");
+        throw new Error("Dashboard card not found.");
       }
 
       if (document.fonts?.ready) {
@@ -4709,7 +4692,7 @@
       clone.style.transform = "none";
 
       clone
-        .querySelectorAll(".week-preview-actions, .week-preview-action")
+        .querySelectorAll(".card-copy-button, .no-print")
         .forEach(node => node.remove());
 
       const serialized = new XMLSerializer().serializeToString(clone);
@@ -4760,62 +4743,12 @@
       }
     }
 
-    function previewCardFilename(card) {
-      const week = card?.dataset?.previewWeek || "week";
-      const away = card?.dataset?.awayTeam || "team-a";
-      const home = card?.dataset?.homeTeam || "team-b";
-
-      return sanitizePreviewFilename(
-        `${week}-${away}-vs-${home}`
-      ) + ".png";
-    }
-
-    async function downloadWeekPreviewCard(cardId, button) {
-      const card = document.getElementById(cardId);
-      if (!card) return;
-
-      const originalText = button?.textContent || "Download";
-      if (button) {
-        button.disabled = true;
-        button.textContent = "Working…";
-      }
-
-      try {
-        const blob = await weekPreviewCardToPngBlob(card);
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = previewCardFilename(card);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-        if (button) {
-          button.textContent = "Downloaded";
-          setTimeout(() => {
-            button.textContent = originalText;
-            button.disabled = false;
-          }, 1100);
-        }
-      } catch (error) {
-        console.error("Preview PNG download failed:", error);
-        if (button) {
-          button.textContent = "Failed";
-          setTimeout(() => {
-            button.textContent = originalText;
-            button.disabled = false;
-          }, 1400);
-        }
-      }
-    }
-
-    async function copyWeekPreviewCard(cardId, button) {
+    async function copyDashboardCard(cardId, button) {
       const card = document.getElementById(cardId);
       if (!card) return;
 
       const originalText = button?.textContent || "Copy";
+
       if (button) {
         button.disabled = true;
         button.textContent = "Working…";
@@ -4831,7 +4764,7 @@
           );
         }
 
-        const blob = await weekPreviewCardToPngBlob(card);
+        const blob = await dashboardCardToPngBlob(card);
 
         await navigator.clipboard.write([
           new ClipboardItem({
@@ -4847,14 +4780,14 @@
           }, 1100);
         }
       } catch (error) {
-        console.error("Preview clipboard copy failed:", error);
+        console.error("Dashboard card copy failed:", error);
 
         if (button) {
-          button.textContent = "Use Download";
+          button.textContent = "Copy failed";
           setTimeout(() => {
             button.textContent = originalText;
             button.disabled = false;
-          }, 1700);
+          }, 1600);
         }
       }
     }
@@ -4913,7 +4846,7 @@
         }
 
         nextWeekMatchups.innerHTML = analysis.nextWeekMatchups
-          .map((matchup, matchupIndex) => {
+          .map(matchup => {
             const history = buildHeadToHeadPreview(
               matchup.awayName,
               matchup.homeName,
@@ -4931,30 +4864,8 @@
               analysis.nextWeekPeriod
             );
 
-            const previewCardId = `weekPreviewCard-${analysis.nextWeekPeriod}-${matchupIndex}`;
-
             return `
-              <div class="week-preview-card-wrap">
-                <div class="week-preview-actions no-print">
-                  <button
-                    type="button"
-                    class="week-preview-action"
-                    onclick="copyWeekPreviewCard('${previewCardId}', this)"
-                  >Copy</button>
-                  <button
-                    type="button"
-                    class="week-preview-action"
-                    onclick="downloadWeekPreviewCard('${previewCardId}', this)"
-                  >Download PNG</button>
-                </div>
-
-                <div
-                  class="week-preview-matchup"
-                  id="${previewCardId}"
-                  data-preview-week="week-${analysis.nextWeekPeriod}"
-                  data-away-team="${escapeAttribute(matchup.awayName)}"
-                  data-home-team="${escapeAttribute(matchup.homeName)}"
-                >
+              <div class="week-preview-matchup">
                 <div class="week-preview-header">
                   <div class="week-preview-probability">
                     ${formatPercent(matchup.awayProbability)}
@@ -4999,7 +4910,6 @@
 
                   ${playersToWatchHtml}
                 </div>
-              </div>
               </div>
             `;
           })
