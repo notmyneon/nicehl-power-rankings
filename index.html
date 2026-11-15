@@ -4751,26 +4751,35 @@
 
       if (button) {
         button.disabled = true;
-        button.textContent = "Working…";
+        button.textContent = "Copying…";
       }
 
       try {
         if (
+          !window.isSecureContext ||
           !navigator.clipboard?.write ||
           typeof ClipboardItem === "undefined"
         ) {
           throw new Error(
-            "This browser does not support copying PNG images to the clipboard."
+            "Image clipboard access is unavailable in this browser/context."
           );
         }
 
-        const blob = await dashboardCardToPngBlob(card);
+        /*
+          IMPORTANT:
+          Start navigator.clipboard.write() synchronously from the click.
+          Safari/Chrome can reject image clipboard writes if we await the
+          canvas/PNG rendering first because the original user gesture has
+          expired. ClipboardItem accepts a Promise<Blob>, which lets the
+          rendering happen while the clipboard write remains tied to the click.
+        */
+        const pngPromise = dashboardCardToPngBlob(card);
 
-        await navigator.clipboard.write([
-          new ClipboardItem({
-            "image/png": blob
-          })
-        ]);
+        const clipboardItem = new ClipboardItem({
+          "image/png": pngPromise
+        });
+
+        await navigator.clipboard.write([clipboardItem]);
 
         if (button) {
           button.textContent = "Copied!";
@@ -4783,11 +4792,19 @@
         console.error("Dashboard card copy failed:", error);
 
         if (button) {
-          button.textContent = "Copy failed";
+          const message =
+            /notallowed|permission|clipboard/i.test(
+              String(error?.name || "") + " " + String(error?.message || "")
+            )
+              ? "Allow Clipboard"
+              : "Copy failed";
+
+          button.textContent = message;
+
           setTimeout(() => {
             button.textContent = originalText;
             button.disabled = false;
-          }, 1600);
+          }, 1800);
         }
       }
     }
