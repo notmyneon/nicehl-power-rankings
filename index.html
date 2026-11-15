@@ -485,6 +485,127 @@
       letter-spacing: 0.08em;
     }
 
+    .week-preview-date {
+      color: #d9d9d9;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .week-preview-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .week-preview-matchup {
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(192, 192, 192, .42);
+      background:
+        linear-gradient(145deg, rgba(111,0,31,.34), rgba(12,12,12,.82) 52%, rgba(0,0,0,.88));
+      box-shadow: inset 4px 0 0 rgba(111,0,31,.95);
+    }
+
+    .week-preview-teams {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 34px minmax(0,1fr);
+      gap: 6px;
+      align-items: stretch;
+      padding: 9px;
+    }
+
+    .week-preview-side {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      grid-template-rows: auto auto;
+      gap: 3px 7px;
+      align-items: center;
+    }
+
+    .week-preview-side-right {
+      text-align: right;
+    }
+
+    .week-preview-team {
+      min-width: 0;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 950;
+      line-height: 1.08;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .week-preview-record {
+      color: #cfcfcf;
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .week-preview-probability {
+      grid-row: 1 / 3;
+      align-self: center;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .week-preview-vs {
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: rgba(255,255,255,.08);
+      color: #ddd;
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: .08em;
+    }
+
+    .week-preview-history {
+      display: grid;
+      gap: 5px;
+      padding: 8px 10px 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.19);
+    }
+
+    .week-preview-series {
+      color: #f1f1f1;
+      font-size: 11px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .week-preview-recent {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .week-preview-game {
+      min-width: 0;
+      padding: 4px 6px;
+      border-radius: 7px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.055);
+      color: #dcdcdc;
+      font-size: 9px;
+      font-weight: 750;
+      line-height: 1.2;
+    }
+
+    .week-preview-first {
+      color: #cfcfcf;
+      font-size: 10px;
+      font-style: italic;
+    }
+
     .analysis-row {
       display: grid;
       grid-template-columns: 32px minmax(0, 1fr) auto;
@@ -930,7 +1051,7 @@
     }
 
     @media (max-width: 860px) {
-      .editor-header, .board-top, .summary-strip, .rankings-grid, .awards-grid, .analysis-stack, .analysis-list, .matchup-list { grid-template-columns: 1fr; }
+      .editor-header, .board-top, .summary-strip, .rankings-grid, .awards-grid, .analysis-stack, .analysis-list, .matchup-list, .week-preview-list { grid-template-columns: 1fr; }
       .controls { justify-content: flex-start; }
       .title-lockup { align-items: flex-start; }
       .board-top-right { justify-content: space-between; }
@@ -1034,11 +1155,12 @@
             <div id="weeklyReviewContent"></div>
           </section>
 
-          <section class="analysis-card analysis-card-wide">
+          <section class="analysis-card analysis-card-wide week-preview-card">
             <div class="analysis-card-header">
-              <h2 id="nextWeekTitle">Next Week Win Probabilities</h2>
+              <h2 id="nextWeekTitle">Week Preview</h2>
+              <div class="week-preview-date" id="nextWeekDate"></div>
             </div>
-            <div class="matchup-list" id="nextWeekMatchups"></div>
+            <div class="matchup-list week-preview-list" id="nextWeekMatchups"></div>
           </section>
 
           <section class="analysis-card">
@@ -1156,6 +1278,8 @@
 
     let state = structuredCloneSafe(defaultState);
     let fantraxSeasonData = null;
+    let headToHeadHistoryData = null;
+    let headToHeadAliasMap = new Map();
     let seasonManifest = structuredCloneSafe(FALLBACK_SEASON_MANIFEST);
     let selectedSeasonId = FALLBACK_SEASON_MANIFEST.defaultSeason;
     let stateLoadedFromStorage = false;
@@ -1843,6 +1967,266 @@
         );
     }
 
+    function normaliseHistoryName(name) {
+      return String(name || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ");
+    }
+
+    function fallbackHistoryFranchiseId(name) {
+      return String(name || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "") || "unknown";
+    }
+
+    function buildHeadToHeadAliasMap() {
+      headToHeadAliasMap = new Map();
+
+      (headToHeadHistoryData?.franchises || []).forEach(franchise => {
+        const id = String(franchise?.id || "");
+        if (!id) return;
+
+        const currentName = normaliseHistoryName(franchise?.currentName);
+        if (currentName) headToHeadAliasMap.set(currentName, id);
+
+        (franchise?.aliases || []).forEach(alias => {
+          const key = normaliseHistoryName(alias?.name);
+          if (key) headToHeadAliasMap.set(key, id);
+        });
+      });
+    }
+
+    function historyFranchiseId(name) {
+      const key = normaliseHistoryName(name);
+      return headToHeadAliasMap.get(key) || fallbackHistoryFranchiseId(name);
+    }
+
+    async function loadHeadToHeadHistory() {
+      try {
+        const response = await fetch("./data/nicehl-head-to-head-history.json", {
+          cache: "no-store"
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        if (!Array.isArray(data?.games)) {
+          throw new Error("History file does not contain a games array.");
+        }
+
+        headToHeadHistoryData = data;
+        buildHeadToHeadAliasMap();
+      } catch (error) {
+        console.warn("Could not load head-to-head history.", error);
+        headToHeadHistoryData = null;
+        headToHeadAliasMap = new Map();
+      }
+    }
+
+    function historySeasonIndex(seasonId) {
+      const order = headToHeadHistoryData?.seasonOrder || [];
+      const index = order.indexOf(String(seasonId || ""));
+      return index >= 0 ? index : Number.MAX_SAFE_INTEGER;
+    }
+
+    function historyGameBeforePreview(game, seasonId, previewPeriod) {
+      const gameSeasonIndex = historySeasonIndex(game?.season);
+      const targetSeasonIndex = historySeasonIndex(seasonId);
+
+      if (gameSeasonIndex < targetSeasonIndex) return true;
+      if (gameSeasonIndex > targetSeasonIndex) return false;
+
+      return Number(game?.period) < Number(previewPeriod);
+    }
+
+    function currentSeasonHistoryGames(seasonId, previewPeriod) {
+      if (!fantraxSeasonData?.weeks?.length) return [];
+
+      const loadedSeason = String(
+        fantraxSeasonData?.league?.season ||
+        fantraxSeasonData?.league?.seasonName ||
+        ""
+      );
+
+      if (loadedSeason && loadedSeason !== String(seasonId || "")) {
+        return [];
+      }
+
+      const games = [];
+
+      fantraxSeasonData.weeks.forEach(week => {
+        const period = Number(week?.scoringPeriod);
+
+        if (
+          !Number.isFinite(period) ||
+          period >= Number(previewPeriod) ||
+          !fantraxWeekHasCompleteScores(week)
+        ) {
+          return;
+        }
+
+        (week.matchups || []).forEach(matchup => {
+          const awayName = String(matchup?.away?.name || "");
+          const homeName = String(matchup?.home?.name || "");
+          const awayScore = Number(matchup?.away?.score);
+          const homeScore = Number(matchup?.home?.score);
+
+          if (
+            !awayName ||
+            !homeName ||
+            !Number.isFinite(awayScore) ||
+            !Number.isFinite(homeScore)
+          ) {
+            return;
+          }
+
+          let winner = "tie";
+          if (awayScore > homeScore) winner = "away";
+          else if (homeScore > awayScore) winner = "home";
+
+          games.push({
+            season: String(seasonId || loadedSeason),
+            period,
+            dateRange: String(week?.dateRange || ""),
+            awayName,
+            awayFranchiseId: historyFranchiseId(awayName),
+            awayScore,
+            homeName,
+            homeFranchiseId: historyFranchiseId(homeName),
+            homeScore,
+            winner,
+            margin: Math.abs(awayScore - homeScore)
+          });
+        });
+      });
+
+      return games;
+    }
+
+    function combinedHeadToHeadHistoryGames(seasonId, previewPeriod) {
+      const archived = Array.isArray(headToHeadHistoryData?.games)
+        ? headToHeadHistoryData.games
+        : [];
+
+      const current = currentSeasonHistoryGames(
+        seasonId,
+        previewPeriod
+      );
+
+      const byKey = new Map();
+
+      [...archived, ...current].forEach(game => {
+        const pair = [
+          String(game?.awayFranchiseId || ""),
+          String(game?.homeFranchiseId || "")
+        ].sort().join("|");
+
+        const key = [
+          String(game?.season || ""),
+          Number(game?.period),
+          pair
+        ].join("|");
+
+        // Current-season loaded data comes last and therefore replaces
+        // an archived copy if both happen to contain the same matchup.
+        byKey.set(key, game);
+      });
+
+      return Array.from(byKey.values());
+    }
+
+    function buildHeadToHeadPreview(teamA, teamB, seasonId, previewPeriod) {
+      if (!headToHeadHistoryData?.games?.length) {
+        return {
+          available: false,
+          seriesText: "Historical matchup data unavailable.",
+          recent: []
+        };
+      }
+
+      const franchiseA = historyFranchiseId(teamA);
+      const franchiseB = historyFranchiseId(teamB);
+
+      const games = combinedHeadToHeadHistoryGames(
+        seasonId,
+        previewPeriod
+      )
+        .filter(game =>
+          historyGameBeforePreview(game, seasonId, previewPeriod) &&
+          (
+            (
+              game.awayFranchiseId === franchiseA &&
+              game.homeFranchiseId === franchiseB
+            ) ||
+            (
+              game.awayFranchiseId === franchiseB &&
+              game.homeFranchiseId === franchiseA
+            )
+          )
+        )
+        .sort((a, b) =>
+          historySeasonIndex(b.season) - historySeasonIndex(a.season) ||
+          Number(b.period) - Number(a.period)
+        );
+
+      if (!games.length) {
+        return {
+          available: true,
+          seriesText: "First meeting between these franchises.",
+          recent: []
+        };
+      }
+
+      let winsA = 0;
+      let winsB = 0;
+      let ties = 0;
+
+      games.forEach(game => {
+        const awayA = game.awayFranchiseId === franchiseA;
+        const scoreA = awayA ? Number(game.awayScore) : Number(game.homeScore);
+        const scoreB = awayA ? Number(game.homeScore) : Number(game.awayScore);
+
+        if (scoreA > scoreB) winsA++;
+        else if (scoreB > scoreA) winsB++;
+        else ties++;
+      });
+
+      let seriesText = "";
+      if (winsA > winsB) {
+        seriesText = `${teamA} leads the all-time series ${winsA}–${winsB}`;
+      } else if (winsB > winsA) {
+        seriesText = `${teamB} leads the all-time series ${winsB}–${winsA}`;
+      } else {
+        seriesText = `All-time series tied ${winsA}–${winsB}`;
+      }
+      if (ties) seriesText += ` with ${ties} tie${ties === 1 ? "" : "s"}`;
+      seriesText += ".";
+
+      const recent = games.slice(0, 3).map(game => {
+        const awayA = game.awayFranchiseId === franchiseA;
+        const scoreA = awayA ? Number(game.awayScore) : Number(game.homeScore);
+        const scoreB = awayA ? Number(game.homeScore) : Number(game.awayScore);
+
+        let resultText;
+        if (scoreA > scoreB) {
+          resultText = `${teamA} ${formatRating(scoreA)}–${formatRating(scoreB)}`;
+        } else if (scoreB > scoreA) {
+          resultText = `${teamB} ${formatRating(scoreB)}–${formatRating(scoreA)}`;
+        } else {
+          resultText = `Tie ${formatRating(scoreA)}–${formatRating(scoreB)}`;
+        }
+
+        return `${game.season} W${game.period} · ${resultText}`;
+      });
+
+      return {
+        available: true,
+        seriesText,
+        recent
+      };
+    }
+
     function buildSeasonAnalysis() {
       if (!fantraxSeasonData) return null;
 
@@ -1881,6 +2265,8 @@
                 homeName,
                 awayElo,
                 homeElo,
+                awayRecord: getRecordForWeek(stateTeamMap.get(awayName), state.currentWeek),
+                homeRecord: getRecordForWeek(stateTeamMap.get(homeName), state.currentWeek),
                 awayProbability,
                 homeProbability: 1 - awayProbability
               };
@@ -3501,6 +3887,7 @@
     function renderAnalysisCards() {
       renderWeeklyReview();
       const nextWeekTitle = document.getElementById("nextWeekTitle");
+      const nextWeekDate = document.getElementById("nextWeekDate");
       const nextWeekMatchups = document.getElementById("nextWeekMatchups");
       const projected = document.getElementById("projectedStandings");
       const playoff = document.getElementById("playoffProbability");
@@ -3538,29 +3925,64 @@
         analysis.nextWeekPeriod === null ||
         !analysis.nextWeekMatchups.length
       ) {
-        nextWeekTitle.textContent = "Next Week Win Probabilities";
+        nextWeekTitle.textContent = "Week Preview";
+        if (nextWeekDate) nextWeekDate.textContent = "";
         nextWeekMatchups.innerHTML =
           '<div class="analysis-empty">No later regular-season matchups after this selected week.</div>';
       } else {
         nextWeekTitle.textContent =
-          `Week ${analysis.nextWeekPeriod} Win Probabilities`;
+          `Week ${analysis.nextWeekPeriod} Preview`;
+        if (nextWeekDate) {
+          nextWeekDate.textContent = String(analysis.nextWeekDateRange || "")
+            .replace(/[()]/g, "");
+        }
 
         nextWeekMatchups.innerHTML = analysis.nextWeekMatchups
-          .map(matchup => `
-            <div class="matchup-row">
-              <div class="matchup-side">
-                <div class="matchup-team" title="${escapeAttribute(matchup.awayName)}">${escapeHtml(matchup.awayName)}</div>
-                <div class="matchup-elo">ELO ${formatRating(matchup.awayElo)}</div>
-                <div class="matchup-probability">${formatPercent(matchup.awayProbability)}</div>
+          .map(matchup => {
+            const history = buildHeadToHeadPreview(
+              matchup.awayName,
+              matchup.homeName,
+              selectedSeasonId,
+              analysis.nextWeekPeriod
+            );
+
+            const recentHtml = history.recent.length
+              ? `
+                <div class="week-preview-recent">
+                  ${history.recent.map(game => `
+                    <div class="week-preview-game">${escapeHtml(game)}</div>
+                  `).join("")}
+                </div>
+              `
+              : "";
+
+            return `
+              <div class="week-preview-matchup">
+                <div class="week-preview-teams">
+                  <div class="week-preview-side">
+                    <div class="week-preview-team" title="${escapeAttribute(matchup.awayName)}">${escapeHtml(matchup.awayName)}</div>
+                    <div class="week-preview-record">${escapeHtml(matchup.awayRecord || "0-0")} · ELO ${formatRating(matchup.awayElo)}</div>
+                    <div class="week-preview-probability">${formatPercent(matchup.awayProbability)}</div>
+                  </div>
+
+                  <div class="week-preview-vs">VS</div>
+
+                  <div class="week-preview-side week-preview-side-right">
+                    <div class="week-preview-team" title="${escapeAttribute(matchup.homeName)}">${escapeHtml(matchup.homeName)}</div>
+                    <div class="week-preview-record">${escapeHtml(matchup.homeRecord || "0-0")} · ELO ${formatRating(matchup.homeElo)}</div>
+                    <div class="week-preview-probability">${formatPercent(matchup.homeProbability)}</div>
+                  </div>
+                </div>
+
+                <div class="week-preview-history">
+                  <div class="${history.recent.length ? "week-preview-series" : "week-preview-first"}">
+                    ${escapeHtml(history.seriesText)}
+                  </div>
+                  ${recentHtml}
+                </div>
               </div>
-              <div class="matchup-vs">VS</div>
-              <div class="matchup-side matchup-side-right">
-                <div class="matchup-team" title="${escapeAttribute(matchup.homeName)}">${escapeHtml(matchup.homeName)}</div>
-                <div class="matchup-elo">ELO ${formatRating(matchup.homeElo)}</div>
-                <div class="matchup-probability">${formatPercent(matchup.homeProbability)}</div>
-              </div>
-            </div>
-          `)
+            `;
+          })
           .join("");
       }
 
@@ -3823,6 +4245,7 @@
         : seasonManifest.defaultSeason;
 
       populateSeasonSelect();
+      await loadHeadToHeadHistory();
       await switchSeason(selectedSeasonId, { initial: true });
     }
 
